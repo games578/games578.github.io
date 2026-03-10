@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Unblocked Games</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #111;
+        color: white;
+      }
+
+      /* Top nav bar */
+      .navbar {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        background: #1a1a1a;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      }
+
+      .navbar img.logo {
+        height: 50px;
+        margin-right: 20px;
+      }
+
+      .navbar input.search {
+        flex: 1;
+        padding: 8px 12px;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+      }
+
+      /* Game cards grid */
+      #gameCards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+        padding: 20px;
+      }
+
+      .card {
+        background: #222;
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1 / 1; /* makes square */
+        transition:
+          transform 0.2s,
+          background 0.2s;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+        background: #333;
+      }
+
+      /* make the whole card clickable */
+      .card a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: white;
+        text-align: center;
+      }
+
+      /* image fills card */
+      .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top nav -->
+    <div class="navbar">
+      <img src="logo.png" alt="Logo" class="logo" />
+      <input
+        type="text"
+        class="search"
+        placeholder="Search games..."
+        id="searchInput"
+      />
+    </div>
+
+    <!-- Game cards -->
+    <div id="gameCards">
+      <!-- Working card with image -->
+      <div class="card">
+        <a href="play.html?a-small-world-cup">
+          <img
+            src="https://play-lh.googleusercontent.com/R47kNu-wEYMVnoo7rFOXiAHoBvW26KHps65Oi0S6zMF722x0LYqHJUiXRvB_xhsj0CM"
+            alt="A Small World Cup"
+          />
+        </a>
+      </div>
+
+      <div class="card">
+        <a href="play.html?subway-surfers">
+          <img
+            src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/9e89c8fe71f2e1179437b6b6d7e3a5a1/subway-surfers.png"
+            alt="Subway Surfers"
+          />
+        </a>
+      </div>
+
+      <!-- Placeholder cards -->
+      <div class="card">
+        <a href="play.html?cookie-clicker">
+          <img
+            src="https://super142.wordpress.com/wp-content/uploads/2022/07/cookie-clicker.jpg"
+            alt="Cookie Clicker"
+          />
+        </a>
+      </div>
+      <div class="card">
+        <a href="play.html?murder">
+          <img
+            src="https://play-lh.googleusercontent.com/BT7zrf4JNZj4pRV5YIRT4D0DydkuLEzVvnOwKmmOxuc1sbIUJyZbeaFOhjuLK4CXWFg"
+            alt="Murder"
+          />
+        </a>
+      </div>
+      <div class="card">
+        <a href="play.html?slope">
+          <img
+            src="https://play-lh.googleusercontent.com/FFrKIqKVpB9HMpaaF0HUc5Sza5W2sM8GFZGfkddU39xPcKCa4BYXQghoWVGlQGpaAA=w526-h296-rw"
+            alt="Slope"
+          />
+        </a>
+      </div>
+      <div class="card">
+        <a href="play.html?swat">
+          <img
+            src="https://imgs.crazygames.com/time-shooter-2_1x1/20241113040556/time-shooter-2_1x1-cover?format=auto&quality=100&metadata=none&width=1200"
+            alt="swat"
+          />
+        </a>
+      </div>
+      <div class="card">
+        <a href="play.html?lol">
+          <img
+            src="https://img.utdstc.com/icon/983/22a/98322a3b2be892eed31589906ffd949b68bcccc9a21ba562987965b5ec6bc6de:200"
+            alt="lol"
+          />
+        </a>
+      </div>
+      <div class="card">
+        <a href="play.html?snow-rider">
+          <img
+            src="https://say.games/_next/image?url=https%3A%2F%2Fweb-saystore-backend.sgdn.io%2Fsnwrdrw%2Ficon___akGln0EtUjbj&w=3840&q=75"
+            alt="Snow Rider"
+          />
+        </a>
+      </div>
+      <div class="card">
+        <a href="play.html?shotz">
+          <img src="https://mc0825.github.io/img/class-394.png" alt="shotz" />
+        </a>
+      </div>
+      <div class="card">
+        <a href="play.html?goalkeeper-challenge">
+          <img
+            src="https://mc0825.github.io/img/class-1049.png"
+            alt="Goalkeeper Challenge"
+          />
+        </a>
+      </div>
+      <div class="card">
+        <a href="play.html?stair-race">
+          <img src="https://mc0825.github.io/img/class-619.png" alt="shotz" />
+        </a>
+      </div>
+      <div class="card">
+        <a href="play.html?among-us">
+          <img
+            src="https://mc0825.github.io/img/class-468.png"
+            alt="Among Us"
+          />
+        </a>
+      </div>
+    </div>
+
+    <script>
+      // Simple search functionality
+      const searchInput = document.getElementById("searchInput");
+      const gameCards = document.querySelectorAll("#gameCards .card");
+
+      searchInput.addEventListener("input", () => {
+        const filter = searchInput.value.toLowerCase();
+        gameCards.forEach((card) => {
+          const altText = card.querySelector("img").alt.toLowerCase();
+          card.style.display = altText.includes(filter) ? "flex" : "none";
+        });
+      });
+    </script>
+  </body>
+</html>

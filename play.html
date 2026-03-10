@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Play Game</title>
+    <style>
+      body {
+        background: #111;
+        font-family: Arial, sans-serif;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      /* container */
+      .game-container {
+        width: 1000px;
+        height: 800px;
+        background: #1a1a1a;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 20px black;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* top bar */
+      .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background: #222;
+        flex: 0 0 auto;
+      }
+
+      #gameTitle {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      button {
+        background: #444;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      button:hover {
+        background: #666;
+      }
+
+      /* iframe takes all remaining space */
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        flex: 1 1 auto;
+      }
+
+      /* fullscreen container */
+      .game-container:-webkit-full-screen,
+      .game-container:-moz-full-screen,
+      .game-container:-ms-fullscreen,
+      .game-container:fullscreen {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+      }
+
+      /* hide top bar in fullscreen */
+      .game-container:-webkit-full-screen .top-bar,
+      .game-container:-moz-full-screen .top-bar,
+      .game-container:-ms-fullscreen .top-bar,
+      .game-container:fullscreen .top-bar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-container" id="container">
+      <div class="top-bar">
+        <div id="gameTitle">Loading...</div>
+        <button id="fullscreenBtn">Fullscreen</button>
+      </div>
+      <iframe id="gameFrame"></iframe>
+    </div>
+
+    <script src="games.js"></script>
+    <script>
+      // Load the game
+      const gameName = window.location.search.substring(1).trim().toLowerCase();
+      const game = games.find((g) => g.id === gameName);
+
+      if (game) {
+        document.getElementById("gameTitle").textContent = game.title;
+        document.getElementById("gameFrame").src = game.src;
+      } else {
+        document.getElementById("gameTitle").textContent = "Game not found";
+      }
+
+      // Fullscreen toggle
+      const container = document.getElementById("container");
+      const fsBtn = document.getElementById("fullscreenBtn");
+
+      fsBtn.addEventListener("click", () => {
+        if (
+          !document.fullscreenElement &&
+          !document.webkitFullscreenElement &&
+          !document.msFullscreenElement
+        ) {
+          // Enter fullscreen
+          if (container.requestFullscreen) container.requestFullscreen();
+          else if (container.webkitRequestFullscreen)
+            container.webkitRequestFullscreen();
+          else if (container.msRequestFullscreen)
+            container.msRequestFullscreen();
+        } else {
+          // Exit fullscreen
+          if (document.exitFullscreen) document.exitFullscreen();
+          else if (document.webkitExitFullscreen)
+            document.webkitExitFullscreen();
+          else if (document.msExitFullscreen) document.msExitFullscreen();
+        }
+      });
+
+      // Update button text on fullscreen change
+      function updateFullscreenButton() {
+        if (
+          document.fullscreenElement === container ||
+          document.webkitFullscreenElement === container ||
+          document.msFullscreenElement === container
+        ) {
+          fsBtn.textContent = "Exit Fullscreen";
+        } else {
+          fsBtn.textContent = "Fullscreen";
+        }
+      }
+
+      document.addEventListener("fullscreenchange", updateFullscreenButton);
+      document.addEventListener(
+        "webkitfullscreenchange",
+        updateFullscreenButton,
+      );
+      document.addEventListener("mozfullscreenchange", updateFullscreenButton);
+      document.addEventListener("MSFullscreenChange", updateFullscreenButton);
+    </script>
+  </body>
+</html>
