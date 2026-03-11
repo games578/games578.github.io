@@ -271,5 +271,47 @@ const games = [
     src: "https://mc0825.github.io/g72/class-631/",
     img: "https://mc0825.github.io/img/class-631.png",
     tags: ["casual", "idle", "fun"]
-  }
+  },
+  {
+    id: "minecraft",
+    title: "Minecraft",
+    src: "https://classic.minecraft.net/",
+    img: "https://thumbs.dreamstime.com/b/minecraft-logo-online-game-dirt-block-illustrations-concept-design-isolated-186775550.jpg",
+    tags: ["casual", "idle", "best"]
+  },
+  {
+    id: "run",
+    title: "Run 3",
+    src: "https://lekug.github.io/tn6pS9dCf37xAhkJv/",
+    img: "https://www.speedrun.com/static/game/2680l51p/cover.png?v=f231ea7",
+    tags: ["running", "idle", "best"]
+  },
+  {
+    id: "stickman",
+    title: "Stickman Hook",
+    src: "https://jamestore214.github.io/g5/class-406/",
+    img: "https://mc0825.github.io/img/class-406.png",
+    tags: ["action", "racing", "popular"]
+  },
+  {
+    id: "rush",
+    title: "Tunnel Rush",
+    src: "https://jamestore214.github.io/g69/class-653/",
+    img: "https://mc0825.github.io/img/class-653.png",
+    tags: ["action", "racing", "casual"]
+  },
+  {
+    id: "defenders",
+    title: "Stick Defenders",
+    src: "https://jamestore214.github.io/g2/class-416/",
+    img: "https://mc0825.github.io/img/class-416.png",
+    tags: ["action", "shooting", "casual"]
+  },
+  {
+    id: "parkour",
+    title: "DeadHead Parkour",
+    src: "https://jamestore214.github.io/g97/class-412/",
+    img: "https://mc0825.github.io/img/class-412.png",
+    tags: ["popular", "casual", "new"]
+  },
 ];
