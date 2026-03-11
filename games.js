@@ -104,5 +104,51 @@ const games = [
     title: "Stick Rush",
     src: "https://mc0825.github.io/g68/class-1050/"
   },
+  {
+    id: "bumber-cars-soccer",
+    title: "Bumper Cars Soccer",
+    src: "https://mc0825.github.io/g16/class-665/"
+  },
+  {
+    id: "elastic-man",
+    title: "Elastic Man",
+    src: "https://mc0825.github.io/g97/class-500/"
+  },
+  {
+    id: "super-soccer",
+    title: "Super Soccer",
+    src: "https://mc0825.github.io/g69/class-628/"
+  },
+  {
+    id: "idle-lumber",
+    title: "Idle Lumber",
+    src: "https://mc0825.github.io/g72/class-586/"
+  },
+  {
+    id: "school-escape",
+    title: "School Escape",
+    src: "https://mc0825.github.io/g72/class-586/"
+  },
+  {
+    id: "stunt-cars",
+    title: "Madalin Stunt Cars",
+    src: "https://mc0825.github.io/g5/class-566/"
+  },
+  {
+    id: "parking-fury",
+    title: "Parking Fury 3D",
+    src: "https://mc0825.github.io/g3/class-725/"
+  },
+  {
+    id: "monster-tracks",
+    title: "Monster Tracks",
+    src: "https://mc0825.github.io/g72/class-414/"
+  },
+  {
+    id: "supercars-royale",
+    title: "Supercars Royale",
+    src: "https://mc0825.github.io/g66/class-976/"
+  },
+
 
 ]; 
