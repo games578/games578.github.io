@@ -50,7 +50,7 @@
       }
 
       .navbar img.logo {
-        height: 80px;
+        height: 46px;
         display: block;
       }
 
@@ -243,12 +243,40 @@
           font-size: 16px;
         }
       }
+
+      .home-link {
+        margin-left: 16px;
+        flex-shrink: 0;
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        font-size: 14px;
+        white-space: nowrap;
+        transition: color 0.2s;
+      }
+
+      .home-link:hover {
+        color: white;
+      }
+
+      footer {
+        text-align: center;
+        padding: 28px 8%;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        margin-top: 20px;
+      }
+
+      footer h3 {
+        font-size: 13px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.25);
+        margin: 0;
+      }
     </style>
   </head>
   <body>
     <!-- Navbar -->
     <div class="navbar">
-      <a href="https://games578.github.io/" class="logo-link">
+      <a href="index.html" class="logo-link">
         <img src="logo.png" alt="Home" class="logo" />
       </a>
       <div class="search-wrapper">
@@ -261,6 +289,7 @@
         />
         <div class="suggestions" id="suggestions"></div>
       </div>
+      <a href="index.html" class="home-link">🏠 Home</a>
     </div>
 
     <!-- Page -->
@@ -277,6 +306,10 @@
         <iframe id="gameFrame" allowfullscreen></iframe>
       </div>
     </div>
+
+    <footer>
+      <h3>🐶 and Skylarr's dog Bueno</h3>
+    </footer>
 
     <script src="games.js"></script>
     <script>
@@ -442,4 +475,3 @@
     </script>
   </body>
 </html>
-
