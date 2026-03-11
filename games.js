@@ -32,7 +32,7 @@ const games = [
   {
     id: "snow-rider",
     title: "Snow Rider",
-    src: "https://n-umwhousjvethbvlcgmicfvstdxy2skj3gwmb3rq-0lu-script.googleusercontent.com/userCodeAppPanel"
+    src: "https://mc0825.github.io/g26/class-537/"
   },
   {
     id: "shotz",
@@ -44,14 +44,65 @@ const games = [
     title: "Goalkeeper Challenge",
     src: " https://mc0825.github.io/g68/class-1049/"
   },
-      {
+  {
     id: "stair-race",
     title: "Stair Race 3D",
     src: " https://mc0825.github.io/g2/class-619/"
   },
-        {
+  {
     id: "among-us",
     title: "Among Us",
     src: "https://mc0825.github.io/g5/class-468/"
   },
+  {
+    id: "sausage-flip",
+    title: "Sausage Flip",
+    src: "https://mc0825.github.io/g2/class-415/"
+  },
+  {
+    id: "fireboy-and-watergirl",
+    title: "Fireboy and Watergirl",
+    src: "https://mc0825.github.io/g177/class-346/"
+  },
+    {
+    id: "fruit-ninja",
+    title: "Fruit Ninja",
+    src: "https://mc0825.github.io/g50/class-22/"
+  },
+  {
+    id: "red-ball",
+    title: "Red Ball 4",
+    src: "https://mc0825.github.io/g22/class-491/"
+  },
+  {
+    id: "gobble-top",
+    title: "Gobble Top",
+    src: "https://mc0825.github.io/g9/class-420/"
+  },
+  {
+    id: "bitlife",
+    title: "Bitlife",
+    src: "hhttps://mc0825.github.io/g5/class-441/"
+  },
+  {
+    id: "traffic-rush",
+    title: "Traffic Rush",
+    src: "https://mc0825.github.io/g22/class-393/"
+  },
+  {
+    id: "penalty-kick",
+    title: "Penalty Kick",
+    src: "https://mc0825.github.io/g5/class-519/"
+  },
+  {
+    id: "blumi-soccer",
+    title: "Blumgi Soccer",
+    src: "https://mc0825.github.io/g68/class-1050/"
+  },
+  {
+    id: "stick-rush",
+    title: "Stick Rush",
+    src: "https://mc0825.github.io/g68/class-1050/"
+  },
+
 ]; 
