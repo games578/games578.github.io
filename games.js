@@ -3,234 +3,273 @@ const games = [
     id: "a-small-world-cup",
     title: "A Small World Cup",
     src: "https://mc0825.github.io/g16/class-680/",
-    img: "https://jamestore214.github.io/img/class-680.png"
+    img: "https://jamestore214.github.io/img/class-680.png",
+    tags: ["new", "soccer", "sports", "fun", "best"]
   },
   {
     id: "subway-surfers",
     title: "Subway Surfers",
     src: "https://jamestore214.github.io/g26/class-444/",
-    img: "https://jamestore214.github.io/img/class-444.png"
+    img: "https://jamestore214.github.io/img/class-444.png",
+    tags: ["new", "popular", "running", "fun", "best"]
   },
   {
     id: "murder",
     title: "Murder",
     src: "https://jamestore214.github.io/g72/class-580/",
-    img: "https://jamestore214.github.io/img/class-580.png"
+    img: "https://jamestore214.github.io/img/class-580.png",
+    tags: ["new", "action", "fun"]
   },
   {
     id: "slope",
     title: "Slope",
     src: "https://jamestore214.github.io/g5/class-450",
-    img: "https://jamestore214.github.io/img/class-450.png"
+    img: "https://jamestore214.github.io/img/class-450.png",
+    tags: ["new", "popular", "action", "fun", "best"]
   },
   {
     id: "swat",
     title: "Swat",
     src: "https://mc0825.github.io/g97/class-792/",
-    img: "https://jamestore214.github.io/img/class-792.png"
+    img: "https://jamestore214.github.io/img/class-792.png",
+    tags: ["new", "action", "shooting"]
   },
   {
     id: "lol",
     title: "lol",
     src: "https://mc0825.github.io/g20/class-440/",
-    img: "https://jamestore214.github.io/img/class-440.png"
+    img: "https://jamestore214.github.io/img/class-440.png",
+    tags: ["new", "action", "fun"]
   },
   {
     id: "snow-rider",
     title: "Snow Rider",
     src: "https://mc0825.github.io/g26/class-537/",
-    img: "https://jamestore214.github.io/img/class-537.png"
+    img: "https://jamestore214.github.io/img/class-537.png",
+    tags: ["new", "sports", "racing", "fun"]
   },
   {
     id: "shotz",
     title: "Shotz",
     src: "https://mc0825.github.io/g22/class-394/",
-    img: "https://mc0825.github.io/img/class-394.png"
+    img: "https://mc0825.github.io/img/class-394.png",
+    tags: ["shooting", "action"]
   },
   {
     id: "goalkeeper-challenge",
     title: "Goalkeeper Challenge",
     src: "https://mc0825.github.io/g68/class-1049/",
-    img: "https://mc0825.github.io/img/class-1049.png"
+    img: "https://mc0825.github.io/img/class-1049.png",
+    tags: ["soccer", "sports"]
   },
   {
     id: "stair-race",
     title: "Stair Race 3D",
     src: "https://mc0825.github.io/g2/class-619/",
-    img: "https://mc0825.github.io/img/class-619.png"
+    img: "https://mc0825.github.io/img/class-619.png",
+    tags: ["popular", "running", "fun"]
   },
   {
     id: "among-us",
     title: "Among Us",
     src: "https://mc0825.github.io/g5/class-468/",
-    img: "https://mc0825.github.io/img/class-468.png"
+    img: "https://mc0825.github.io/img/class-468.png",
+    tags: ["popular", "action", "survival", "best"]
   },
   {
     id: "sausage-flip",
     title: "Sausage Flip",
     src: "https://mc0825.github.io/g2/class-415/",
-    img: "https://mc0825.github.io/img/class-415.png"
+    img: "https://mc0825.github.io/img/class-415.png",
+    tags: ["popular", "casual", "fun"]
   },
   {
     id: "fireboy-and-watergirl",
     title: "Fireboy and Watergirl",
     src: "https://mc0825.github.io/g177/class-346/",
-    img: "https://mc0825.github.io/img/class-346.png"
+    img: "https://mc0825.github.io/img/class-346.png",
+    tags: ["popular", "action", "best"]
   },
   {
     id: "fruit-ninja",
     title: "Fruit Ninja",
     src: "https://mc0825.github.io/g50/class-22/",
-    img: "https://mc0825.github.io/img/class-22.png"
+    img: "https://mc0825.github.io/img/class-22.png",
+    tags: ["popular", "casual", "fun"]
   },
   {
     id: "red-ball",
     title: "Red Ball 4",
     src: "https://mc0825.github.io/g22/class-491/",
-    img: "https://mc0825.github.io/img/class-491.png"
+    img: "https://mc0825.github.io/img/class-491.png",
+    tags: ["popular", "action", "fun"]
   },
   {
     id: "gobble-top",
     title: "Gobble Top",
     src: "https://mc0825.github.io/g9/class-420/",
-    img: "https://mc0825.github.io/img/class-420.png"
+    img: "https://mc0825.github.io/img/class-420.png",
+    tags: ["casual", "survival"]
   },
   {
     id: "bitlife",
     title: "Bitlife",
     src: "https://mc0825.github.io/g5/class-441/",
-    img: "https://mc0825.github.io/img/class-441.png"
+    img: "https://mc0825.github.io/img/class-441.png",
+    tags: ["popular", "casual", "fun", "best"]
   },
   {
     id: "traffic-rush",
     title: "Traffic Rush",
     src: "https://mc0825.github.io/g22/class-393/",
-    img: "https://mc0825.github.io/img/class-393.png"
+    img: "https://mc0825.github.io/img/class-393.png",
+    tags: ["casual", "racing", "fun"]
   },
   {
     id: "penalty-kick",
     title: "Penalty Kick",
     src: "https://mc0825.github.io/g5/class-519/",
-    img: "https://mc0825.github.io/img/class-519.png"
+    img: "https://mc0825.github.io/img/class-519.png",
+    tags: ["soccer", "sports"]
   },
   {
     id: "blumi-soccer",
     title: "Blumgi Soccer",
     src: "https://mc0825.github.io/g68/class-1050/",
-    img: "https://mc0825.github.io/img/class-1050.png"
+    img: "https://mc0825.github.io/img/class-1050.png",
+    tags: ["soccer", "sports", "fun"]
   },
   {
     id: "stick-rush",
     title: "Stick Rush",
     src: "https://mc0825.github.io/g68/class-982/",
-    img: "https://mc0825.github.io/img/class-982.png"
+    img: "https://mc0825.github.io/img/class-982.png",
+    tags: ["action", "running", "survival"]
   },
   {
     id: "bumber-cars-soccer",
     title: "Bumper Cars Soccer",
     src: "https://mc0825.github.io/g16/class-665/",
-    img: "https://mc0825.github.io/img/class-665.png"
+    img: "https://mc0825.github.io/img/class-665.png",
+    tags: ["soccer", "sports", "racing", "fun"]
   },
   {
     id: "elastic-man",
     title: "Elastic Man",
     src: "https://mc0825.github.io/g97/class-500/",
-    img: "https://mc0825.github.io/img/class-500.png"
+    img: "https://mc0825.github.io/img/class-500.png",
+    tags: ["casual", "popular", "fun"]
   },
   {
     id: "super-soccer",
     title: "Super Soccer",
     src: "https://mc0825.github.io/g69/class-628/",
-    img: "https://mc0825.github.io/img/class-628.png"
+    img: "https://mc0825.github.io/img/class-628.png",
+    tags: ["soccer", "sports"]
   },
   {
     id: "idle-lumber",
     title: "Idle Lumber",
     src: "https://mc0825.github.io/g72/class-586/",
-    img: "https://mc0825.github.io/img/class-586.png"
+    img: "https://mc0825.github.io/img/class-586.png",
+    tags: ["casual", "idle"]
   },
   {
     id: "school-escape",
     title: "School Escape",
     src: "https://mc0825.github.io/g72/class-894/",
-    img: "https://mc0825.github.io/img/class-894.png"
+    img: "https://mc0825.github.io/img/class-894.png",
+    tags: ["action", "casual", "survival", "fun"]
   },
   {
     id: "stunt-cars",
     title: "Madalin Stunt Cars",
     src: "https://mc0825.github.io/g5/class-566/",
-    img: "https://mc0825.github.io/img/class-566.png"
+    img: "https://mc0825.github.io/img/class-566.png",
+    tags: ["racing", "sports", "best"]
   },
   {
     id: "parking-fury",
     title: "Parking Fury 3D",
     src: "https://mc0825.github.io/g3/class-725/",
-    img: "https://mc0825.github.io/img/class-725.png"
+    img: "https://mc0825.github.io/img/class-725.png",
+    tags: ["racing", "casual"]
   },
   {
     id: "monster-tracks",
     title: "Monster Tracks",
     src: "https://mc0825.github.io/g72/class-414/",
-    img: "https://mc0825.github.io/img/class-414.png"
+    img: "https://mc0825.github.io/img/class-414.png",
+    tags: ["racing", "sports", "fun"]
   },
   {
     id: "supercars-royale",
     title: "Supercars Royale",
     src: "https://mc0825.github.io/g66/class-976/",
-    img: "https://mc0825.github.io/img/class-976.png"
+    img: "https://mc0825.github.io/img/class-976.png",
+    tags: ["racing", "action"]
   },
   {
     id: "ground-digger",
     title: "Ground Digger",
     src: "https://mc0825.github.io/g68/class-1067/",
-    img: "https://mc0825.github.io/img/class-1067.png"
+    img: "https://mc0825.github.io/img/class-1067.png",
+    tags: ["casual", "idle", "survival"]
   },
   {
     id: "bike",
     title: "MotorBike",
     src: "https://mc0825.github.io/g68/class-1078/",
-    img: "https://mc0825.github.io/img/class-1078.png"
+    img: "https://mc0825.github.io/img/class-1078.png",
+    tags: ["racing", "sports"]
   },
   {
     id: "viking",
     title: "Viking Village",
     src: "https://mc0825.github.io/g66/class-1005/",
-    img: "https://mc0825.github.io/img/class-1005.png"
+    img: "https://mc0825.github.io/img/class-1005.png",
+    tags: ["action", "survival", "fun"]
   },
   {
     id: "rocket",
     title: "Blumgi Rocket",
     src: "https://mc0825.github.io/g16/class-413/",
-    img: "https://mc0825.github.io/img/class-413.png"
+    img: "https://mc0825.github.io/img/class-413.png",
+    tags: ["action", "casual", "fun"]
   },
   {
     id: "sniper",
     title: "Lethal Sniper 3D",
     src: "https://mc0825.github.io/g74/class-257/",
-    img: "https://mc0825.github.io/img/class-257.png"
+    img: "https://mc0825.github.io/img/class-257.png",
+    tags: ["shooting", "action", "best"]
   },
   {
     id: "alien",
     title: "Aliens Nest",
     src: "https://mc0825.github.io/g74/class-275/",
-    img: "https://mc0825.github.io/img/class-275.png"
+    img: "https://mc0825.github.io/img/class-275.png",
+    tags: ["shooting", "action", "survival"]
   },
   {
     id: "johny-shooter",
     title: "Johnny Trigger Action Shooter",
     src: "https://mc0825.github.io/g66/class-953/",
-    img: "https://mc0825.github.io/img/class-953.png"
+    img: "https://mc0825.github.io/img/class-953.png",
+    tags: ["shooting", "action", "best"]
   },
   {
     id: "soccer-random",
     title: "Soccer Random",
     src: "https://mc0825.github.io/g26/class-511/",
-    img: "https://mc0825.github.io/img/class-511.png"
+    img: "https://mc0825.github.io/img/class-511.png",
+    tags: ["soccer", "sports", "fun"]
   },
   {
     id: "idle-ants",
     title: "Idle Ants",
     src: "https://mc0825.github.io/g72/class-631/",
-    img: "https://mc0825.github.io/img/class-631.png"
+    img: "https://mc0825.github.io/img/class-631.png",
+    tags: ["casual", "idle", "fun"]
   }
 ];
