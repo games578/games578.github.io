@@ -6,7 +6,6 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1191415751531949"
       crossorigin="anonymous"
     ></script>
-    <!-- Google tag (gtag.js) -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-63P2MBJX61"
@@ -22,7 +21,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Unblocked Games</title>
-      <link rel="icon" type="image/png" href="logo.png" />
+    <link rel="icon" type="image/png" href="logo.png" />
     <style>
       body {
         margin: 0;
@@ -31,7 +30,6 @@
         color: white;
       }
 
-      /* Top nav bar */
       .navbar {
         display: flex;
         align-items: center;
@@ -63,8 +61,13 @@
         display: block;
       }
 
-      .navbar input.search {
+      .search-wrapper {
         flex: 1;
+        position: relative;
+      }
+
+      .search-wrapper input.search {
+        width: 100%;
         padding: 9px 16px;
         border-radius: 8px;
         border: 1px solid rgba(255, 255, 255, 0.1);
@@ -75,24 +78,16 @@
         transition:
           border 0.2s,
           background 0.2s;
+        box-sizing: border-box;
       }
 
-      .navbar input.search::placeholder {
+      .search-wrapper input.search::placeholder {
         color: rgba(255, 255, 255, 0.4);
       }
 
-      .navbar input.search:focus {
+      .search-wrapper input.search:focus {
         border-color: rgba(255, 255, 255, 0.3);
         background: rgba(255, 255, 255, 0.12);
-      }
-
-      .search-wrapper {
-        flex: 1;
-        position: relative;
-      }
-
-      .search-wrapper input.search {
-        width: 100%;
       }
 
       .suggestions {
@@ -148,7 +143,6 @@
         color: rgba(255, 255, 255, 0.5);
       }
 
-      /* Game cards grid — always 6 per row, fewer on small screens */
       #gameCards {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
@@ -206,12 +200,24 @@
         object-fit: cover;
         display: block;
       }
+      footer {
+        text-align: center;
+        padding: 28px 8%;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        margin-top: 20px;
+      }
+
+      footer h3 {
+        font-size: 13px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.25);
+        margin: 0;
+      }
     </style>
   </head>
   <body>
-    <!-- Top nav -->
     <div class="navbar">
-      <a href="https://games578.github.io/" class="logo-link">
+      <a href="index.html" class="logo-link">
         <img src="logo.png" alt="Home" class="logo" />
       </a>
       <div class="search-wrapper">
@@ -226,313 +232,76 @@
       </div>
     </div>
 
-    <!-- Game cards -->
-    <div id="gameCards">
-      <div class="card">
-        <a href="play.html?a-small-world-cup">
-          <img
-            src="https://play-lh.googleusercontent.com/R47kNu-wEYMVnoo7rFOXiAHoBvW26KHps65Oi0S6zMF722x0LYqHJUiXRvB_xhsj0CM"
-            alt="A Small World Cup"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?subway-surfers">
-          <img
-            src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/9e89c8fe71f2e1179437b6b6d7e3a5a1/subway-surfers.png"
-            alt="Subway Surfers"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?cookie-clicker">
-          <img
-            src="https://super142.wordpress.com/wp-content/uploads/2022/07/cookie-clicker.jpg"
-            alt="Cookie Clicker"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?murder">
-          <img
-            src="https://play-lh.googleusercontent.com/BT7zrf4JNZj4pRV5YIRT4D0DydkuLEzVvnOwKmmOxuc1sbIUJyZbeaFOhjuLK4CXWFg"
-            alt="Murder"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?slope">
-          <img
-            src="https://play-lh.googleusercontent.com/FFrKIqKVpB9HMpaaF0HUc5Sza5W2sM8GFZGfkddU39xPcKCa4BYXQghoWVGlQGpaAA=w526-h296-rw"
-            alt="Slope"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?swat">
-          <img
-            src="https://imgs.crazygames.com/time-shooter-2_1x1/20241113040556/time-shooter-2_1x1-cover?format=auto&quality=100&metadata=none&width=1200"
-            alt="swat"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?lol">
-          <img
-            src="https://img.utdstc.com/icon/983/22a/98322a3b2be892eed31589906ffd949b68bcccc9a21ba562987965b5ec6bc6de:200"
-            alt="lol"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?snow-rider">
-          <img
-            src="https://say.games/_next/image?url=https%3A%2F%2Fweb-saystore-backend.sgdn.io%2Fsnwrdrw%2Ficon___akGln0EtUjbj&w=3840&q=75"
-            alt="Snow Rider"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?shotz">
-          <img src="https://mc0825.github.io/img/class-394.png" alt="shotz" />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?goalkeeper-challenge">
-          <img
-            src="https://mc0825.github.io/img/class-1049.png"
-            alt="Goalkeeper Challenge"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?stair-race">
-          <img
-            src="https://mc0825.github.io/img/class-619.png"
-            alt="Stair Race"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?among-us">
-          <img
-            src="https://mc0825.github.io/img/class-468.png"
-            alt="Among Us"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?sausage-flip">
-          <img
-            src="https://mc0825.github.io/img/class-415.png"
-            alt="Sausage Flip"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?fireboy-and-watergirl">
-          <img
-            src="https://mc0825.github.io/img/class-346.png"
-            alt="Fireboy and Watergirl"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?fruit-ninja">
-          <img
-            src="https://mc0825.github.io/img/class-22.png"
-            alt="Fruit Ninja"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?red-ball">
-          <img
-            src="https://mc0825.github.io/img/class-491.png"
-            alt="Red Ball 4"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?gobble-top">
-          <img
-            src="https://mc0825.github.io/img/class-420.png"
-            alt="Gobble Top"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?bitlife">
-          <img src="https://mc0825.github.io/img/class-441.png" alt="Bitlife" />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?traffic-rush">
-          <img
-            src="https://mc0825.github.io/img/class-393.png"
-            alt="Traffic Rush"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?penalty-kick">
-          <img
-            src="https://mc0825.github.io/img/class-519.png"
-            alt="Penalty Kick"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?blumi-soccer">
-          <img
-            src="https://mc0825.github.io/img/class-1050.png"
-            alt="Blumgi Soccer"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?stick-rush">
-          <img
-            src="https://mc0825.github.io/img/class-982.png"
-            alt="Stick Rush"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?bumber-cars-soccer">
-          <img
-            src="https://mc0825.github.io/img/class-665.png"
-            alt="Bumper Cars Soccer"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?elastic-man">
-          <img
-            src="https://mc0825.github.io/img/class-500.png"
-            alt="Elastic Man"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?super-soccer">
-          <img
-            src="https://mc0825.github.io/img/class-628.png"
-            alt="Super Soccer"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?idle-lumber">
-          <img
-            src="https://mc0825.github.io/img/class-586.png"
-            alt="Idle Lumber"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?school-escape">
-          <img
-            src="https://mc0825.github.io/img/class-894.png"
-            alt="School Escape"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?stunt-cars">
-          <img
-            src="https://mc0825.github.io/img/class-566.png"
-            alt="Madalin Stunt Cars"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?parking-fury">
-          <img
-            src="https://mc0825.github.io/img/class-725.png"
-            alt="Parking Fury 3D"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?monster-tracks">
-          <img
-            src="https://mc0825.github.io/img/class-414.png"
-            alt="Monster Tracks"
-          />
-        </a>
-      </div>
-      <div class="card">
-        <a href="play.html?supercars-royale">
-          <img
-            src="https://mc0825.github.io/img/class-976.png"
-            alt="Supercars Royale"
-          />
-        </a>
-      </div>
-    </div>
+    <div id="gameCards"></div>
 
     <script src="games.js"></script>
     <script>
+      const grid = document.getElementById("gameCards");
       const searchInput = document.getElementById("searchInput");
-      const gameCards = document.querySelectorAll("#gameCards .card");
       const suggestionsBox = document.getElementById("suggestions");
 
-      // Card image map by game id
-      const cardImgs = {};
-      gameCards.forEach((card) => {
-        const a = card.querySelector("a");
-        const img = card.querySelector("img");
-        const id = a.href.split("?")[1];
-        if (id) cardImgs[id] = img.src;
+      // Auto-generate cards from games.js
+      games.forEach((game) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.dataset.title = game.title.toLowerCase();
+        card.innerHTML = `<a href="play.html?${game.id}"><img src="${game.img}" alt="${game.title}" /></a>`;
+        grid.appendChild(card);
       });
 
+      // Search filter
+      function filterCards(filter) {
+        document.querySelectorAll("#gameCards .card").forEach((card) => {
+          card.style.display = card.dataset.title.includes(filter)
+            ? "flex"
+            : "none";
+        });
+      }
+
+      // Autocomplete
       let activeIndex = -1;
-      let currentSuggestions = [];
+
+      function escapeHtml(s) {
+        return s
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
 
       function showSuggestions(filter) {
         suggestionsBox.innerHTML = "";
         activeIndex = -1;
-
         if (!filter) {
           suggestionsBox.classList.remove("visible");
           return;
         }
 
-        currentSuggestions = games
+        const matches = games
           .filter((g) => g.title.toLowerCase().includes(filter))
           .slice(0, 6);
-
-        if (!currentSuggestions.length) {
+        if (!matches.length) {
           suggestionsBox.classList.remove("visible");
           return;
         }
 
-        currentSuggestions.forEach((game, i) => {
+        matches.forEach((game) => {
           const a = document.createElement("a");
           a.className = "suggestion-item";
           a.href = "play.html?" + game.id;
 
           const img = document.createElement("img");
-          img.src = cardImgs[game.id] || "";
+          img.src = game.img;
           img.alt = game.title;
 
-          // Bold the matching part
           const title = game.title;
           const idx = title.toLowerCase().indexOf(filter);
           const span = document.createElement("span");
-          if (idx !== -1) {
-            span.innerHTML =
-              escapeHtml(title.slice(0, idx)) +
-              '<span class="match">' +
-              escapeHtml(title.slice(idx, idx + filter.length)) +
-              "</span>" +
-              '<span class="rest">' +
-              escapeHtml(title.slice(idx + filter.length)) +
-              "</span>";
-          } else {
-            span.textContent = title;
-          }
+          span.innerHTML =
+            idx !== -1
+              ? escapeHtml(title.slice(0, idx)) +
+                `<span class="match">${escapeHtml(title.slice(idx, idx + filter.length))}</span>` +
+                `<span class="rest">${escapeHtml(title.slice(idx + filter.length))}</span>`
+              : escapeHtml(title);
 
           a.appendChild(img);
           a.appendChild(span);
@@ -540,13 +309,6 @@
         });
 
         suggestionsBox.classList.add("visible");
-      }
-
-      function escapeHtml(s) {
-        return s
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;");
       }
 
       function setActive(idx) {
@@ -561,11 +323,7 @@
       searchInput.addEventListener("input", () => {
         const filter = searchInput.value.toLowerCase().trim();
         showSuggestions(filter);
-        // Also filter cards
-        gameCards.forEach((card) => {
-          const alt = card.querySelector("img").alt.toLowerCase();
-          card.style.display = alt.includes(filter) ? "flex" : "none";
-        });
+        filterCards(filter);
       });
 
       searchInput.addEventListener("keydown", (e) => {
@@ -576,27 +334,30 @@
         } else if (e.key === "ArrowUp") {
           e.preventDefault();
           setActive(Math.max(activeIndex - 1, 0));
-        } else if (e.key === "Enter") {
-          if (activeIndex >= 0 && items[activeIndex]) {
-            window.location.href = items[activeIndex].href;
-          }
+        } else if (
+          e.key === "Enter" &&
+          activeIndex >= 0 &&
+          items[activeIndex]
+        ) {
+          window.location.href = items[activeIndex].href;
         } else if (e.key === "Escape") {
           suggestionsBox.classList.remove("visible");
         }
       });
 
-      // Hide on outside click
       document.addEventListener("click", (e) => {
-        if (!e.target.closest(".search-wrapper")) {
+        if (!e.target.closest(".search-wrapper"))
           suggestionsBox.classList.remove("visible");
-        }
       });
 
       searchInput.addEventListener("focus", () => {
-        const filter = searchInput.value.toLowerCase().trim();
-        if (filter) showSuggestions(filter);
+        const f = searchInput.value.toLowerCase().trim();
+        if (f) showSuggestions(f);
       });
     </script>
+
+    <footer>
+      <h3>🐶 and Skylarr's dog Bueno</h3>
+    </footer>
   </body>
 </html>
-
