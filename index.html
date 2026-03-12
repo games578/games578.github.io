@@ -40,11 +40,47 @@
         min-height: 100vh;
       }
 
+      /* ── Announcement banner ── */
+      .announce-bar {
+        background: linear-gradient(90deg, #1a3a5c, #1e4976);
+        border-bottom: 1px solid rgba(99, 179, 237, 0.25);
+        padding: 9px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-size: 13px;
+        position: relative;
+      }
+      .announce-bar span {
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .announce-bar strong {
+        color: #90cdf4;
+      }
+      .announce-close {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        font-size: 16px;
+        line-height: 1;
+        padding: 2px 6px;
+        transition: color 0.15s;
+      }
+      .announce-close:hover {
+        color: white;
+      }
+
       /* ── Navbar ── */
       .navbar {
         display: flex;
         align-items: center;
-        padding: 0 24px 0 0;
+        padding: 0 16px 0 0;
         background: rgba(14, 14, 14, 0.75);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
@@ -54,7 +90,6 @@
         z-index: 200;
         height: 70px;
       }
-
       .navbar a.logo-link {
         display: flex;
         align-items: center;
@@ -76,7 +111,7 @@
       .search-wrapper {
         flex: 1;
         position: relative;
-        margin: 0 16px;
+        margin: 0 12px;
       }
       .search-wrapper::before {
         content: "⌕";
@@ -102,7 +137,6 @@
           border 0.2s,
           background 0.2s,
           box-shadow 0.2s;
-        box-shadow: 0 0 0 0 rgba(99, 179, 237, 0);
       }
       .search-wrapper input.search::placeholder {
         color: rgba(99, 179, 237, 0.35);
@@ -114,6 +148,47 @@
         box-shadow:
           0 0 16px rgba(99, 179, 237, 0.12),
           inset 0 0 12px rgba(99, 179, 237, 0.04);
+      }
+
+      .random-btn {
+        flex-shrink: 0;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: white;
+        padding: 7px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        white-space: nowrap;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
+      }
+      .random-btn:hover {
+        background: rgba(255, 255, 255, 0.14);
+        border-color: rgba(255, 255, 255, 0.25);
+      }
+
+      .panic-btn {
+        flex-shrink: 0;
+        background: rgba(220, 38, 38, 0.15);
+        border: 1px solid rgba(220, 38, 38, 0.35);
+        color: #fc8181;
+        padding: 7px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        white-space: nowrap;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
+        margin-left: 6px;
+      }
+      .panic-btn:hover {
+        background: rgba(220, 38, 38, 0.3);
+        border-color: rgba(220, 38, 38, 0.6);
       }
 
       .suggestions {
@@ -189,7 +264,6 @@
       .sidebar:hover {
         width: 190px;
       }
-
       .nav-item {
         display: flex;
         align-items: center;
@@ -216,7 +290,6 @@
         color: white;
         border-left-color: rgba(255, 255, 255, 0.4);
       }
-
       .nav-emoji {
         font-size: 18px;
         flex-shrink: 0;
@@ -239,11 +312,119 @@
         flex-shrink: 0;
       }
 
+      /* ── Mobile bottom nav ── */
+      .mobile-nav {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(14, 14, 14, 0.96);
+        backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        z-index: 500;
+        padding: 8px 0 env(safe-area-inset-bottom, 8px);
+      }
+      .mobile-nav-items {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .mobile-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 10px;
+        font-weight: 500;
+        padding: 4px 8px;
+        transition: color 0.15s;
+        background: none;
+        border: none;
+        min-width: 52px;
+      }
+      .mobile-nav-item.active {
+        color: white;
+      }
+      .mobile-nav-item .mn-emoji {
+        font-size: 20px;
+        line-height: 1;
+      }
+
       /* ── Main ── */
       .main {
         flex: 1;
         padding: 24px 5% 0;
         min-width: 0;
+      }
+
+      /* ── Daily game hero ── */
+      .daily-hero {
+        border-radius: 14px;
+        overflow: hidden;
+        margin-bottom: 36px;
+        background: linear-gradient(135deg, #1a2a3a 0%, #0e1a2a 100%);
+        border: 1px solid rgba(99, 179, 237, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        padding: 20px 24px;
+        position: relative;
+      }
+      .daily-hero-img {
+        width: 90px;
+        height: 90px;
+        border-radius: 12px;
+        object-fit: cover;
+        flex-shrink: 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      }
+      .daily-hero-info {
+        flex: 1;
+        min-width: 0;
+      }
+      .daily-hero-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #90cdf4;
+        margin-bottom: 6px;
+      }
+      .daily-hero-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .daily-hero-btn {
+        display: inline-block;
+        background: #3182ce;
+        color: white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        transition: background 0.2s;
+      }
+      .daily-hero-btn:hover {
+        background: #2b6cb0;
+      }
+      .daily-hero-skeleton {
+        width: 90px;
+        height: 90px;
+        border-radius: 12px;
+        flex-shrink: 0;
+        background: linear-gradient(
+          90deg,
+          #1e2e3e 25%,
+          #2a3e50 50%,
+          #1e2e3e 75%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 1.4s infinite;
       }
 
       /* ── Section ── */
@@ -307,8 +488,6 @@
         object-fit: cover;
         display: block;
       }
-
-      /* Hover label */
       .card-label {
         position: absolute;
         bottom: 0;
@@ -328,8 +507,6 @@
         pointer-events: none;
         line-height: 1.2;
       }
-
-      /* Fav button */
       .fav-btn {
         position: absolute;
         top: 5px;
@@ -360,10 +537,75 @@
       .fav-btn.active {
         opacity: 1;
       }
+      .rate-popup {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        display: none;
+        gap: 4px;
+        z-index: 3;
+      }
+      .card:hover .rate-popup {
+        display: flex;
+      }
+      .rate-btn {
+        background: rgba(0, 0, 0, 0.6);
+        border: none;
+        border-radius: 6px;
+        padding: 3px 6px;
+        cursor: pointer;
+        font-size: 12px;
+        line-height: 1;
+        transition:
+          transform 0.15s,
+          background 0.15s;
+      }
+      .rate-btn:hover {
+        transform: scale(1.2);
+      }
+      .rate-btn.voted {
+        background: rgba(255, 255, 255, 0.18);
+      }
+      .rating-badge {
+        position: absolute;
+        bottom: 5px;
+        left: 5px;
+        background: rgba(0, 0, 0, 0.65);
+        border-radius: 6px;
+        padding: 2px 5px;
+        font-size: 11px;
+        opacity: 0;
+        transition: opacity 0.15s;
+        pointer-events: none;
+        z-index: 2;
+        display: none;
+      }
+      .rating-badge.has-rating {
+        display: block;
+        opacity: 1;
+      }
 
-      /* Shimmer skeleton */
+      /* NEW badge */
+      .new-badge {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #3182ce, #2b6cb0);
+        color: white;
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 2px 7px;
+        border-radius: 20px;
+        pointer-events: none;
+        z-index: 4;
+        box-shadow: 0 2px 8px rgba(49, 130, 206, 0.5);
+      }
+
+      /* Shimmer */
       .skeleton {
-        background: #1e1e1e;
         border-radius: 10px;
         aspect-ratio: 1/1;
         border: 1px solid rgba(255, 255, 255, 0.04);
@@ -405,6 +647,193 @@
         font-size: 36px;
         margin-bottom: 12px;
         display: block;
+      }
+
+      /* ── Suggest a game modal ── */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+      }
+      .modal-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .modal {
+        background: #1a1a1a;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        padding: 28px;
+        width: 100%;
+        max-width: 440px;
+        margin: 16px;
+        transform: translateY(12px);
+        transition: transform 0.2s;
+      }
+      .modal-overlay.open .modal {
+        transform: translateY(0);
+      }
+      .modal h2 {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .modal p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.45);
+        margin-bottom: 20px;
+      }
+      .modal input,
+      .modal textarea {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 10px 14px;
+        color: white;
+        font-size: 14px;
+        outline: none;
+        margin-bottom: 12px;
+        font-family: inherit;
+        transition: border-color 0.2s;
+      }
+      .modal input:focus,
+      .modal textarea:focus {
+        border-color: rgba(99, 179, 237, 0.5);
+      }
+      .modal textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+      .modal-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        margin-top: 4px;
+      }
+      .modal-cancel {
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.6);
+        padding: 8px 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 13px;
+        transition: background 0.2s;
+      }
+      .modal-cancel:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .modal-submit {
+        background: #3182ce;
+        border: none;
+        color: white;
+        padding: 8px 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        transition: background 0.2s;
+      }
+      .modal-submit:hover {
+        background: #2b6cb0;
+      }
+      .modal-success {
+        text-align: center;
+        padding: 12px 0 4px;
+      }
+      .modal-success .big-emoji {
+        font-size: 40px;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      /* Suggest button in footer */
+      .suggest-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.6);
+        padding: 8px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 13px;
+        margin-top: 16px;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .suggest-btn:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: white;
+      }
+
+      /* Cookie banner */
+      .cookie-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #1a1a1a;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 600;
+        padding: 14px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .cookie-banner p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.55);
+        flex: 1;
+        min-width: 200px;
+      }
+      .cookie-banner p a {
+        color: #90cdf4;
+        text-decoration: none;
+      }
+      .cookie-btns {
+        display: flex;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+      .cookie-accept {
+        background: #3182ce;
+        border: none;
+        color: white;
+        padding: 7px 18px;
+        border-radius: 7px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        transition: background 0.2s;
+      }
+      .cookie-accept:hover {
+        background: #2b6cb0;
+      }
+      .cookie-decline {
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.5);
+        padding: 7px 14px;
+        border-radius: 7px;
+        cursor: pointer;
+        font-size: 13px;
+        transition: background 0.2s;
+      }
+      .cookie-decline:hover {
+        background: rgba(255, 255, 255, 0.12);
       }
 
       /* Footer */
@@ -480,7 +909,20 @@
         flex-wrap: wrap;
         gap: 8px;
       }
-      @media (max-width: 700px) {
+
+      @media (max-width: 800px) {
+        .sidebar {
+          display: none;
+        }
+        .mobile-nav {
+          display: block;
+        }
+        .main {
+          padding: 16px 4% 80px;
+        }
+        .section-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
         .footer-grid {
           grid-template-columns: 1fr;
           gap: 28px;
@@ -489,17 +931,12 @@
           flex-direction: column;
           text-align: center;
         }
-      }
-
-      @media (max-width: 800px) {
-        .sidebar {
+        .random-btn .random-label {
           display: none;
         }
-        .main {
-          padding: 16px 4% 0;
-        }
-        .section-grid {
-          grid-template-columns: repeat(4, 1fr);
+        .daily-hero {
+          flex-direction: column;
+          text-align: center;
         }
       }
       @media (max-width: 480px) {
@@ -511,6 +948,15 @@
     </style>
   </head>
   <body>
+    <!-- Announcement banner -->
+    <div class="announce-bar" id="announceBanner">
+      <span id="announceText"
+        >🆕 <strong>New games added!</strong> Check out Minecraft, Run 3,
+        Stickman Hook and more</span
+      >
+      <button class="announce-close" id="announceClose">✕</button>
+    </div>
+
     <div class="navbar">
       <a href="index.html" class="logo-link">
         <img src="logo.png" alt="Home" class="logo" />
@@ -525,10 +971,14 @@
         />
         <div class="suggestions" id="suggestions"></div>
       </div>
+      <button class="random-btn" id="randomBtn">
+        🎲 <span class="random-label">Random</span>
+      </button>
+      <button class="panic-btn" id="panicBtn">🚨 Panic</button>
     </div>
 
     <div class="layout">
-      <nav class="sidebar" id="sidebar">
+      <nav class="sidebar">
         <a class="nav-item active" data-tag="all" href="#">
           <span class="nav-emoji">🏠</span><span class="nav-label">Home</span>
         </a>
@@ -552,28 +1002,37 @@
         <a class="nav-item" data-tag="soccer" href="#">
           <span class="nav-emoji">⚽</span><span class="nav-label">Soccer</span>
         </a>
-        <a class="nav-item" data-tag="shooting" href="#">
-          <span class="nav-emoji">🔫</span
-          ><span class="nav-label">Shooting</span>
-        </a>
         <a class="nav-item" data-tag="racing" href="#">
           <span class="nav-emoji">🏎️</span><span class="nav-label">Racing</span>
         </a>
-        <a class="nav-item" data-tag="action" href="#">
-          <span class="nav-emoji">⚡</span><span class="nav-label">Action</span>
+        <a class="nav-item" data-tag="cars" href="#">
+          <span class="nav-emoji">🚗</span><span class="nav-label">Cars</span>
         </a>
-        <a class="nav-item" data-tag="sports" href="#">
-          <span class="nav-emoji">🏆</span><span class="nav-label">Sports</span>
+        <a class="nav-item" data-tag="3d" href="#">
+          <span class="nav-emoji">🎲</span><span class="nav-label">3D</span>
         </a>
-        <a class="nav-item" data-tag="casual" href="#">
-          <span class="nav-emoji">🎮</span><span class="nav-label">Casual</span>
+        <a class="nav-item" data-tag="multiplayer" href="#">
+          <span class="nav-emoji">👥</span
+          ><span class="nav-label">Multiplayer</span>
         </a>
-        <a class="nav-item" data-tag="idle" href="#">
-          <span class="nav-emoji">💤</span><span class="nav-label">Idle</span>
+        <a class="nav-item" data-tag="adventure" href="#">
+          <span class="nav-emoji">🗺️</span
+          ><span class="nav-label">Adventure</span>
         </a>
-        <a class="nav-item" data-tag="running" href="#">
-          <span class="nav-emoji">🏃</span
-          ><span class="nav-label">Running</span>
+        <a class="nav-item" data-tag="puzzle" href="#">
+          <span class="nav-emoji">🧩</span><span class="nav-label">Puzzle</span>
+        </a>
+        <a class="nav-item" data-tag="simulators" href="#">
+          <span class="nav-emoji">🕹️</span
+          ><span class="nav-label">Simulators</span>
+        </a>
+        <a class="nav-item" data-tag="survival" href="#">
+          <span class="nav-emoji">🛡️</span
+          ><span class="nav-label">Survival</span>
+        </a>
+        <a class="nav-item" data-tag="girls" href="#">
+          <span class="nav-emoji">💅</span
+          ><span class="nav-label">For Girls</span>
         </a>
       </nav>
 
@@ -582,60 +1041,190 @@
           <span class="search-label" id="searchLabel"></span>
           <div class="section-grid" id="searchGrid"></div>
           <div class="empty-state" id="emptyState" style="display: none">
-            <span class="emoji">🎮</span>
-            No games found — try a different search!
+            <span class="emoji">🎮</span>No games found — try a different
+            search!
           </div>
         </div>
         <div id="content"></div>
-        <footer>
-          <div class="footer-grid">
-            <div class="footer-brand">
-              <img src="logo.png" alt="Unblocked Games" />
-              <p>
-                A free collection of the best unblocked games you can play
-                anywhere, anytime. No downloads, no logins &mdash; just pick a
-                game and play.
-              </p>
-            </div>
-            <div class="footer-col">
-              <h4>Browse</h4>
-              <ul>
-                <li><a href="#">🆕 New Games</a></li>
-                <li><a href="#">🔥 Popular</a></li>
-                <li><a href="#">⚡ Action</a></li>
-                <li><a href="#">🎮 Casual</a></li>
-                <li><a href="#">🏎️ Racing</a></li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4>Contact</h4>
-              <ul>
-                <li>
-                  <a href="mailto:vladpilipchuk14@gmail.com"
-                    >📧 Send us an email</a
-                  >
-                </li>
-                <li><span>vladpilipchuk14@gmail.com</span></li>
-                <li>
-                  <span class="footer-note"
-                    >We reply within 24&ndash;48 hours</span
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-          <hr class="footer-divider" />
-          <div class="footer-bottom">
-            <span>&copy; 2025 Unblocked Games. All rights reserved.</span>
-            <span>Made for students, by students.</span>
-          </div>
-        </footer>
       </main>
     </div>
 
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="logo.png" alt="Unblocked Games" />
+          <p>
+            A free collection of the best unblocked games you can play anywhere,
+            anytime. No downloads, no logins — just pick a game and play.
+          </p>
+          <button class="suggest-btn" id="suggestBtnFooter">
+            💡 Suggest a Game
+          </button>
+        </div>
+        <div class="footer-col">
+          <h4>Browse</h4>
+          <ul>
+            <li><a href="#">🆕 New Games</a></li>
+            <li><a href="#">🔥 Popular</a></li>
+            <li><a href="#">⚡ Action</a></li>
+            <li><a href="#">🎮 Casual</a></li>
+            <li><a href="#">🏎️ Racing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>
+              <a
+                href="/cdn-cgi/l/email-protection#9aecf6fbfeeaf3f6f3eaf9f2eff1abaedafdf7fbf3f6b4f9f5f7"
+                >📧 Send us an email</a
+              >
+            </li>
+            <li>
+              <span
+                ><a
+                  href="/cdn-cgi/l/email-protection"
+                  class="__cf_email__"
+                  data-cfemail="2553494441554c494c55464d504e1411654248444c490b464a48"
+                  >[email&#160;protected]</a
+                ></span
+              >
+            </li>
+            <li>
+              <span class="footer-note">We reply within 24–48 hours</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr class="footer-divider" />
+      <div class="footer-bottom">
+        <span>© 2025 Unblocked Games. All rights reserved.</span>
+        <span>Made for students, by students.</span>
+      </div>
+    </footer>
+
+    <!-- Mobile bottom nav -->
+    <nav class="mobile-nav">
+      <div class="mobile-nav-items">
+        <button class="mobile-nav-item active" data-tag="all">
+          <span class="mn-emoji">🏠</span><span>Home</span>
+        </button>
+        <button class="mobile-nav-item" data-tag="favourites">
+          <span class="mn-emoji">❤️</span><span>Faves</span>
+        </button>
+        <button class="mobile-nav-item" data-tag="recent">
+          <span class="mn-emoji">🕐</span><span>Recent</span>
+        </button>
+        <button class="mobile-nav-item" data-tag="popular">
+          <span class="mn-emoji">🔥</span><span>Popular</span>
+        </button>
+        <button class="mobile-nav-item" id="mobileRandom">
+          <span class="mn-emoji">🎲</span><span>Random</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Suggest a game modal -->
+    <div class="modal-overlay" id="suggestModal">
+      <div class="modal">
+        <div id="suggestForm">
+          <h2>💡 Suggest a Game</h2>
+          <p>Know a game we should add? Let us know and we'll try to add it!</p>
+          <input
+            type="text"
+            id="suggestName"
+            placeholder="Game name (e.g. Slope, Cookie Clicker)"
+            maxlength="80"
+          />
+          <textarea
+            id="suggestNote"
+            placeholder="Why should we add it? (optional)"
+            maxlength="200"
+          ></textarea>
+          <div class="modal-actions">
+            <button class="modal-cancel" id="suggestCancel">Cancel</button>
+            <button class="modal-submit" id="suggestSubmit">
+              Send Suggestion
+            </button>
+          </div>
+        </div>
+        <div id="suggestSuccess" class="modal-success" style="display: none">
+          <span class="big-emoji">🎉</span>
+          <h2>Thanks!</h2>
+          <p
+            style="
+              color: rgba(255, 255, 255, 0.45);
+              font-size: 13px;
+              margin-top: 8px;
+            "
+          >
+            Your suggestion has been saved. We'll check it out!
+          </p>
+          <div
+            class="modal-actions"
+            style="justify-content: center; margin-top: 20px"
+          >
+            <button class="modal-cancel" id="suggestClose">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cookie banner -->
+    <div class="cookie-banner" id="cookieBanner">
+      <p>
+        🍪 We use localStorage to save your favourites, ratings and recently
+        played games. No tracking, no ads data — just your preferences.
+        <a
+          href="/cdn-cgi/l/email-protection#1f69737e7b6f7673766f7c776a742e2b5f78727e7673317c7072"
+          >Learn more</a
+        >
+      </p>
+      <div class="cookie-btns">
+        <button class="cookie-decline" id="cookieDecline">Decline</button>
+        <button class="cookie-accept" id="cookieAccept">Accept</button>
+      </div>
+    </div>
+
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
     <script src="games.js"></script>
     <script>
-      // ── Storage helpers ──
+      // ── Panic key ──
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "`")
+          window.location.href = "https://classroom.google.com";
+      });
+
+      // ── Cookie banner ──
+      const cookieBanner = document.getElementById("cookieBanner");
+      if (localStorage.getItem("cookieChoice"))
+        cookieBanner.style.display = "none";
+      document.getElementById("cookieAccept").addEventListener("click", () => {
+        localStorage.setItem("cookieChoice", "accepted");
+        cookieBanner.style.display = "none";
+      });
+      document.getElementById("cookieDecline").addEventListener("click", () => {
+        localStorage.setItem("cookieChoice", "declined");
+        cookieBanner.style.display = "none";
+      });
+
+      // ── Announcement banner ──
+      const announceBanner = document.getElementById("announceBanner");
+      const announceText = document.getElementById("announceText");
+      // Check if admin has set a custom message
+      const adminMsg = localStorage.getItem("adminAnnounce");
+      if (adminMsg) announceText.innerHTML = adminMsg;
+      if (sessionStorage.getItem("announceClosed"))
+        announceBanner.style.display = "none";
+      document.getElementById("announceClose").addEventListener("click", () => {
+        announceBanner.style.display = "none";
+        sessionStorage.setItem("announceClosed", "1");
+      });
+
+      // ── Storage ──
       function getFavs() {
         try {
           return JSON.parse(localStorage.getItem("favs") || "[]");
@@ -663,6 +1252,72 @@
           localStorage.setItem("recent", JSON.stringify(r));
         } catch {}
       }
+      function getRatings() {
+        try {
+          return JSON.parse(localStorage.getItem("ratings") || "{}");
+        } catch {
+          return {};
+        }
+      }
+      function saveRatings(r) {
+        try {
+          localStorage.setItem("ratings", JSON.stringify(r));
+        } catch {}
+      }
+      function getSuggestions() {
+        try {
+          return JSON.parse(localStorage.getItem("suggestions") || "[]");
+        } catch {
+          return [];
+        }
+      }
+
+      // ── Daily game ──
+      function getDailyGame() {
+        const day = Math.floor(Date.now() / 86400000);
+        return games[day % games.length];
+      }
+
+      function buildDailyHero() {
+        const game = getDailyGame();
+        const hero = document.createElement("div");
+        hero.className = "daily-hero";
+
+        const imgEl = document.createElement("img");
+        imgEl.className = "daily-hero-img";
+        imgEl.alt = game.title;
+        imgEl.src = game.img;
+
+        const info = document.createElement("div");
+        info.className = "daily-hero-info";
+        info.innerHTML = `
+          <div class="daily-hero-label">⭐ Game of the Day</div>
+          <div class="daily-hero-title">${game.title}</div>
+          <a class="daily-hero-btn" href="play.html?${game.id}">▶ Play Now</a>`;
+
+        hero.appendChild(imgEl);
+        hero.appendChild(info);
+        return hero;
+      }
+
+      // ── Leaderboard (top rated) ──
+      function getTopRated() {
+        const ratings = getRatings();
+        const scored = games
+          .map((g) => ({
+            game: g,
+            ups: Object.entries(ratings).filter(
+              ([id, v]) => id === g.id && v === "up",
+            ).length,
+            voted: ratings[g.id] === "up",
+          }))
+          .filter((x) => x.voted);
+        // Show games this user rated up, sorted; fall back to popular if none
+        if (scored.length) return scored.map((x) => x.game).slice(0, 6);
+        return games
+          .filter((g) => g.tags && g.tags.includes("popular"))
+          .slice(0, 6);
+      }
 
       const searchInput = document.getElementById("searchInput");
       const suggestionsBox = document.getElementById("suggestions");
@@ -676,13 +1331,15 @@
         { tag: "new", label: "🆕 New" },
         { tag: "popular", label: "🔥 Popular" },
         { tag: "soccer", label: "⚽ Soccer" },
-        { tag: "shooting", label: "🔫 Shooting" },
         { tag: "racing", label: "🏎️ Racing" },
-        { tag: "action", label: "⚡ Action" },
-        { tag: "sports", label: "🏆 Sports" },
-        { tag: "casual", label: "🎮 Casual" },
-        { tag: "idle", label: "💤 Idle" },
-        { tag: "running", label: "🏃 Running" },
+        { tag: "cars", label: "🚗 Cars" },
+        { tag: "3d", label: "🎲 3D" },
+        { tag: "multiplayer", label: "👥 Multiplayer" },
+        { tag: "adventure", label: "🗺️ Adventure" },
+        { tag: "puzzle", label: "🧩 Puzzle" },
+        { tag: "simulators", label: "🕹️ Simulators" },
+        { tag: "survival", label: "🛡️ Survival" },
+        { tag: "girls", label: "💅 For Girls" },
       ];
 
       const newPicks = [
@@ -696,15 +1353,70 @@
         "red-ball",
       ];
 
+      // ── Random game ──
+      function goRandom() {
+        const g = games[Math.floor(Math.random() * games.length)];
+        addRecent(g.id);
+        window.location.href = `play.html?${g.id}`;
+      }
+      document.getElementById("randomBtn").addEventListener("click", goRandom);
+      document
+        .getElementById("mobileRandom")
+        .addEventListener("click", goRandom);
+      document.getElementById("panicBtn").addEventListener("click", () => {
+        window.location.href = "https://classroom.google.com";
+      });
+
+      // ── Suggest modal ──
+      const suggestModal = document.getElementById("suggestModal");
+      function openSuggest() {
+        suggestModal.classList.add("open");
+      }
+      function closeSuggest() {
+        suggestModal.classList.remove("open");
+        document.getElementById("suggestForm").style.display = "block";
+        document.getElementById("suggestSuccess").style.display = "none";
+        document.getElementById("suggestName").value = "";
+        document.getElementById("suggestNote").value = "";
+      }
+      document
+        .getElementById("suggestBtnFooter")
+        .addEventListener("click", openSuggest);
+      document
+        .getElementById("suggestCancel")
+        .addEventListener("click", closeSuggest);
+      document
+        .getElementById("suggestClose")
+        .addEventListener("click", closeSuggest);
+      suggestModal.addEventListener("click", (e) => {
+        if (e.target === suggestModal) closeSuggest();
+      });
+      document.getElementById("suggestSubmit").addEventListener("click", () => {
+        const name = document.getElementById("suggestName").value.trim();
+        if (!name) {
+          document.getElementById("suggestName").focus();
+          return;
+        }
+        const suggestions = getSuggestions();
+        suggestions.push({
+          name,
+          note: document.getElementById("suggestNote").value.trim(),
+          date: new Date().toISOString(),
+        });
+        try {
+          localStorage.setItem("suggestions", JSON.stringify(suggestions));
+        } catch {}
+        document.getElementById("suggestForm").style.display = "none";
+        document.getElementById("suggestSuccess").style.display = "block";
+      });
+
       // ── Make card ──
       function makeCard(game) {
-        const favs = getFavs();
-        const isFav = favs.includes(game.id);
-
+        const isFav = getFavs().includes(game.id);
+        const myVote = getRatings()[game.id];
         const card = document.createElement("div");
         card.className = "card";
 
-        // Skeleton shimmer until image loads
         const skeleton = document.createElement("div");
         skeleton.className = "skeleton";
         skeleton.style.cssText =
@@ -714,13 +1426,13 @@
         const a = document.createElement("a");
         a.href = `play.html?${game.id}`;
         a.addEventListener("click", () => addRecent(game.id));
-
         const img = document.createElement("img");
         img.alt = game.title;
         img.loading = "lazy";
         img.onload = () => skeleton.remove();
         img.onerror = () => skeleton.remove();
         img.src = game.img;
+        a.appendChild(img);
 
         const label = document.createElement("div");
         label.className = "card-label";
@@ -728,7 +1440,6 @@
 
         const favBtn = document.createElement("button");
         favBtn.className = "fav-btn" + (isFav ? " active" : "");
-        favBtn.title = isFav ? "Remove from favourites" : "Add to favourites";
         favBtn.textContent = isFav ? "❤️" : "🤍";
         favBtn.addEventListener("click", (e) => {
           e.preventDefault();
@@ -738,108 +1449,143 @@
             f = f.filter((x) => x !== game.id);
             favBtn.textContent = "🤍";
             favBtn.classList.remove("active");
-            favBtn.title = "Add to favourites";
           } else {
             f.push(game.id);
             favBtn.textContent = "❤️";
             favBtn.classList.add("active");
-            favBtn.title = "Remove from favourites";
           }
           setFavs(f);
-          // If currently viewing favourites section, rebuild it
           const activeTag =
-            document.querySelector(".nav-item.active")?.dataset.tag;
+            document.querySelector(".nav-item.active")?.dataset.tag ||
+            document.querySelector(".mobile-nav-item.active")?.dataset.tag;
           if (activeTag === "favourites") buildSections("favourites");
         });
 
-        a.appendChild(img);
+        const ratePopup = document.createElement("div");
+        ratePopup.className = "rate-popup";
+        const badge = document.createElement("div");
+        badge.className = "rating-badge" + (myVote ? " has-rating" : "");
+        badge.textContent =
+          myVote === "up" ? "👍" : myVote === "down" ? "👎" : "";
+
+        ["up", "down"].forEach((dir) => {
+          const btn = document.createElement("button");
+          btn.className = "rate-btn" + (myVote === dir ? " voted" : "");
+          btn.textContent = dir === "up" ? "👍" : "👎";
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const r = getRatings();
+            if (r[game.id] === dir) {
+              delete r[game.id];
+              saveRatings(r);
+              badge.className = "rating-badge";
+              badge.textContent = "";
+              ratePopup
+                .querySelectorAll(".rate-btn")
+                .forEach((b) => b.classList.remove("voted"));
+            } else {
+              r[game.id] = dir;
+              saveRatings(r);
+              badge.className = "rating-badge has-rating";
+              badge.textContent = dir === "up" ? "👍" : "👎";
+              ratePopup
+                .querySelectorAll(".rate-btn")
+                .forEach((b) => b.classList.remove("voted"));
+              btn.classList.add("voted");
+            }
+          });
+          ratePopup.appendChild(btn);
+        });
+
+        if (game.tags && game.tags.includes("new")) {
+          const newBadge = document.createElement("div");
+          newBadge.className = "new-badge";
+          newBadge.textContent = "NEW";
+          card.appendChild(newBadge);
+        }
+
         card.appendChild(a);
         card.appendChild(label);
         card.appendChild(favBtn);
+        card.appendChild(ratePopup);
+        card.appendChild(badge);
         return card;
       }
 
-      // ── Skeleton grid ──
-      function makeSkeletons(count) {
-        const grid = document.createElement("div");
-        grid.className = "section-grid";
-        for (let i = 0; i < count; i++) {
-          const sk = document.createElement("div");
-          sk.className = "skeleton";
-          grid.appendChild(sk);
-        }
-        return grid;
+      // ── Build sections ──
+      function activateTag(tag) {
+        searchResults.style.display = "none";
+        content.style.display = "block";
+        searchInput.value = "";
+        suggestionsBox.classList.remove("visible");
+        buildSections(tag);
       }
 
-      // ── Build sections ──
       function buildSections(tag) {
         content.innerHTML = "";
-
         if (tag === "all") {
-          // Recently played
+          // Daily game hero
+          content.appendChild(buildDailyHero());
+
           const recentIds = getRecent();
-          if (recentIds.length) {
-            const recentGames = recentIds
-              .map((id) => games.find((g) => g.id === id))
-              .filter(Boolean);
-            appendSection("🕐 Recently Played", recentGames);
-          }
-          // Favourites (if any)
+          if (recentIds.length)
+            appendSection(
+              "🕐 Recently Played",
+              recentIds
+                .map((id) => games.find((g) => g.id === id))
+                .filter(Boolean),
+            );
           const favIds = getFavs();
-          if (favIds.length) {
-            const favGames = favIds
+          if (favIds.length)
+            appendSection(
+              "❤️ Favourites",
+              favIds
+                .map((id) => games.find((g) => g.id === id))
+                .filter(Boolean),
+            );
+
+          // Top rated
+          const topRated = getTopRated();
+          if (topRated.length) appendSection("⭐ Top Rated", topRated);
+
+          appendSection(
+            "🆕 New",
+            newPicks
               .map((id) => games.find((g) => g.id === id))
-              .filter(Boolean);
-            appendSection("❤️ Favourites", favGames);
-          }
-          // New picks
-          const newGames = newPicks
-            .map((id) => games.find((g) => g.id === id))
-            .filter(Boolean);
-          appendSection("🆕 New", newGames);
-          // Popular
-          const popular = games.filter(
-            (g) => g.tags && g.tags.includes("popular"),
+              .filter(Boolean),
           );
-          appendSection("🔥 Popular", popular);
-          // All
+          appendSection(
+            "🔥 Popular",
+            games.filter((g) => g.tags && g.tags.includes("popular")),
+          );
           appendSection("🎮 All Games", games);
         } else if (tag === "favourites") {
-          const favIds = getFavs();
-          const favGames = favIds
+          const favGames = getFavs()
             .map((id) => games.find((g) => g.id === id))
             .filter(Boolean);
-          if (favGames.length) {
-            appendSection("❤️ Favourites", favGames);
-          } else {
-            content.innerHTML = `<div class="empty-state"><span class="emoji">🤍</span>No favourites yet — click the heart on any game!</div>`;
-          }
+          if (favGames.length) appendSection("❤️ Favourites", favGames);
+          else
+            content.innerHTML = `<div class="empty-state"><span class="emoji">🤍</span>No favourites yet — hover a card and click the heart!</div>`;
         } else if (tag === "recent") {
-          const recentIds = getRecent();
-          const recentGames = recentIds
+          const recentGames = getRecent()
             .map((id) => games.find((g) => g.id === id))
             .filter(Boolean);
-          if (recentGames.length) {
+          if (recentGames.length)
             appendSection("🕐 Recently Played", recentGames);
-          } else {
+          else
             content.innerHTML = `<div class="empty-state"><span class="emoji">🕐</span>No games played yet — go play something!</div>`;
-          }
         } else {
-          const sectionDef = sections.find((s) => s.tag === tag);
+          const def = sections.find((s) => s.tag === tag);
           const tagged = games.filter((g) => g.tags && g.tags.includes(tag));
-          if (sectionDef && tagged.length)
-            appendSection(sectionDef.label, tagged);
+          if (def && tagged.length) appendSection(def.label, tagged);
         }
       }
 
       function appendSection(label, gameList) {
         const section = document.createElement("div");
         section.className = "section";
-        section.innerHTML = `
-          <div class="section-header">
-            <span class="section-title">${label}</span>
-            <span class="section-count">${gameList.length}</span>
-          </div>`;
+        section.innerHTML = `<div class="section-header"><span class="section-title">${label}</span><span class="section-count">${gameList.length}</span></div>`;
         const grid = document.createElement("div");
         grid.className = "section-grid";
         gameList.forEach((game) => grid.appendChild(makeCard(game)));
@@ -857,13 +1603,23 @@
             .querySelectorAll(".nav-item")
             .forEach((n) => n.classList.remove("active"));
           item.classList.add("active");
-          searchResults.style.display = "none";
-          content.style.display = "block";
-          searchInput.value = "";
-          suggestionsBox.classList.remove("visible");
-          buildSections(item.dataset.tag);
+          activateTag(item.dataset.tag);
         });
       });
+
+      // ── Mobile nav ──
+      document
+        .querySelectorAll(".mobile-nav-item[data-tag]")
+        .forEach((item) => {
+          item.addEventListener("click", () => {
+            document
+              .querySelectorAll(".mobile-nav-item")
+              .forEach((n) => n.classList.remove("active"));
+            item.classList.add("active");
+            activateTag(item.dataset.tag);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        });
 
       // ── Autocomplete ──
       let activeIndex = -1;
@@ -902,8 +1658,7 @@
           span.innerHTML =
             idx !== -1
               ? escapeHtml(title.slice(0, idx)) +
-                `<span class="match">${escapeHtml(title.slice(idx, idx + filter.length))}</span>` +
-                `<span class="rest">${escapeHtml(title.slice(idx + filter.length))}</span>`
+                `<span class="match">${escapeHtml(title.slice(idx, idx + filter.length))}</span><span class="rest">${escapeHtml(title.slice(idx + filter.length))}</span>`
               : escapeHtml(title);
           a.appendChild(img);
           a.appendChild(span);
