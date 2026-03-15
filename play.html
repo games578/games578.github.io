@@ -14,13 +14,56 @@
         padding: 0;
       }
 
+      :root {
+        --bg: #0e0e0e;
+        --bg3: #1a1a1a;
+        --border: rgba(255, 255, 255, 0.06);
+        --border2: rgba(255, 255, 255, 0.1);
+        --text: #ffffff;
+        --text2: rgba(255, 255, 255, 0.5);
+        --text3: rgba(255, 255, 255, 0.3);
+        --accent: #3182ce;
+        --accent-h: #2b6cb0;
+        --accent2: rgba(99, 179, 237, 0.12);
+        --accent3: #90cdf4;
+        --sh1: #1e1e1e;
+        --sh2: #2a2a2a;
+        --card-bg: #1e1e1e;
+        --nb: rgba(14, 14, 14, 0.85);
+        --fb: #0a0a0a;
+        --bb: rgba(255, 255, 255, 0.07);
+        --bb2: rgba(255, 255, 255, 0.12);
+      }
+      body.light {
+        --bg: #f0f2f5;
+        --bg3: #ffffff;
+        --border: rgba(0, 0, 0, 0.08);
+        --border2: rgba(0, 0, 0, 0.14);
+        --text: #111827;
+        --text2: rgba(0, 0, 0, 0.5);
+        --text3: rgba(0, 0, 0, 0.35);
+        --accent: #2563eb;
+        --accent-h: #1d4ed8;
+        --accent2: rgba(37, 99, 235, 0.1);
+        --accent3: #1d4ed8;
+        --sh1: #e8eaed;
+        --sh2: #d1d5db;
+        --card-bg: #ffffff;
+        --nb: rgba(240, 242, 245, 0.92);
+        --fb: #dde0e4;
+        --bb: rgba(0, 0, 0, 0.05);
+        --bb2: rgba(0, 0, 0, 0.12);
+      }
       body {
-        background: #0e0e0e;
+        background: var(--bg);
         font-family: "Segoe UI", system-ui, sans-serif;
-        color: white;
+        color: var(--text);
         min-height: 100vh;
         display: flex;
         flex-direction: column;
+        transition:
+          background 0.2s,
+          color 0.2s;
       }
 
       /* ── Navbar ── */
@@ -28,10 +71,10 @@
         display: flex;
         align-items: center;
         padding: 0 24px 0 16px;
-        background: rgba(14, 14, 14, 0.75);
+        background: var(--nb);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
-        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+        box-shadow: 0 1px 0 var(--border);
         position: sticky;
         top: 0;
         z-index: 200;
@@ -75,9 +118,9 @@
         width: 100%;
         padding: 9px 16px 9px 36px;
         border-radius: 8px;
-        border: 1px solid rgba(99, 179, 237, 0.2);
-        background: rgba(99, 179, 237, 0.04);
-        color: white;
+        border: 1px solid var(--accent2);
+        background: var(--accent2);
+        color: var(--text);
         font-size: 14px;
         outline: none;
         transition:
@@ -104,8 +147,8 @@
         top: calc(100% + 6px);
         left: 0;
         right: 0;
-        background: #1a1a1a;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--bg3);
+        border: 1px solid var(--border2);
         border-radius: 10px;
         overflow: hidden;
         box-shadow: 0 10px 32px rgba(0, 0, 0, 0.7);
@@ -122,7 +165,7 @@
         cursor: pointer;
         transition: background 0.12s;
         text-decoration: none;
-        color: white;
+        color: var(--text);
       }
       .suggestion-item:hover,
       .suggestion-item.active {
@@ -263,11 +306,11 @@
         width: 100%;
         max-width: 1000px;
         height: 660px;
-        background: #1a1a1a;
+        background: var(--bg3);
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border);
       }
 
       iframe {
@@ -308,7 +351,7 @@
 
       /* ── Cards (mini) ── */
       .card {
-        background: #1e1e1e;
+        background: var(--card-bg);
         border-radius: 10px;
         overflow: hidden;
         cursor: pointer;
@@ -318,7 +361,7 @@
         aspect-ratio: 1/1;
         position: relative;
         transition: transform 0.18s;
-        border: 1px solid rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
       }
       .card:hover {
         transform: scale(1.06);
@@ -363,15 +406,15 @@
       .skeleton {
         background: linear-gradient(
           90deg,
-          #1e1e1e 25%,
-          #2a2a2a 50%,
-          #1e1e1e 75%
+          var(--sh1) 25%,
+          var(--sh2) 50%,
+          var(--sh1) 75%
         );
         background-size: 200% 100%;
         animation: shimmer 1.4s infinite;
         border-radius: 10px;
         aspect-ratio: 1/1;
-        border: 1px solid rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
       }
       @keyframes shimmer {
         0% {
@@ -388,9 +431,9 @@
         bottom: 28px;
         left: 50%;
         transform: translateX(-50%) translateY(10px);
-        background: #1a1a1a;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        color: white;
+        background: var(--bg3);
+        border: 1px solid var(--border2);
+        color: var(--text);
         font-size: 13px;
         font-weight: 500;
         padding: 10px 20px;
@@ -427,8 +470,8 @@
         pointer-events: all;
       }
       .modal {
-        background: #1a1a1a;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--bg3);
+        border: 1px solid var(--border2);
         border-radius: 14px;
         padding: 28px;
         width: 100%;
@@ -536,8 +579,8 @@
 
       /* Footer */
       footer {
-        background: #0a0a0a;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--fb);
+        border-top: 1px solid var(--border);
         margin-top: 24px;
         padding: 48px 8% 28px;
       }
@@ -618,6 +661,60 @@
         }
       }
 
+      /* ── Play timer ── */
+      .timer-bar {
+        width: 100%;
+        max-width: 1000px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 8px 2px 0;
+      }
+      .timer-display {
+        font-size: 13px;
+        color: var(--text2);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .timer-val {
+        font-variant-numeric: tabular-nums;
+        font-weight: 600;
+        color: var(--accent3);
+      }
+      body.light .timer-val {
+        color: var(--accent);
+      }
+      .timer-icon {
+        font-size: 14px;
+      }
+
+      /* ── Theme btn ── */
+      .nav-icon-btn {
+        flex-shrink: 0;
+        background: var(--bb);
+        border: 1px solid var(--bb2);
+        color: var(--text);
+        padding: 7px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 13px;
+        white-space: nowrap;
+        transition: background 0.2s;
+      }
+      .nav-icon-btn:hover {
+        background: rgba(128, 128, 128, 0.15);
+      }
+
+      /* Card label always on touch */
+      @media (hover: none) {
+        .card-label {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
       @media (max-width: 700px) {
         .page {
           padding: 16px 4% 0;
@@ -655,6 +752,9 @@
         <div class="suggestions" id="suggestions"></div>
       </div>
       <a href="index.html" class="home-link">← Home</a>
+      <button class="nav-icon-btn" id="themeBtn" title="Toggle theme">
+        🌙
+      </button>
       <button class="panic-btn" id="panicBtn">🚨 Panic</button>
     </div>
 
@@ -673,8 +773,12 @@
         <iframe id="gameFrame" allowfullscreen></iframe>
       </div>
 
-      <!-- Under-frame row -->
-      <div class="under-frame">
+      <!-- Timer + under-frame row -->
+      <div class="timer-bar">
+        <div class="timer-display">
+          <span class="timer-icon">⏱</span> Session:
+          <span class="timer-val" id="timerVal">0:00</span>
+        </div>
         <button class="report-link" id="reportBtn">⚠ Report broken game</button>
       </div>
 
@@ -775,12 +879,25 @@
       </div>
     </div>
 
-    <script
-      data-cfasync="false"
-      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
-    ></script>
     <script src="games.js"></script>
     <script>
+      // ── Theme ──
+      const themeBtn = document.getElementById("themeBtn");
+      function applyTheme(t) {
+        document.body.classList.toggle("light", t === "light");
+        if (themeBtn) themeBtn.textContent = t === "light" ? "🌙" : "☀️";
+      }
+      const theme = localStorage.getItem("theme") || "dark";
+      applyTheme(theme);
+      if (themeBtn)
+        themeBtn.addEventListener("click", () => {
+          const t = document.body.classList.contains("light")
+            ? "dark"
+            : "light";
+          localStorage.setItem("theme", t);
+          applyTheme(t);
+        });
+
       // ── Storage ──
       function getFavs() {
         try {
@@ -796,13 +913,45 @@
       }
       function addRecent(id) {
         try {
-          let r = JSON.parse(localStorage.getItem("recent") || "[]");
-          r = r.filter((x) => x !== id);
-          r.unshift(id);
-          r = r.slice(0, 8);
-          localStorage.setItem("recent", JSON.stringify(r));
+          let r = JSON.parse(localStorage.getItem("recent2") || "[]");
+          r = r.filter((x) => x.id !== id);
+          r.unshift({ id, ts: Date.now() });
+          r = r.slice(0, 20);
+          localStorage.setItem("recent2", JSON.stringify(r));
         } catch {}
       }
+
+      // ── Play timer ──
+      let sessionStart = Date.now();
+      let totalSeconds = 0;
+      const timerVal = document.getElementById("timerVal");
+
+      function formatTimer(s) {
+        const m = Math.floor(s / 60);
+        const sec = s % 60;
+        return m + ":" + String(sec).padStart(2, "0");
+      }
+
+      const timerInterval = setInterval(() => {
+        totalSeconds++;
+        if (timerVal) timerVal.textContent = formatTimer(totalSeconds);
+      }, 1000);
+
+      // Save play time when leaving
+      function savePlayTime(gameId) {
+        if (!gameId) return;
+        const ms = Date.now() - sessionStart;
+        try {
+          const times = JSON.parse(localStorage.getItem("playTimes") || "{}");
+          times[gameId] = (times[gameId] || 0) + ms;
+          localStorage.setItem("playTimes", JSON.stringify(times));
+        } catch {}
+      }
+
+      window.addEventListener("beforeunload", () => {
+        const gn = window.location.search.substring(1).trim().toLowerCase();
+        savePlayTime(gn);
+      });
 
       // ── Load game ──
       const gameName = window.location.search.substring(1).trim().toLowerCase();
@@ -816,7 +965,6 @@
         frame.src = game.src;
         addRecent(game.id);
 
-        // Fav button
         function updateFavBtn() {
           const isFav = getFavs().includes(game.id);
           favBtn.textContent = isFav ? "❤️ Favourited" : "🤍 Favourite";
@@ -831,7 +979,7 @@
           updateFavBtn();
         });
 
-        // You might also like — tag matches first, then fill to 12
+        // You might also like
         const tagMatches = games.filter(
           (g) =>
             g.id !== game.id &&
@@ -848,30 +996,27 @@
           const alsoLike = document.getElementById("alsoLike");
           const alsoGrid = document.getElementById("alsoGrid");
           alsoLike.style.display = "block";
-
           related.forEach((g) => {
             const card = document.createElement("div");
             card.className = "card";
-
-            const skeleton = document.createElement("div");
-            skeleton.style.cssText =
-              "position:absolute;inset:0;z-index:1;border-radius:10px;background:linear-gradient(90deg,#1e1e1e 25%,#2a2a2a 50%,#1e1e1e 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;";
-            card.appendChild(skeleton);
-
+            const skel = document.createElement("div");
+            skel.style.cssText =
+              "position:absolute;inset:0;z-index:1;border-radius:10px;background:linear-gradient(90deg,var(--sh1) 25%,var(--sh2) 50%,var(--sh1) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;";
+            card.appendChild(skel);
             const a = document.createElement("a");
-            a.href = `play.html?${g.id}`;
-
+            a.href = "play.html?" + g.id;
+            a.addEventListener("click", () => {
+              savePlayTime(gameName);
+            });
             const img = document.createElement("img");
             img.alt = g.title;
             img.loading = "lazy";
-            img.onload = () => skeleton.remove();
-            img.onerror = () => skeleton.remove();
+            img.onload = () => skel.remove();
+            img.onerror = () => skel.remove();
             img.src = g.img;
-
             const label = document.createElement("div");
             label.className = "card-label";
             label.textContent = g.title;
-
             a.appendChild(img);
             card.appendChild(a);
             card.appendChild(label);
@@ -883,21 +1028,18 @@
         favBtn.style.display = "none";
       }
 
-      // ── Share button ──
+      // ── Share ──
       document.getElementById("shareBtn").addEventListener("click", () => {
         const url = window.location.href;
         if (navigator.clipboard) {
           navigator.clipboard
             .writeText(url)
             .then(showShareToast)
-            .catch(() => {
-              prompt("Copy this link:", url);
-            });
+            .catch(() => prompt("Copy this link:", url));
         } else {
           prompt("Copy this link:", url);
         }
       });
-
       function showShareToast() {
         const t = document.getElementById("shareToast");
         t.classList.add("show");
@@ -906,9 +1048,9 @@
 
       // ── Report broken game ──
       const reportModal = document.getElementById("reportModal");
-      document.getElementById("reportBtn").addEventListener("click", () => {
-        reportModal.classList.add("open");
-      });
+      document
+        .getElementById("reportBtn")
+        .addEventListener("click", () => reportModal.classList.add("open"));
       function closeReport() {
         reportModal.classList.remove("open");
         document.getElementById("reportForm").style.display = "block";
@@ -926,10 +1068,6 @@
       });
       document.getElementById("reportSubmit").addEventListener("click", () => {
         const note = document.getElementById("reportNote").value.trim();
-        const gameName = window.location.search
-          .substring(1)
-          .trim()
-          .toLowerCase();
         try {
           const reports = JSON.parse(
             localStorage.getItem("brokenReports") || "[]",
@@ -953,7 +1091,6 @@
       // ── Fullscreen ──
       const container = document.getElementById("container");
       const fsBtn = document.getElementById("fullscreenBtn");
-
       fsBtn.addEventListener("click", () => {
         if (!document.fullscreenElement && !document.webkitFullscreenElement) {
           if (container.requestFullscreen) container.requestFullscreen();
@@ -965,7 +1102,6 @@
             document.webkitExitFullscreen();
         }
       });
-
       function updateFsBtn() {
         const inFs =
           document.fullscreenElement === container ||
@@ -975,10 +1111,21 @@
       document.addEventListener("fullscreenchange", updateFsBtn);
       document.addEventListener("webkitfullscreenchange", updateFsBtn);
 
-      // Panic key — backtick redirects to Google Classroom
+      // ── Keyboard shortcuts ──
       document.addEventListener("keydown", (e) => {
-        if (e.key === "`")
+        if (e.key === "`") {
           window.location.href = "https://classroom.google.com";
+          return;
+        }
+        if (
+          document.activeElement.tagName === "INPUT" ||
+          document.activeElement.tagName === "TEXTAREA"
+        )
+          return;
+        if (e.key === "f" || e.key === "F") fsBtn.click();
+        if (e.key === "r" || e.key === "R") {
+          frame.src = frame.src;
+        }
       });
       document.getElementById("panicBtn").addEventListener("click", () => {
         window.location.href = "https://classroom.google.com";
@@ -988,14 +1135,12 @@
       const searchInput = document.getElementById("searchInput");
       const suggestionsBox = document.getElementById("suggestions");
       let activeIndex = -1;
-
       function escapeHtml(s) {
         return s
           .replace(/&/g, "&amp;")
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;");
       }
-
       function showSuggestions(filter) {
         suggestionsBox.innerHTML = "";
         activeIndex = -1;
@@ -1032,7 +1177,6 @@
         });
         suggestionsBox.classList.add("visible");
       }
-
       function setActive(idx) {
         const items = suggestionsBox.querySelectorAll(".suggestion-item");
         items.forEach((el) => el.classList.remove("active"));
@@ -1041,7 +1185,6 @@
           activeIndex = idx;
         }
       }
-
       searchInput.addEventListener("input", () =>
         showSuggestions(searchInput.value.toLowerCase().trim()),
       );
