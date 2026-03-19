@@ -1,2729 +1,1428 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin — God Mode</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@700;800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — God Mode</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-      :root {
-        --bg: #070a0f;
-        --bg2: #0c1018;
-        --bg3: #111622;
-        --bg4: #161d2e;
-        --border: rgba(255, 255, 255, 0.07);
-        --border2: rgba(255, 255, 255, 0.12);
-        --text: #e8eeff;
-        --text2: rgba(180, 200, 255, 0.5);
-        --text3: rgba(180, 200, 255, 0.25);
-        --accent: #4f8eff;
-        --accent2: rgba(79, 142, 255, 0.12);
-        --green: #00e5a0;
-        --red: #ff4f6e;
-        --yellow: #ffd166;
-        --purple: #b57bff;
-        --mono: "JetBrains Mono", monospace;
-        --syne: "Syne", sans-serif;
-      }
+    :root {
+      --bg:     #070a0f;
+      --bg2:    #0c1018;
+      --bg3:    #111622;
+      --bg4:    #161d2e;
+      --border: rgba(255,255,255,0.07);
+      --border2:rgba(255,255,255,0.12);
+      --text:   #e8eeff;
+      --text2:  rgba(180,200,255,0.5);
+      --text3:  rgba(180,200,255,0.25);
+      --accent: #4f8eff;
+      --accent2:rgba(79,142,255,0.12);
+      --green:  #00e5a0;
+      --red:    #ff4f6e;
+      --yellow: #ffd166;
+      --purple: #b57bff;
+      --mono:   'JetBrains Mono', monospace;
+      --syne:   'Syne', sans-serif;
+    }
 
-      body {
-        font-family: var(--mono);
-        background: var(--bg);
-        color: var(--text);
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
+    body {
+      font-family: var(--mono);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-      /* ── LOGIN ── */
-      #loginScreen {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        background: radial-gradient(
-          ellipse at 50% 0%,
-          rgba(79, 142, 255, 0.08),
-          transparent 60%
-        );
-      }
-      .login-box {
-        width: 380px;
-        margin: 16px;
-        background: var(--bg2);
-        border: 1px solid var(--border2);
-        border-radius: 16px;
-        padding: 40px 36px;
-      }
-      .login-box .logo {
-        font-family: var(--syne);
-        font-size: 22px;
-        margin-bottom: 4px;
-        color: var(--text);
-      }
-      .login-box .sub {
-        font-size: 11px;
-        color: var(--text3);
-        margin-bottom: 28px;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-      .login-box input {
-        width: 100%;
-        background: var(--bg3);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 11px 14px;
-        color: var(--text);
-        font-size: 14px;
-        outline: none;
-        margin-bottom: 12px;
-        font-family: var(--mono);
-        letter-spacing: 0.06em;
-        transition: border-color 0.2s;
-      }
-      .login-box input:focus {
-        border-color: var(--accent);
-      }
-      .login-btn {
-        width: 100%;
-        background: var(--accent);
-        border: none;
-        color: #fff;
-        padding: 11px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 13px;
-        font-weight: 700;
-        font-family: var(--mono);
-        letter-spacing: 0.06em;
-        transition: opacity 0.2s;
-      }
-      .login-btn:hover {
-        opacity: 0.85;
-      }
-      .login-err {
-        font-size: 11px;
-        color: var(--red);
-        margin-top: 10px;
-        text-align: center;
-        min-height: 16px;
-      }
+    /* ── LOGIN ── */
+    #loginScreen {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh;
+      background: radial-gradient(ellipse at 50% 0%, rgba(79,142,255,0.08), transparent 60%);
+    }
+    .login-box {
+      width: 380px; margin: 16px;
+      background: var(--bg2); border: 1px solid var(--border2);
+      border-radius: 16px; padding: 40px 36px;
+    }
+    .login-box .logo { font-family: var(--syne); font-size: 22px; margin-bottom: 4px; color: var(--text); }
+    .login-box .sub  { font-size: 11px; color: var(--text3); margin-bottom: 28px; letter-spacing: 0.12em; text-transform: uppercase; }
+    .login-box input {
+      width: 100%; background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 8px; padding: 11px 14px; color: var(--text);
+      font-size: 14px; outline: none; margin-bottom: 12px;
+      font-family: var(--mono); letter-spacing: 0.06em;
+      transition: border-color 0.2s;
+    }
+    .login-box input:focus { border-color: var(--accent); }
+    .login-btn {
+      width: 100%; background: var(--accent); border: none; color: #fff;
+      padding: 11px; border-radius: 8px; cursor: pointer; font-size: 13px;
+      font-weight: 700; font-family: var(--mono); letter-spacing: 0.06em;
+      transition: opacity 0.2s;
+    }
+    .login-btn:hover { opacity: 0.85; }
+    .login-err { font-size: 11px; color: var(--red); margin-top: 10px; text-align: center; min-height: 16px; }
 
-      /* ── DASHBOARD ── */
-      #dashboard {
-        display: none;
-        flex-direction: column;
-        min-height: 100vh;
-      }
+    /* ── DASHBOARD ── */
+    #dashboard { display: none; flex-direction: column; min-height: 100vh; }
 
-      /* topbar */
-      .topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 24px;
-        height: 56px;
-        flex-shrink: 0;
-        background: var(--bg2);
-        border-bottom: 1px solid var(--border);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-      .topbar-left {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-      .topbar-logo {
-        font-family: var(--syne);
-        font-size: 14px;
-        color: var(--text);
-      }
-      .topbar-badge {
-        font-size: 9px;
-        background: var(--red);
-        color: #fff;
-        padding: 2px 7px;
-        border-radius: 20px;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-      }
-      .topbar-right {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .topbar-time {
-        font-size: 11px;
-        color: var(--text3);
-      }
-      .logout-btn {
-        background: rgba(255, 79, 110, 0.1);
-        border: 1px solid rgba(255, 79, 110, 0.25);
-        color: var(--red);
-        padding: 5px 14px;
-        border-radius: 7px;
-        cursor: pointer;
-        font-size: 11px;
-        font-weight: 700;
-        font-family: var(--mono);
-        transition: background 0.2s;
-      }
-      .logout-btn:hover {
-        background: rgba(255, 79, 110, 0.22);
-      }
+    /* topbar */
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 56px; flex-shrink: 0;
+      background: var(--bg2); border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 12px; }
+    .topbar-logo { font-family: var(--syne); font-size: 14px; color: var(--text); }
+    .topbar-badge { font-size: 9px; background: var(--red); color: #fff; padding: 2px 7px; border-radius: 20px; font-weight: 700; letter-spacing: 0.08em; }
+    .topbar-right { display: flex; align-items: center; gap: 10px; }
+    .topbar-time { font-size: 11px; color: var(--text3); }
+    .logout-btn {
+      background: rgba(255,79,110,0.1); border: 1px solid rgba(255,79,110,0.25);
+      color: var(--red); padding: 5px 14px; border-radius: 7px; cursor: pointer;
+      font-size: 11px; font-weight: 700; font-family: var(--mono);
+      transition: background 0.2s;
+    }
+    .logout-btn:hover { background: rgba(255,79,110,0.22); }
 
-      /* layout */
-      .dash-layout {
-        display: flex;
-        flex: 1;
-      }
+    /* layout */
+    .dash-layout { display: flex; flex: 1; }
 
-      /* sidebar */
-      .sidebar {
-        width: 200px;
-        flex-shrink: 0;
-        background: var(--bg2);
-        border-right: 1px solid var(--border);
-        padding: 16px 0;
-        position: sticky;
-        top: 56px;
-        height: calc(100vh - 56px);
-        overflow-y: auto;
-      }
-      .sidebar-section {
-        font-size: 9px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--text3);
-        padding: 12px 16px 6px;
-      }
-      .sidebar-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 9px 16px;
-        cursor: pointer;
-        font-size: 12px;
-        color: var(--text2);
-        border-left: 2px solid transparent;
-        transition: all 0.15s;
-      }
-      .sidebar-item:hover {
-        background: var(--accent2);
-        color: var(--text);
-      }
-      .sidebar-item.active {
-        background: var(--accent2);
-        color: var(--accent);
-        border-left-color: var(--accent);
-      }
-      .sidebar-item .icon {
-        font-size: 14px;
-        width: 18px;
-        text-align: center;
-        flex-shrink: 0;
-      }
+    /* sidebar */
+    .sidebar {
+      width: 200px; flex-shrink: 0; background: var(--bg2);
+      border-right: 1px solid var(--border); padding: 16px 0;
+      position: sticky; top: 56px; height: calc(100vh - 56px);
+      overflow-y: auto;
+    }
+    .sidebar-section { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text3); padding: 12px 16px 6px; }
+    .sidebar-item {
+      display: flex; align-items: center; gap: 10px; padding: 9px 16px;
+      cursor: pointer; font-size: 12px; color: var(--text2);
+      border-left: 2px solid transparent; transition: all 0.15s;
+    }
+    .sidebar-item:hover { background: var(--accent2); color: var(--text); }
+    .sidebar-item.active { background: var(--accent2); color: var(--accent); border-left-color: var(--accent); }
+    .sidebar-item .icon { font-size: 14px; width: 18px; text-align: center; flex-shrink: 0; }
 
-      /* main content */
-      .dash-main {
-        flex: 1;
-        padding: 24px;
-        overflow-y: auto;
-      }
+    /* main content */
+    .dash-main { flex: 1; padding: 24px; overflow-y: auto; }
 
-      /* page header */
-      .page-header {
-        margin-bottom: 24px;
-      }
-      .page-title {
-        font-family: var(--syne);
-        font-size: 20px;
-        margin-bottom: 4px;
-      }
-      .page-sub {
-        font-size: 11px;
-        color: var(--text3);
-      }
+    /* page header */
+    .page-header { margin-bottom: 24px; }
+    .page-title { font-family: var(--syne); font-size: 20px; margin-bottom: 4px; }
+    .page-sub { font-size: 11px; color: var(--text3); }
 
-      /* stat cards */
-      .stat-row {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 12px;
-        margin-bottom: 24px;
-      }
-      .stat-card {
-        background: var(--bg3);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 18px 16px;
-      }
-      .stat-card .label {
-        font-size: 10px;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--text3);
-        margin-bottom: 8px;
-      }
-      .stat-card .value {
-        font-family: var(--syne);
-        font-size: 28px;
-        font-weight: 800;
-      }
-      .stat-card .value.green {
-        color: var(--green);
-      }
-      .stat-card .value.blue {
-        color: var(--accent);
-      }
-      .stat-card .value.yellow {
-        color: var(--yellow);
-      }
-      .stat-card .value.purple {
-        color: var(--purple);
-      }
+    /* stat cards */
+    .stat-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 24px; }
+    .stat-card {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 12px;
+      padding: 18px 16px;
+    }
+    .stat-card .label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); margin-bottom: 8px; }
+    .stat-card .value { font-family: var(--syne); font-size: 28px; font-weight: 800; }
+    .stat-card .value.green { color: var(--green); }
+    .stat-card .value.blue  { color: var(--accent); }
+    .stat-card .value.yellow{ color: var(--yellow); }
+    .stat-card .value.purple{ color: var(--purple); }
 
-      /* panel */
-      .panel {
-        background: var(--bg3);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        margin-bottom: 20px;
-        overflow: hidden;
-      }
-      .panel-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 14px 18px;
-        border-bottom: 1px solid var(--border);
-      }
-      .panel-title {
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        color: var(--text);
-      }
-      .panel-badge {
-        font-size: 10px;
-        background: var(--accent2);
-        color: var(--accent);
-        padding: 2px 8px;
-        border-radius: 20px;
-      }
-      .panel-body {
-        padding: 18px;
-      }
+    /* panel */
+    .panel {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 12px; margin-bottom: 20px; overflow: hidden;
+    }
+    .panel-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 18px; border-bottom: 1px solid var(--border);
+    }
+    .panel-title { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: var(--text); }
+    .panel-badge { font-size: 10px; background: var(--accent2); color: var(--accent); padding: 2px 8px; border-radius: 20px; }
+    .panel-body { padding: 18px; }
 
-      /* table */
-      .data-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 12px;
-      }
-      .data-table th {
-        text-align: left;
-        padding: 8px 12px;
-        color: var(--text3);
-        font-size: 10px;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        border-bottom: 1px solid var(--border);
-        font-weight: 600;
-      }
-      .data-table td {
-        padding: 10px 12px;
-        border-bottom: 1px solid var(--border);
-        vertical-align: middle;
-      }
-      .data-table tr:last-child td {
-        border-bottom: none;
-      }
-      .data-table tr:hover td {
-        background: rgba(255, 255, 255, 0.02);
-      }
+    /* table */
+    .data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .data-table th { text-align: left; padding: 8px 12px; color: var(--text3); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid var(--border); font-weight: 600; }
+    .data-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: rgba(255,255,255,0.02); }
 
-      /* inputs */
-      .inp {
-        background: var(--bg4);
-        border: 1px solid var(--border2);
-        border-radius: 7px;
-        padding: 7px 10px;
-        color: var(--text);
-        font-size: 12px;
-        outline: none;
-        font-family: var(--mono);
-        transition: border-color 0.2s;
-        width: 100%;
-      }
-      .inp:focus {
-        border-color: var(--accent);
-      }
-      .inp-sm {
-        padding: 5px 8px;
-        font-size: 11px;
-        width: auto;
-      }
+    /* inputs */
+    .inp {
+      background: var(--bg4); border: 1px solid var(--border2); border-radius: 7px;
+      padding: 7px 10px; color: var(--text); font-size: 12px; outline: none;
+      font-family: var(--mono); transition: border-color 0.2s; width: 100%;
+    }
+    .inp:focus { border-color: var(--accent); }
+    .inp-sm { padding: 5px 8px; font-size: 11px; width: auto; }
 
-      /* buttons */
-      .btn {
-        padding: 6px 14px;
-        border-radius: 7px;
-        cursor: pointer;
-        font-size: 11px;
-        font-weight: 700;
-        font-family: var(--mono);
-        border: none;
-        transition: all 0.15s;
-        white-space: nowrap;
-      }
-      .btn-blue {
-        background: var(--accent);
-        color: #fff;
-      }
-      .btn-blue:hover {
-        opacity: 0.85;
-      }
-      .btn-green {
-        background: rgba(0, 229, 160, 0.12);
-        border: 1px solid rgba(0, 229, 160, 0.28);
-        color: var(--green);
-      }
-      .btn-green:hover {
-        background: rgba(0, 229, 160, 0.22);
-      }
-      .btn-red {
-        background: rgba(255, 79, 110, 0.1);
-        border: 1px solid rgba(255, 79, 110, 0.25);
-        color: var(--red);
-      }
-      .btn-red:hover {
-        background: rgba(255, 79, 110, 0.2);
-      }
-      .btn-yellow {
-        background: rgba(255, 209, 102, 0.1);
-        border: 1px solid rgba(255, 209, 102, 0.25);
-        color: var(--yellow);
-      }
-      .btn-yellow:hover {
-        background: rgba(255, 209, 102, 0.2);
-      }
-      .btn-purple {
-        background: rgba(181, 123, 255, 0.1);
-        border: 1px solid rgba(181, 123, 255, 0.25);
-        color: var(--purple);
-      }
-      .btn-purple:hover {
-        background: rgba(181, 123, 255, 0.2);
-      }
-      .btn-ghost {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid var(--border2);
-        color: var(--text2);
-      }
-      .btn-ghost:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: var(--text);
-      }
+    /* buttons */
+    .btn { padding: 6px 14px; border-radius: 7px; cursor: pointer; font-size: 11px; font-weight: 700; font-family: var(--mono); border: none; transition: all 0.15s; white-space: nowrap; }
+    .btn-blue   { background: var(--accent); color: #fff; }
+    .btn-blue:hover { opacity: 0.85; }
+    .btn-green  { background: rgba(0,229,160,0.12); border: 1px solid rgba(0,229,160,0.28); color: var(--green); }
+    .btn-green:hover { background: rgba(0,229,160,0.22); }
+    .btn-red    { background: rgba(255,79,110,0.1); border: 1px solid rgba(255,79,110,0.25); color: var(--red); }
+    .btn-red:hover { background: rgba(255,79,110,0.2); }
+    .btn-yellow { background: rgba(255,209,102,0.1); border: 1px solid rgba(255,209,102,0.25); color: var(--yellow); }
+    .btn-yellow:hover { background: rgba(255,209,102,0.2); }
+    .btn-purple { background: rgba(181,123,255,0.1); border: 1px solid rgba(181,123,255,0.25); color: var(--purple); }
+    .btn-purple:hover { background: rgba(181,123,255,0.2); }
+    .btn-ghost  { background: rgba(255,255,255,0.05); border: 1px solid var(--border2); color: var(--text2); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); color: var(--text); }
 
-      /* tags / pills */
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        font-size: 10px;
-        font-weight: 700;
-        padding: 2px 8px;
-        border-radius: 20px;
-        letter-spacing: 0.05em;
-      }
-      .pill-green {
-        background: rgba(0, 229, 160, 0.12);
-        color: var(--green);
-      }
-      .pill-red {
-        background: rgba(255, 79, 110, 0.12);
-        color: var(--red);
-      }
-      .pill-yellow {
-        background: rgba(255, 209, 102, 0.12);
-        color: var(--yellow);
-      }
-      .pill-blue {
-        background: var(--accent2);
-        color: var(--accent);
-      }
-      .pill-purple {
-        background: rgba(181, 123, 255, 0.12);
-        color: var(--purple);
-      }
-      .pill-gray {
-        background: rgba(255, 255, 255, 0.06);
-        color: var(--text2);
-      }
+    /* tags / pills */
+    .pill { display: inline-flex; align-items: center; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; letter-spacing: 0.05em; }
+    .pill-green  { background: rgba(0,229,160,0.12); color: var(--green); }
+    .pill-red    { background: rgba(255,79,110,0.12); color: var(--red); }
+    .pill-yellow { background: rgba(255,209,102,0.12); color: var(--yellow); }
+    .pill-blue   { background: var(--accent2); color: var(--accent); }
+    .pill-purple { background: rgba(181,123,255,0.12); color: var(--purple); }
+    .pill-gray   { background: rgba(255,255,255,0.06); color: var(--text2); }
 
-      /* user avatar */
-      .uavatar {
-        width: 32px;
-        height: 32px;
-        border-radius: 8px;
-        background: var(--accent2);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-        flex-shrink: 0;
-      }
+    /* user avatar */
+    .uavatar { width: 32px; height: 32px; border-radius: 8px; background: var(--accent2); display: inline-flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
 
-      /* form rows */
-      .form-row {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 12px;
-      }
-      .form-row label {
-        font-size: 11px;
-        color: var(--text2);
-        min-width: 130px;
-        flex-shrink: 0;
-      }
-      .form-group {
-        margin-bottom: 14px;
-      }
-      .form-group label {
-        display: block;
-        font-size: 11px;
-        color: var(--text2);
-        margin-bottom: 5px;
-      }
+    /* form rows */
+    .form-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .form-row label { font-size: 11px; color: var(--text2); min-width: 130px; flex-shrink: 0; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 11px; color: var(--text2); margin-bottom: 5px; }
 
-      /* notification / toast */
-      #toast {
-        position: fixed;
-        bottom: 24px;
-        left: 50%;
-        transform: translateX(-50%) translateY(10px);
-        background: var(--bg3);
-        border: 1px solid var(--border2);
-        border-radius: 10px;
-        padding: 10px 20px;
-        font-size: 12px;
-        font-weight: 700;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-        opacity: 0;
-        transition:
-          opacity 0.2s,
-          transform 0.2s;
-        pointer-events: none;
-        z-index: 9999;
-        white-space: nowrap;
-      }
-      #toast.show {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
-      #toast.success {
-        color: var(--green);
-        border-color: rgba(0, 229, 160, 0.3);
-      }
-      #toast.error {
-        color: var(--red);
-        border-color: rgba(255, 79, 110, 0.3);
-      }
+    /* notification / toast */
+    #toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(10px);
+      background: var(--bg3); border: 1px solid var(--border2); border-radius: 10px;
+      padding: 10px 20px; font-size: 12px; font-weight: 700;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6); opacity: 0;
+      transition: opacity 0.2s, transform 0.2s; pointer-events: none; z-index: 9999;
+      white-space: nowrap;
+    }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    #toast.success { color: var(--green); border-color: rgba(0,229,160,0.3); }
+    #toast.error   { color: var(--red);   border-color: rgba(255,79,110,0.3); }
 
-      /* modal */
-      .modal-bg {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.75);
-        z-index: 1000;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        backdrop-filter: blur(4px);
-      }
-      .modal-bg.open {
-        display: flex;
-      }
-      .modal {
-        background: var(--bg3);
-        border: 1px solid var(--border2);
-        border-radius: 14px;
-        padding: 28px;
-        width: 100%;
-        max-width: 480px;
-        margin: 16px;
-        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7);
-      }
-      .modal h3 {
-        font-family: var(--syne);
-        font-size: 16px;
-        margin-bottom: 16px;
-      }
-      .modal-actions {
-        display: flex;
-        gap: 10px;
-        justify-content: flex-end;
-        margin-top: 20px;
-      }
+    /* modal */
+    .modal-bg {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 1000;
+      display: none; align-items: center; justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+    .modal-bg.open { display: flex; }
+    .modal {
+      background: var(--bg3); border: 1px solid var(--border2); border-radius: 14px;
+      padding: 28px; width: 100%; max-width: 480px; margin: 16px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.7);
+    }
+    .modal h3 { font-family: var(--syne); font-size: 16px; margin-bottom: 16px; }
+    .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
 
-      /* log */
-      .log-entry {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        padding: 8px 0;
-        border-bottom: 1px solid var(--border);
-        font-size: 11px;
-      }
-      .log-entry:last-child {
-        border-bottom: none;
-      }
-      .log-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        flex-shrink: 0;
-        margin-top: 3px;
-      }
-      .log-time {
-        color: var(--text3);
-        white-space: nowrap;
-        flex-shrink: 0;
-      }
-      .log-msg {
-        color: var(--text2);
-        flex: 1;
-      }
+    /* log */
+    .log-entry { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 11px; }
+    .log-entry:last-child { border-bottom: none; }
+    .log-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
+    .log-time { color: var(--text3); white-space: nowrap; flex-shrink: 0; }
+    .log-msg { color: var(--text2); flex: 1; }
 
-      /* announce textarea */
-      .ann-textarea {
-        width: 100%;
-        background: var(--bg4);
-        border: 1px solid var(--border2);
-        border-radius: 8px;
-        padding: 10px;
-        color: var(--text);
-        font-size: 12px;
-        font-family: var(--mono);
-        resize: vertical;
-        min-height: 70px;
-        outline: none;
-        transition: border-color 0.2s;
-      }
-      .ann-textarea:focus {
-        border-color: var(--accent);
-      }
+    /* announce textarea */
+    .ann-textarea {
+      width: 100%; background: var(--bg4); border: 1px solid var(--border2);
+      border-radius: 8px; padding: 10px; color: var(--text); font-size: 12px;
+      font-family: var(--mono); resize: vertical; min-height: 70px; outline: none;
+      transition: border-color 0.2s;
+    }
+    .ann-textarea:focus { border-color: var(--accent); }
 
-      /* search box */
-      .search-bar {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 14px;
-      }
+    /* search box */
+    .search-bar {
+      display: flex; gap: 8px; margin-bottom: 14px;
+    }
 
-      /* page sections */
-      .page {
-        display: none;
-      }
-      .page.active {
-        display: block;
-      }
+    /* page sections */
+    .page { display: none; }
+    .page.active { display: block; }
 
-      /* two col */
-      .two-col {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
-      .three-col {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 16px;
-      }
+    /* two col */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
 
-      /* achievement toggle grid */
-      .ach-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-      }
-      .ach-item {
-        background: var(--bg4);
-        border: 1px solid var(--border);
-        border-radius: 9px;
-        padding: 10px;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.15s;
-      }
-      .ach-item.on {
-        border-color: rgba(255, 209, 102, 0.4);
-        background: rgba(255, 209, 102, 0.06);
-      }
-      .ach-item .ach-icon {
-        font-size: 22px;
-        margin-bottom: 4px;
-      }
-      .ach-item .ach-name {
-        font-size: 10px;
-        color: var(--text2);
-      }
-      .ach-item.on .ach-name {
-        color: var(--yellow);
-      }
+    /* achievement toggle grid */
+    .ach-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+    .ach-item {
+      background: var(--bg4); border: 1px solid var(--border); border-radius: 9px;
+      padding: 10px; text-align: center; cursor: pointer; transition: all 0.15s;
+    }
+    .ach-item.on  { border-color: rgba(255,209,102,0.4); background: rgba(255,209,102,0.06); }
+    .ach-item .ach-icon { font-size: 22px; margin-bottom: 4px; }
+    .ach-item .ach-name { font-size: 10px; color: var(--text2); }
+    .ach-item.on .ach-name { color: var(--yellow); }
 
-      /* progress bar */
-      .pbar-wrap {
-        background: rgba(255, 255, 255, 0.06);
-        border-radius: 4px;
-        height: 5px;
-        overflow: hidden;
-      }
-      .pbar-fill {
-        height: 100%;
-        border-radius: 4px;
-        transition: width 0.4s;
-      }
+    /* progress bar */
+    .pbar-wrap { background: rgba(255,255,255,0.06); border-radius: 4px; height: 5px; overflow: hidden; }
+    .pbar-fill { height: 100%; border-radius: 4px; transition: width 0.4s; }
 
-      /* empty */
-      .empty {
-        text-align: center;
-        padding: 40px;
-        color: var(--text3);
-        font-size: 12px;
-      }
-      .empty .emoji {
-        font-size: 32px;
-        display: block;
-        margin-bottom: 8px;
-      }
+    /* empty */
+    .empty { text-align: center; padding: 40px; color: var(--text3); font-size: 12px; }
+    .empty .emoji { font-size: 32px; display: block; margin-bottom: 8px; }
 
-      /* divider */
-      .divider {
-        border: none;
-        border-top: 1px solid var(--border);
-        margin: 18px 0;
-      }
+    /* divider */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 
-      @media (max-width: 900px) {
-        .sidebar {
-          display: none;
-        }
-        .stat-row {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .two-col,
-        .three-col {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- LOGIN -->
-    <div id="loginScreen">
-      <div class="login-box">
-        <div class="logo">⚡ Admin Panel</div>
-        <div class="sub">God Mode — Restricted Access</div>
-        <input
-          type="password"
-          id="pwInput"
-          placeholder="Enter password..."
-          autocomplete="off"
-        />
-        <button class="login-btn" id="loginBtn">Access Dashboard</button>
-        <div class="login-err" id="loginErr"></div>
-      </div>
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .stat-row { grid-template-columns: repeat(2,1fr); }
+      .two-col, .three-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="logo">⚡ Admin Panel</div>
+    <div class="sub">God Mode — Restricted Access</div>
+    <input type="password" id="pwInput" placeholder="Enter password..." autocomplete="off" />
+    <button class="login-btn" id="loginBtn">Access Dashboard</button>
+    <div class="login-err" id="loginErr"></div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-logo">⚡ Admin</div>
+      <span class="topbar-badge">GOD MODE</span>
     </div>
+    <div class="topbar-right">
+      <span class="topbar-time" id="topbarTime"></span>
+      <button class="logout-btn" id="logoutBtn">Log out</button>
+    </div>
+  </div>
 
-    <!-- DASHBOARD -->
-    <div id="dashboard">
-      <div class="topbar">
-        <div class="topbar-left">
-          <div class="topbar-logo">⚡ Admin</div>
-          <span class="topbar-badge">GOD MODE</span>
+  <div class="dash-layout">
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+      <div class="sidebar-section">Overview</div>
+      <div class="sidebar-item active" data-page="overview"><span class="icon">📊</span>Overview</div>
+      <div class="sidebar-item" data-page="activity"><span class="icon">⚡</span>Live Activity</div>
+
+      <div class="sidebar-section">Users</div>
+      <div class="sidebar-item" data-page="users"><span class="icon">👥</span>All Users</div>
+      <div class="sidebar-item" data-page="useredit"><span class="icon">✏️</span>Edit User</div>
+      <div class="sidebar-item" data-page="bans"><span class="icon">🚫</span>Bans</div>
+
+      <div class="sidebar-section">Content</div>
+      <div class="sidebar-item" data-page="parties"><span class="icon">🎮</span>Parties</div>
+      <div class="sidebar-item" data-page="messages"><span class="icon">💬</span>Messages</div>
+      <div class="sidebar-item" data-page="suggestions"><span class="icon">💡</span>Suggestions</div>
+      <div class="sidebar-item" data-page="reports"><span class="icon">🐛</span>Bug Reports</div>
+
+      <div class="sidebar-section">Tools</div>
+      <div class="sidebar-item" data-page="announce"><span class="icon">📢</span>Announcements</div>
+      <div class="sidebar-item" data-page="broadcast"><span class="icon">📡</span>Broadcast</div>
+      <div class="sidebar-item" data-page="database"><span class="icon">🗄️</span>Database</div>
+      <div class="sidebar-item" data-page="danger"><span class="icon">☢️</span>Danger Zone</div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="dash-main">
+
+      <!-- OVERVIEW -->
+      <div class="page active" id="page-overview">
+        <div class="page-header">
+          <div class="page-title">Overview</div>
+          <div class="page-sub">Real-time stats from Firebase</div>
         </div>
-        <div class="topbar-right">
-          <span class="topbar-time" id="topbarTime"></span>
-          <button class="logout-btn" id="logoutBtn">Log out</button>
+        <div class="stat-row" id="overviewStats">
+          <div class="stat-card"><div class="label">Total Users</div><div class="value blue" id="statUsers">—</div></div>
+          <div class="stat-card"><div class="label">Active Parties</div><div class="value green" id="statParties">—</div></div>
+          <div class="stat-card"><div class="label">Friend Requests</div><div class="value yellow" id="statFriendReqs">—</div></div>
+          <div class="stat-card"><div class="label">DM Conversations</div><div class="value purple" id="statDMs">—</div></div>
+        </div>
+        <div class="two-col">
+          <div class="panel">
+            <div class="panel-header"><div class="panel-title">Recent Signups</div></div>
+            <div class="panel-body" id="recentSignups"><div class="empty"><span class="emoji">👤</span>Loading...</div></div>
+          </div>
+          <div class="panel">
+            <div class="panel-header"><div class="panel-title">Active Parties</div></div>
+            <div class="panel-body" id="activePartiesPanel"><div class="empty"><span class="emoji">🎮</span>Loading...</div></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">Game Suggestions</div><span class="panel-badge" id="suggBadge">0</span></div>
+          <div class="panel-body" id="overviewSuggestions"><div class="empty"><span class="emoji">💡</span>Loading...</div></div>
         </div>
       </div>
 
-      <div class="dash-layout">
-        <!-- SIDEBAR -->
-        <nav class="sidebar">
-          <div class="sidebar-section">Overview</div>
-          <div class="sidebar-item active" data-page="overview">
-            <span class="icon">📊</span>Overview
+      <!-- LIVE ACTIVITY -->
+      <div class="page" id="page-activity">
+        <div class="page-header">
+          <div class="page-title">Live Activity</div>
+          <div class="page-sub">Auto-refreshes every 5 seconds</div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">⚡ Activity Log</div>
+            <button class="btn btn-ghost" onclick="loadActivity()">↺ Refresh</button>
           </div>
-          <div class="sidebar-item" data-page="activity">
-            <span class="icon">⚡</span>Live Activity
-          </div>
-
-          <div class="sidebar-section">Users</div>
-          <div class="sidebar-item" data-page="users">
-            <span class="icon">👥</span>All Users
-          </div>
-          <div class="sidebar-item" data-page="useredit">
-            <span class="icon">✏️</span>Edit User
-          </div>
-          <div class="sidebar-item" data-page="bans">
-            <span class="icon">🚫</span>Bans
-          </div>
-
-          <div class="sidebar-section">Content</div>
-          <div class="sidebar-item" data-page="parties">
-            <span class="icon">🎮</span>Parties
-          </div>
-          <div class="sidebar-item" data-page="messages">
-            <span class="icon">💬</span>Messages
-          </div>
-          <div class="sidebar-item" data-page="suggestions">
-            <span class="icon">💡</span>Suggestions
-          </div>
-          <div class="sidebar-item" data-page="reports">
-            <span class="icon">🐛</span>Bug Reports
-          </div>
-
-          <div class="sidebar-section">Tools</div>
-          <div class="sidebar-item" data-page="announce">
-            <span class="icon">📢</span>Announcements
-          </div>
-          <div class="sidebar-item" data-page="broadcast">
-            <span class="icon">📡</span>Broadcast
-          </div>
-          <div class="sidebar-item" data-page="database">
-            <span class="icon">🗄️</span>Database
-          </div>
-          <div class="sidebar-item" data-page="danger">
-            <span class="icon">☢️</span>Danger Zone
-          </div>
-        </nav>
-
-        <!-- MAIN -->
-        <main class="dash-main">
-          <!-- OVERVIEW -->
-          <div class="page active" id="page-overview">
-            <div class="page-header">
-              <div class="page-title">Overview</div>
-              <div class="page-sub">Real-time stats from Firebase</div>
-            </div>
-            <div class="stat-row" id="overviewStats">
-              <div class="stat-card">
-                <div class="label">Total Users</div>
-                <div class="value blue" id="statUsers">—</div>
-              </div>
-              <div class="stat-card">
-                <div class="label">Active Parties</div>
-                <div class="value green" id="statParties">—</div>
-              </div>
-              <div class="stat-card">
-                <div class="label">Friend Requests</div>
-                <div class="value yellow" id="statFriendReqs">—</div>
-              </div>
-              <div class="stat-card">
-                <div class="label">DM Conversations</div>
-                <div class="value purple" id="statDMs">—</div>
-              </div>
-            </div>
-            <div class="two-col">
-              <div class="panel">
-                <div class="panel-header">
-                  <div class="panel-title">Recent Signups</div>
-                </div>
-                <div class="panel-body" id="recentSignups">
-                  <div class="empty">
-                    <span class="emoji">👤</span>Loading...
-                  </div>
-                </div>
-              </div>
-              <div class="panel">
-                <div class="panel-header">
-                  <div class="panel-title">Active Parties</div>
-                </div>
-                <div class="panel-body" id="activePartiesPanel">
-                  <div class="empty">
-                    <span class="emoji">🎮</span>Loading...
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="panel">
-              <div class="panel-header">
-                <div class="panel-title">Game Suggestions</div>
-                <span class="panel-badge" id="suggBadge">0</span>
-              </div>
-              <div class="panel-body" id="overviewSuggestions">
-                <div class="empty"><span class="emoji">💡</span>Loading...</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- LIVE ACTIVITY -->
-          <div class="page" id="page-activity">
-            <div class="page-header">
-              <div class="page-title">Live Activity</div>
-              <div class="page-sub">Auto-refreshes every 5 seconds</div>
-            </div>
-            <div class="panel">
-              <div class="panel-header">
-                <div class="panel-title">⚡ Activity Log</div>
-                <button class="btn btn-ghost" onclick="loadActivity()">
-                  ↺ Refresh
-                </button>
-              </div>
-              <div class="panel-body" id="activityLog">
-                <div class="empty"><span class="emoji">⚡</span>Loading...</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ALL USERS -->
-          <div class="page" id="page-users">
-            <div class="page-header">
-              <div class="page-title">All Users</div>
-              <div class="page-sub">Everyone who has created an account</div>
-            </div>
-            <div class="search-bar">
-              <input
-                class="inp"
-                id="userSearch"
-                placeholder="Search by username..."
-                style="max-width: 280px"
-                oninput="filterUsers()"
-              />
-              <button class="btn btn-blue" onclick="loadUsers()">
-                ↺ Refresh
-              </button>
-            </div>
-            <div class="panel">
-              <div class="panel-body" style="padding: 0">
-                <table class="data-table">
-                  <thead>
-                    <tr>
-                      <th>User</th>
-                      <th>UID</th>
-                      <th>Created</th>
-                      <th>Last Seen</th>
-                      <th>Friends</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody id="usersTable">
-                    <tr>
-                      <td
-                        colspan="6"
-                        style="
-                          text-align: center;
-                          padding: 32px;
-                          color: var(--text3);
-                        "
-                      >
-                        Loading...
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <!-- EDIT USER -->
-          <div class="page" id="page-useredit">
-            <div class="page-header">
-              <div class="page-title">Edit User</div>
-              <div class="page-sub">Full control over any account</div>
-            </div>
-            <div class="search-bar">
-              <input
-                class="inp"
-                id="editUserSearch"
-                placeholder="Enter exact username..."
-                style="max-width: 280px"
-              />
-              <button class="btn btn-blue" onclick="findUserForEdit()">
-                Find User
-              </button>
-            </div>
-            <div id="editUserPanel" style="display: none">
-              <div class="two-col">
-                <div class="panel">
-                  <div class="panel-header">
-                    <div class="panel-title">👤 Profile</div>
-                  </div>
-                  <div class="panel-body">
-                    <div class="form-group">
-                      <label>Username</label><input class="inp" id="euName" />
-                    </div>
-                    <div class="form-group">
-                      <label>Emoji</label
-                      ><input
-                        class="inp"
-                        id="euEmoji"
-                        style="font-size: 20px"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label>New Password</label
-                      ><input
-                        class="inp"
-                        id="euPass"
-                        type="password"
-                        placeholder="Leave blank to keep current"
-                      />
-                    </div>
-                    <button class="btn btn-blue" onclick="saveUserProfile()">
-                      Save Profile
-                    </button>
-                  </div>
-                </div>
-                <div class="panel">
-                  <div class="panel-header">
-                    <div class="panel-title">🎮 Game Data</div>
-                  </div>
-                  <div class="panel-body">
-                    <div class="form-group">
-                      <label>Daily Streak 🔥</label>
-                      <div style="display: flex; gap: 8px; align-items: center">
-                        <input
-                          class="inp"
-                          id="euStreak"
-                          type="number"
-                          min="0"
-                          style="width: 100px"
-                        />
-                        <button class="btn btn-yellow" onclick="saveStreak()">
-                          Set Streak
-                        </button>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label>Give Achievement</label>
-                      <div
-                        style="
-                          display: flex;
-                          gap: 8px;
-                          align-items: center;
-                          flex-wrap: wrap;
-                        "
-                        id="euAchGrid"
-                      ></div>
-                    </div>
-                    <hr class="divider" />
-                    <div class="form-group">
-                      <label>Add Favourite Game (ID)</label>
-                      <div style="display: flex; gap: 8px">
-                        <input
-                          class="inp"
-                          id="euFavGame"
-                          placeholder="e.g. minecraft"
-                        />
-                        <button class="btn btn-green" onclick="addFavGame()">
-                          Add ❤️
-                        </button>
-                      </div>
-                    </div>
-                    <div
-                      style="
-                        font-size: 11px;
-                        color: var(--text3);
-                        margin-top: 4px;
-                      "
-                      id="euFavsList"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-              <div class="panel">
-                <div class="panel-header">
-                  <div class="panel-title">⚠️ Account Actions</div>
-                </div>
-                <div
-                  class="panel-body"
-                  style="display: flex; gap: 10px; flex-wrap: wrap"
-                >
-                  <button class="btn btn-red" onclick="banUser()">
-                    🚫 Ban User
-                  </button>
-                  <button class="btn btn-yellow" onclick="clearUserHistory()">
-                    🗑 Clear Play History
-                  </button>
-                  <button
-                    class="btn btn-yellow"
-                    onclick="clearUserAchievements()"
-                  >
-                    🏆 Clear Achievements
-                  </button>
-                  <button class="btn btn-yellow" onclick="clearUserFriends()">
-                    👥 Remove All Friends
-                  </button>
-                  <button class="btn btn-red" onclick="deleteUser()">
-                    ☢️ Delete Account
-                  </button>
-                  <button class="btn btn-purple" onclick="makeUserAdmin()">
-                    ⚡ Grant Admin Badge
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- BANS -->
-          <div class="page" id="page-bans">
-            <div class="page-header">
-              <div class="page-title">Bans</div>
-              <div class="page-sub">Manage banned users</div>
-            </div>
-            <div class="panel">
-              <div class="panel-header">
-                <div class="panel-title">Banned Users</div>
-                <button class="btn btn-ghost" onclick="loadBans()">
-                  ↺ Refresh
-                </button>
-              </div>
-              <div class="panel-body" id="bansPanel">
-                <div class="empty"><span class="emoji">🚫</span>Loading...</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- PARTIES -->
-          <div class="page" id="page-parties">
-            <div class="page-header">
-              <div class="page-title">Parties</div>
-              <div class="page-sub">All party rooms — active and disbanded</div>
-            </div>
-            <div class="panel">
-              <div class="panel-header">
-                <div class="panel-title">All Parties</div>
-                <button class="btn btn-ghost" onclick="loadParties()">
-                  ↺ Refresh
-                </button>
-              </div>
-              <div class="panel-body" style="padding: 0">
-                <table class="data-table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Host</th>
-                      <th>Members</th>
-                      <th>Messages</th>
-                      <th>Status</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody id="partiesTable">
-                    <tr>
-                      <td
-                        colspan="6"
-                        style="
-                          text-align: center;
-                          padding: 32px;
-                          color: var(--text3);
-                        "
-                      >
-                        Loading...
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <!-- MESSAGES -->
-          <div class="page" id="page-messages">
-            <div class="page-header">
-              <div class="page-title">Messages</div>
-              <div class="page-sub">View party and DM messages</div>
-            </div>
-            <div class="two-col">
-              <div class="panel">
-                <div class="panel-header">
-                  <div class="panel-title">Party Messages</div>
-                </div>
-                <div class="panel-body">
-                  <div class="form-group">
-                    <label>Select Party</label>
-                    <div style="display: flex; gap: 8px">
-                      <select
-                        class="inp"
-                        id="partyMsgSelect"
-                        style="flex: 1"
-                      ></select
-                      ><button class="btn btn-blue" onclick="loadPartyMsgs()">
-                        Load
-                      </button>
-                    </div>
-                  </div>
-                  <div
-                    id="partyMsgsView"
-                    style="max-height: 300px; overflow-y: auto"
-                  ></div>
-                </div>
-              </div>
-              <div class="panel">
-                <div class="panel-header">
-                  <div class="panel-title">DM Conversations</div>
-                </div>
-                <div class="panel-body" id="dmConvsPanel">
-                  <div class="empty">
-                    <span class="emoji">💬</span>Loading...
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- SUGGESTIONS -->
-          <div class="page" id="page-suggestions">
-            <div class="page-header">
-              <div class="page-title">Game Suggestions</div>
-              <div class="page-sub">What users want added</div>
-            </div>
-            <div class="panel">
-              <div class="panel-header">
-                <div class="panel-title">Suggestions</div>
-                <button class="btn btn-red" onclick="clearSuggestions()">
-                  🗑 Clear All
-                </button>
-              </div>
-              <div class="panel-body" id="suggestionsPanel">
-                <div class="empty"><span class="emoji">💡</span>Loading...</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- BUG REPORTS -->
-          <div class="page" id="page-reports">
-            <div class="page-header">
-              <div class="page-title">Bug Reports</div>
-              <div class="page-sub">Broken game reports from users</div>
-            </div>
-            <div class="panel">
-              <div class="panel-header">
-                <div class="panel-title">Reports</div>
-                <button class="btn btn-red" onclick="clearReports()">
-                  🗑 Clear All
-                </button>
-              </div>
-              <div class="panel-body" id="reportsPanel">
-                <div class="empty"><span class="emoji">🐛</span>Loading...</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ANNOUNCEMENTS -->
-          <div class="page" id="page-announce">
-            <div class="page-header">
-              <div class="page-title">Announcements</div>
-              <div class="page-sub">
-                Control the banner shown at the top of your site
-              </div>
-            </div>
-            <div class="panel">
-              <div class="panel-header">
-                <div class="panel-title">📢 Site Banner</div>
-              </div>
-              <div class="panel-body">
-                <div class="form-group">
-                  <label>Banner message (supports emoji)</label>
-                  <textarea
-                    class="ann-textarea"
-                    id="announceText"
-                    placeholder="e.g. 🆕 New games added! Check out Minecraft..."
-                  ></textarea>
-                </div>
-                <div style="display: flex; gap: 8px; margin-bottom: 14px">
-                  <button class="btn btn-blue" onclick="saveAnnounce()">
-                    💾 Save &amp; Publish
-                  </button>
-                  <button class="btn btn-red" onclick="clearAnnounce()">
-                    ✕ Clear Banner
-                  </button>
-                </div>
-                <div style="font-size: 11px; color: var(--text3)">Preview:</div>
-                <div
-                  id="announcePreview"
-                  style="
-                    margin-top: 8px;
-                    padding: 10px 14px;
-                    background: linear-gradient(90deg, #0d2040, #0a1830);
-                    border-radius: 8px;
-                    font-size: 13px;
-                    color: rgba(255, 255, 255, 0.8);
-                    min-height: 36px;
-                  "
-                ></div>
-              </div>
-            </div>
-            <div class="panel">
-              <div class="panel-header">
-                <div class="panel-title">📋 Quick Announcements</div>
-              </div>
-              <div class="panel-body">
-                <div style="display: flex; gap: 8px; flex-wrap: wrap">
-                  <button
-                    class="btn btn-ghost"
-                    onclick="
-                      quickAnnounce(
-                        '🆕 New games added! Check out the latest additions.',
-                      )
-                    "
-                  >
-                    New Games
-                  </button>
-                  <button
-                    class="btn btn-ghost"
-                    onclick="
-                      quickAnnounce(
-                        '🔧 Site maintenance in progress. Some games may be unavailable.',
-                      )
-                    "
-                  >
-                    Maintenance
-                  </button>
-                  <button
-                    class="btn btn-ghost"
-                    onclick="
-                      quickAnnounce(
-                        '🎉 Weekend special — new party features are live!',
-                      )
-                    "
-                  >
-                    Party Update
-                  </button>
-                  <button
-                    class="btn btn-ghost"
-                    onclick="
-                      quickAnnounce(
-                        '🏆 New achievements have been added. Can you unlock them all?',
-                      )
-                    "
-                  >
-                    Achievements
-                  </button>
-                  <button class="btn btn-ghost" onclick="quickAnnounce('')">
-                    Clear
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- BROADCAST -->
-          <div class="page" id="page-broadcast">
-            <div class="page-header">
-              <div class="page-title">Broadcast</div>
-              <div class="page-sub">
-                Send a message to all party rooms simultaneously
-              </div>
-            </div>
-            <div class="panel">
-              <div class="panel-header">
-                <div class="panel-title">📡 Broadcast to All Parties</div>
-              </div>
-              <div class="panel-body">
-                <div class="form-group">
-                  <label>Message</label>
-                  <textarea
-                    class="ann-textarea"
-                    id="broadcastMsg"
-                    placeholder="This will appear as a system message in every active party..."
-                  ></textarea>
-                </div>
-                <button class="btn btn-blue" onclick="broadcastToAll()">
-                  📡 Send to All Parties
-                </button>
-              </div>
-            </div>
-            <div class="panel">
-              <div class="panel-header">
-                <div class="panel-title">💬 Message Specific Party</div>
-              </div>
-              <div class="panel-body">
-                <div class="form-group">
-                  <label>Party</label
-                  ><select
-                    class="inp"
-                    id="targetPartySelect"
-                    style="max-width: 300px"
-                  ></select>
-                </div>
-                <div class="form-group">
-                  <label>Message</label
-                  ><textarea
-                    class="ann-textarea"
-                    id="targetPartyMsg"
-                    placeholder="Message for this specific party..."
-                  ></textarea>
-                </div>
-                <button class="btn btn-blue" onclick="msgSpecificParty()">
-                  Send Message
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- DATABASE -->
-          <div class="page" id="page-database">
-            <div class="page-header">
-              <div class="page-title">Database</div>
-              <div class="page-sub">Browse and edit raw Firebase data</div>
-            </div>
-            <div class="panel">
-              <div class="panel-header">
-                <div class="panel-title">🗄️ Read Path</div>
-              </div>
-              <div class="panel-body">
-                <div style="display: flex; gap: 8px; margin-bottom: 14px">
-                  <input
-                    class="inp"
-                    id="dbPath"
-                    placeholder="/users, /parties, /dms, /userData/..."
-                    value="/users"
-                  />
-                  <button class="btn btn-blue" onclick="readDbPath()">
-                    Read
-                  </button>
-                </div>
-                <div class="form-group">
-                  <label>Result (read-only)</label>
-                  <textarea
-                    class="ann-textarea"
-                    id="dbResult"
-                    style="min-height: 200px; font-size: 11px"
-                    readonly
-                    placeholder="Data will appear here..."
-                  ></textarea>
-                </div>
-              </div>
-            </div>
-            <div class="panel">
-              <div class="panel-header">
-                <div class="panel-title">✏️ Write / Update Path</div>
-              </div>
-              <div class="panel-body">
-                <div class="form-group">
-                  <label>Path</label
-                  ><input
-                    class="inp"
-                    id="dbWritePath"
-                    placeholder="/users/uid/name"
-                  />
-                </div>
-                <div class="form-group">
-                  <label>Value (JSON or plain text)</label
-                  ><textarea
-                    class="ann-textarea"
-                    id="dbWriteVal"
-                    placeholder='e.g. "NewName" or {"count":5}'
-                    style="min-height: 80px"
-                  ></textarea>
-                </div>
-                <div style="display: flex; gap: 8px">
-                  <button class="btn btn-yellow" onclick="writeDbPath('patch')">
-                    PATCH (merge)
-                  </button>
-                  <button class="btn btn-blue" onclick="writeDbPath('put')">
-                    PUT (overwrite)
-                  </button>
-                  <button class="btn btn-red" onclick="deleteDbPath()">
-                    DELETE
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- DANGER ZONE -->
-          <div class="page" id="page-danger">
-            <div class="page-header">
-              <div class="page-title">☢️ Danger Zone</div>
-              <div class="page-sub">
-                Irreversible actions — think before you click
-              </div>
-            </div>
-            <div class="panel" style="border-color: rgba(255, 79, 110, 0.25)">
-              <div class="panel-header">
-                <div class="panel-title" style="color: var(--red)">
-                  Nuclear Options
-                </div>
-              </div>
-              <div
-                class="panel-body"
-                style="display: flex; flex-direction: column; gap: 12px"
-              >
-                <div
-                  style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: 12px;
-                    background: var(--bg4);
-                    border-radius: 8px;
-                  "
-                >
-                  <div>
-                    <div style="font-size: 12px; font-weight: 700">
-                      Delete all inactive parties
-                    </div>
-                    <div
-                      style="
-                        font-size: 11px;
-                        color: var(--text3);
-                        margin-top: 2px;
-                      "
-                    >
-                      Remove all parties where active = false
-                    </div>
-                  </div>
-                  <button class="btn btn-red" onclick="deleteInactiveParties()">
-                    Delete
-                  </button>
-                </div>
-                <div
-                  style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: 12px;
-                    background: var(--bg4);
-                    border-radius: 8px;
-                  "
-                >
-                  <div>
-                    <div style="font-size: 12px; font-weight: 700">
-                      Clear all friend requests
-                    </div>
-                    <div
-                      style="
-                        font-size: 11px;
-                        color: var(--text3);
-                        margin-top: 2px;
-                      "
-                    >
-                      Delete accepted and denied requests (keeps pending)
-                    </div>
-                  </div>
-                  <button class="btn btn-red" onclick="clearOldRequests()">
-                    Clear
-                  </button>
-                </div>
-                <div
-                  style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: 12px;
-                    background: var(--bg4);
-                    border-radius: 8px;
-                  "
-                >
-                  <div>
-                    <div style="font-size: 12px; font-weight: 700">
-                      Wipe all DM conversations
-                    </div>
-                    <div
-                      style="
-                        font-size: 11px;
-                        color: var(--text3);
-                        margin-top: 2px;
-                      "
-                    >
-                      Permanently delete every direct message
-                    </div>
-                  </div>
-                  <button class="btn btn-red" onclick="wipeDMs()">Wipe</button>
-                </div>
-                <div
-                  style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: 12px;
-                    background: var(--bg4);
-                    border-radius: 8px;
-                  "
-                >
-                  <div>
-                    <div style="font-size: 12px; font-weight: 700">
-                      Reset all user streaks to 0
-                    </div>
-                    <div
-                      style="
-                        font-size: 11px;
-                        color: var(--text3);
-                        margin-top: 2px;
-                      "
-                    >
-                      Sets challengeStreak.count = 0 for every user
-                    </div>
-                  </div>
-                  <button class="btn btn-red" onclick="resetAllStreaks()">
-                    Reset
-                  </button>
-                </div>
-                <div
-                  style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: 12px;
-                    background: rgba(255, 79, 110, 0.06);
-                    border: 1px solid rgba(255, 79, 110, 0.2);
-                    border-radius: 8px;
-                  "
-                >
-                  <div>
-                    <div
-                      style="
-                        font-size: 12px;
-                        font-weight: 700;
-                        color: var(--red);
-                      "
-                    >
-                      ☢️ NUKE — Delete entire database
-                    </div>
-                    <div
-                      style="
-                        font-size: 11px;
-                        color: var(--text3);
-                        margin-top: 2px;
-                      "
-                    >
-                      Deletes ALL data. This cannot be undone.
-                    </div>
-                  </div>
-                  <button class="btn btn-red" onclick="nukeDatabase()">
-                    NUKE
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
-    </div>
-
-    <!-- MODAL -->
-    <div class="modal-bg" id="modalBg">
-      <div class="modal">
-        <h3 id="modalTitle">Confirm</h3>
-        <div
-          id="modalBody"
-          style="font-size: 12px; color: var(--text2); line-height: 1.6"
-        ></div>
-        <div class="modal-actions">
-          <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
-          <button class="btn btn-red" id="modalConfirmBtn">Confirm</button>
+          <div class="panel-body" id="activityLog"><div class="empty"><span class="emoji">⚡</span>Loading...</div></div>
         </div>
       </div>
+
+      <!-- ALL USERS -->
+      <div class="page" id="page-users">
+        <div class="page-header">
+          <div class="page-title">All Users</div>
+          <div class="page-sub">Everyone who has created an account</div>
+        </div>
+        <div class="search-bar">
+          <input class="inp" id="userSearch" placeholder="Search by username..." style="max-width:280px;" oninput="filterUsers()" />
+          <button class="btn btn-blue" onclick="loadUsers()">↺ Refresh</button>
+        </div>
+        <div class="panel">
+          <div class="panel-body" style="padding:0;">
+            <table class="data-table">
+              <thead><tr><th>User</th><th>UID</th><th>Created</th><th>Last Seen</th><th>Friends</th><th>Actions</th></tr></thead>
+              <tbody id="usersTable"><tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3);">Loading...</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDIT USER -->
+      <div class="page" id="page-useredit">
+        <div class="page-header">
+          <div class="page-title">Edit User</div>
+          <div class="page-sub">Full control over any account</div>
+        </div>
+        <div class="search-bar">
+          <input class="inp" id="editUserSearch" placeholder="Enter exact username..." style="max-width:280px;" />
+          <button class="btn btn-blue" onclick="findUserForEdit()">Find User</button>
+        </div>
+        <div id="editUserPanel" style="display:none;">
+          <div class="two-col">
+            <div class="panel">
+              <div class="panel-header"><div class="panel-title">👤 Profile</div></div>
+              <div class="panel-body">
+                <div class="form-group"><label>Username</label><input class="inp" id="euName" /></div>
+                <div class="form-group"><label>Emoji</label><input class="inp" id="euEmoji" style="font-size:20px;" /></div>
+                <div class="form-group"><label>New Password</label><input class="inp" id="euPass" type="password" placeholder="Leave blank to keep current" /></div>
+                <button class="btn btn-blue" onclick="saveUserProfile()">Save Profile</button>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-header"><div class="panel-title">🎮 Game Data</div></div>
+              <div class="panel-body">
+                <div class="form-group"><label>Daily Streak 🔥</label>
+                  <div style="display:flex;gap:8px;align-items:center;">
+                    <input class="inp" id="euStreak" type="number" min="0" style="width:100px;" />
+                    <button class="btn btn-yellow" onclick="saveStreak()">Set Streak</button>
+                  </div>
+                </div>
+                <div class="form-group"><label>Give Achievement</label>
+                  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;" id="euAchGrid"></div>
+                </div>
+                <hr class="divider" />
+                <div class="form-group"><label>Add Favourite Game (ID)</label>
+                  <div style="display:flex;gap:8px;">
+                    <input class="inp" id="euFavGame" placeholder="e.g. minecraft" />
+                    <button class="btn btn-green" onclick="addFavGame()">Add ❤️</button>
+                  </div>
+                </div>
+                <div style="font-size:11px;color:var(--text3);margin-top:4px;" id="euFavsList"></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-header"><div class="panel-title">⚠️ Account Actions</div></div>
+            <div class="panel-body" style="display:flex;gap:10px;flex-wrap:wrap;">
+              <button class="btn btn-red" onclick="banUser()">🚫 Ban User</button>
+              <button class="btn btn-yellow" onclick="clearUserHistory()">🗑 Clear Play History</button>
+              <button class="btn btn-yellow" onclick="clearUserAchievements()">🏆 Clear Achievements</button>
+              <button class="btn btn-yellow" onclick="clearUserFriends()">👥 Remove All Friends</button>
+              <button class="btn btn-red" onclick="deleteUser()">☢️ Delete Account</button>
+              <button class="btn btn-purple" onclick="makeUserAdmin()">⚡ Grant Admin Badge</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BANS -->
+      <div class="page" id="page-bans">
+        <div class="page-header">
+          <div class="page-title">Bans</div>
+          <div class="page-sub">Manage banned users</div>
+        </div>
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">Banned Users</div><button class="btn btn-ghost" onclick="loadBans()">↺ Refresh</button></div>
+          <div class="panel-body" id="bansPanel"><div class="empty"><span class="emoji">🚫</span>Loading...</div></div>
+        </div>
+      </div>
+
+      <!-- PARTIES -->
+      <div class="page" id="page-parties">
+        <div class="page-header">
+          <div class="page-title">Parties</div>
+          <div class="page-sub">All party rooms — active and disbanded</div>
+        </div>
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">All Parties</div><button class="btn btn-ghost" onclick="loadParties()">↺ Refresh</button></div>
+          <div class="panel-body" style="padding:0;">
+            <table class="data-table">
+              <thead><tr><th>Name</th><th>Host</th><th>Members</th><th>Messages</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="partiesTable"><tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3);">Loading...</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- MESSAGES -->
+      <div class="page" id="page-messages">
+        <div class="page-header">
+          <div class="page-title">Messages</div>
+          <div class="page-sub">View party and DM messages</div>
+        </div>
+        <div class="two-col">
+          <div class="panel">
+            <div class="panel-header"><div class="panel-title">Party Messages</div></div>
+            <div class="panel-body">
+              <div class="form-group"><label>Select Party</label>
+                <div style="display:flex;gap:8px;"><select class="inp" id="partyMsgSelect" style="flex:1;"></select><button class="btn btn-blue" onclick="loadPartyMsgs()">Load</button></div>
+              </div>
+              <div id="partyMsgsView" style="max-height:300px;overflow-y:auto;"></div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-header"><div class="panel-title">DM Conversations</div></div>
+            <div class="panel-body" id="dmConvsPanel"><div class="empty"><span class="emoji">💬</span>Loading...</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUGGESTIONS -->
+      <div class="page" id="page-suggestions">
+        <div class="page-header">
+          <div class="page-title">Game Suggestions</div>
+          <div class="page-sub">What users want added</div>
+        </div>
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">Suggestions</div><button class="btn btn-red" onclick="clearSuggestions()">🗑 Clear All</button></div>
+          <div class="panel-body" id="suggestionsPanel"><div class="empty"><span class="emoji">💡</span>Loading...</div></div>
+        </div>
+      </div>
+
+      <!-- BUG REPORTS -->
+      <div class="page" id="page-reports">
+        <div class="page-header">
+          <div class="page-title">Bug Reports</div>
+          <div class="page-sub">Broken game reports from users</div>
+        </div>
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">Reports</div><button class="btn btn-red" onclick="clearReports()">🗑 Clear All</button></div>
+          <div class="panel-body" id="reportsPanel"><div class="empty"><span class="emoji">🐛</span>Loading...</div></div>
+        </div>
+      </div>
+
+      <!-- ANNOUNCEMENTS -->
+      <div class="page" id="page-announce">
+        <div class="page-header">
+          <div class="page-title">Announcements</div>
+          <div class="page-sub">Control the banner shown at the top of your site</div>
+        </div>
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">📢 Site Banner</div></div>
+          <div class="panel-body">
+            <div class="form-group"><label>Banner message (supports emoji)</label>
+              <textarea class="ann-textarea" id="announceText" placeholder="e.g. 🆕 New games added! Check out Minecraft..."></textarea>
+            </div>
+            <div style="display:flex;gap:8px;margin-bottom:14px;">
+              <button class="btn btn-blue" onclick="saveAnnounce()">💾 Save &amp; Publish</button>
+              <button class="btn btn-red" onclick="clearAnnounce()">✕ Clear Banner</button>
+            </div>
+            <div style="font-size:11px;color:var(--text3);">Preview:</div>
+            <div id="announcePreview" style="margin-top:8px;padding:10px 14px;background:linear-gradient(90deg,#0d2040,#0a1830);border-radius:8px;font-size:13px;color:rgba(255,255,255,0.8);min-height:36px;"></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">📋 Quick Announcements</div></div>
+          <div class="panel-body">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button class="btn btn-ghost" onclick="quickAnnounce('🆕 New games added! Check out the latest additions.')">New Games</button>
+              <button class="btn btn-ghost" onclick="quickAnnounce('🔧 Site maintenance in progress. Some games may be unavailable.')">Maintenance</button>
+              <button class="btn btn-ghost" onclick="quickAnnounce('🎉 Weekend special — new party features are live!')">Party Update</button>
+              <button class="btn btn-ghost" onclick="quickAnnounce('🏆 New achievements have been added. Can you unlock them all?')">Achievements</button>
+              <button class="btn btn-ghost" onclick="quickAnnounce('')">Clear</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BROADCAST -->
+      <div class="page" id="page-broadcast">
+        <div class="page-header">
+          <div class="page-title">Broadcast</div>
+          <div class="page-sub">Send a message to all party rooms simultaneously</div>
+        </div>
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">📡 Broadcast to All Parties</div></div>
+          <div class="panel-body">
+            <div class="form-group"><label>Message</label>
+              <textarea class="ann-textarea" id="broadcastMsg" placeholder="This will appear as a system message in every active party..."></textarea>
+            </div>
+            <button class="btn btn-blue" onclick="broadcastToAll()">📡 Send to All Parties</button>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">💬 Message Specific Party</div></div>
+          <div class="panel-body">
+            <div class="form-group"><label>Party</label><select class="inp" id="targetPartySelect" style="max-width:300px;"></select></div>
+            <div class="form-group"><label>Message</label><textarea class="ann-textarea" id="targetPartyMsg" placeholder="Message for this specific party..."></textarea></div>
+            <button class="btn btn-blue" onclick="msgSpecificParty()">Send Message</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATABASE -->
+      <div class="page" id="page-database">
+        <div class="page-header">
+          <div class="page-title">Database</div>
+          <div class="page-sub">Browse and edit raw Firebase data</div>
+        </div>
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">🗄️ Read Path</div></div>
+          <div class="panel-body">
+            <div style="display:flex;gap:8px;margin-bottom:14px;">
+              <input class="inp" id="dbPath" placeholder="/users, /parties, /dms, /userData/..." value="/users" />
+              <button class="btn btn-blue" onclick="readDbPath()">Read</button>
+            </div>
+            <div class="form-group"><label>Result (read-only)</label>
+              <textarea class="ann-textarea" id="dbResult" style="min-height:200px;font-size:11px;" readonly placeholder="Data will appear here..."></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">✏️ Write / Update Path</div></div>
+          <div class="panel-body">
+            <div class="form-group"><label>Path</label><input class="inp" id="dbWritePath" placeholder="/users/uid/name" /></div>
+            <div class="form-group"><label>Value (JSON or plain text)</label><textarea class="ann-textarea" id="dbWriteVal" placeholder='e.g. "NewName" or {"count":5}' style="min-height:80px;"></textarea></div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-yellow" onclick="writeDbPath('patch')">PATCH (merge)</button>
+              <button class="btn btn-blue" onclick="writeDbPath('put')">PUT (overwrite)</button>
+              <button class="btn btn-red" onclick="deleteDbPath()">DELETE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DANGER ZONE -->
+      <div class="page" id="page-danger">
+        <div class="page-header">
+          <div class="page-title">☢️ Danger Zone</div>
+          <div class="page-sub">Irreversible actions — think before you click</div>
+        </div>
+        <div class="panel" style="border-color:rgba(255,79,110,0.25);">
+          <div class="panel-header"><div class="panel-title" style="color:var(--red);">Nuclear Options</div></div>
+          <div class="panel-body" style="display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--bg4);border-radius:8px;">
+              <div><div style="font-size:12px;font-weight:700;">Delete all inactive parties</div><div style="font-size:11px;color:var(--text3);margin-top:2px;">Remove all parties where active = false</div></div>
+              <button class="btn btn-red" onclick="deleteInactiveParties()">Delete</button>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--bg4);border-radius:8px;">
+              <div><div style="font-size:12px;font-weight:700;">Clear all friend requests</div><div style="font-size:11px;color:var(--text3);margin-top:2px;">Delete accepted and denied requests (keeps pending)</div></div>
+              <button class="btn btn-red" onclick="clearOldRequests()">Clear</button>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--bg4);border-radius:8px;">
+              <div><div style="font-size:12px;font-weight:700;">Wipe all DM conversations</div><div style="font-size:11px;color:var(--text3);margin-top:2px;">Permanently delete every direct message</div></div>
+              <button class="btn btn-red" onclick="wipeDMs()">Wipe</button>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--bg4);border-radius:8px;">
+              <div><div style="font-size:12px;font-weight:700;">Reset all user streaks to 0</div><div style="font-size:11px;color:var(--text3);margin-top:2px;">Sets challengeStreak.count = 0 for every user</div></div>
+              <button class="btn btn-red" onclick="resetAllStreaks()">Reset</button>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:rgba(255,79,110,0.06);border:1px solid rgba(255,79,110,0.2);border-radius:8px;">
+              <div><div style="font-size:12px;font-weight:700;color:var(--red);">☢️ NUKE — Delete entire database</div><div style="font-size:11px;color:var(--text3);margin-top:2px;">Deletes ALL data. This cannot be undone.</div></div>
+              <button class="btn btn-red" onclick="nukeDatabase()">NUKE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <h3 id="modalTitle">Confirm</h3>
+    <div id="modalBody" style="font-size:12px;color:var(--text2);line-height:1.6;"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-red" id="modalConfirmBtn">Confirm</button>
     </div>
+  </div>
+</div>
 
-    <div id="toast"></div>
+<div id="toast"></div>
 
-    <script src="games.js"></script>
-    <script>
-      // ── CONFIG ──
-      const ADMIN_PASSWORD = "Vp11072012";
-      const DB = "https://unblocked-games-chat-default-rtdb.firebaseio.com";
+<script src="games.js"></script>
+<script>
+  // ── CONFIG ──
+  const ADMIN_PASSWORD = 'Vp11072012';
+  const DB = 'https://unblocked-games-chat-default-rtdb.firebaseio.com';
 
-      const ACHIEVEMENTS = [
-        { id: "first_game", icon: "🎮", name: "First Steps" },
-        { id: "played_5", icon: "⭐", name: "Getting Started" },
-        { id: "played_25", icon: "🔥", name: "Hooked" },
-        { id: "played_50", icon: "💯", name: "Dedicated" },
-        { id: "first_fav", icon: "❤️", name: "Collector" },
-        { id: "favs_10", icon: "💖", name: "Super Fan" },
-        { id: "streak_3", icon: "🔥", name: "On Fire" },
-        { id: "streak_7", icon: "🌟", name: "Weekly Warrior" },
-        { id: "rated_game", icon: "👍", name: "Critic" },
-        { id: "hour_played", icon: "⏱️", name: "Time Well Spent" },
-        { id: "dark_mode", icon: "🌙", name: "Night Owl" },
-        { id: "all_cats", icon: "🗺️", name: "Explorer" },
-      ];
+  const ACHIEVEMENTS = [
+    {id:'first_game',icon:'🎮',name:'First Steps'},
+    {id:'played_5',icon:'⭐',name:'Getting Started'},
+    {id:'played_25',icon:'🔥',name:'Hooked'},
+    {id:'played_50',icon:'💯',name:'Dedicated'},
+    {id:'first_fav',icon:'❤️',name:'Collector'},
+    {id:'favs_10',icon:'💖',name:'Super Fan'},
+    {id:'streak_3',icon:'🔥',name:'On Fire'},
+    {id:'streak_7',icon:'🌟',name:'Weekly Warrior'},
+    {id:'rated_game',icon:'👍',name:'Critic'},
+    {id:'hour_played',icon:'⏱️',name:'Time Well Spent'},
+    {id:'dark_mode',icon:'🌙',name:'Night Owl'},
+    {id:'all_cats',icon:'🗺️',name:'Explorer'},
+  ];
 
-      // ── Firebase REST ──
-      const fbUrl = (p) => DB + p + ".json";
-      const fbGet = (p, cb) =>
-        fetch(fbUrl(p))
-          .then((r) => r.json())
-          .then(cb)
-          .catch(() => cb(null));
-      const fbSet = (p, d, cb) =>
-        fetch(fbUrl(p), {
-          method: "PUT",
-          body: JSON.stringify(d),
-          headers: { "Content-Type": "application/json" },
-        })
-          .then(() => cb && cb())
-          .catch(() => cb && cb());
-      const fbPatch = (p, d, cb) =>
-        fetch(fbUrl(p), {
-          method: "PATCH",
-          body: JSON.stringify(d),
-          headers: { "Content-Type": "application/json" },
-        })
-          .then(() => cb && cb())
-          .catch(() => cb && cb());
-      const fbDelete = (p, cb) =>
-        fetch(fbUrl(p), { method: "DELETE" })
-          .then(() => cb && cb())
-          .catch(() => cb && cb());
-      const fbPush = (p, d, cb) =>
-        fetch(fbUrl(p), {
-          method: "POST",
-          body: JSON.stringify(d),
-          headers: { "Content-Type": "application/json" },
-        })
-          .then((r) => r.json())
-          .then((res) => cb && cb(res && res.name))
-          .catch(() => cb && cb(null));
+  // ── Firebase REST ──
+  const fbUrl = p => DB + p + '.json';
+  const fbGet = (p,cb) => fetch(fbUrl(p)).then(r=>r.json()).then(cb).catch(()=>cb(null));
+  const fbSet = (p,d,cb) => fetch(fbUrl(p),{method:'PUT',body:JSON.stringify(d),headers:{'Content-Type':'application/json'}}).then(()=>cb&&cb()).catch(()=>cb&&cb());
+  const fbPatch = (p,d,cb) => fetch(fbUrl(p),{method:'PATCH',body:JSON.stringify(d),headers:{'Content-Type':'application/json'}}).then(()=>cb&&cb()).catch(()=>cb&&cb());
+  const fbDelete = (p,cb) => fetch(fbUrl(p),{method:'DELETE'})
+    .then(r => {
+      if(!r.ok) { r.text().then(t=>{ toast('Firebase error: '+t.slice(0,80),'error'); }); return; }
+      if(cb) cb();
+    })
+    .catch(e => { toast('Delete failed: '+e.message,'error'); if(cb) cb(); });
+  const fbPush = (p,d,cb) => fetch(fbUrl(p),{method:'POST',body:JSON.stringify(d),headers:{'Content-Type':'application/json'}}).then(r=>r.json()).then(res=>cb&&cb(res&&res.name)).catch(()=>cb&&cb(null));
 
-      // ── Auth ──
-      document.getElementById("pwInput").addEventListener("keydown", (e) => {
-        if (e.key === "Enter") document.getElementById("loginBtn").click();
-      });
-      document.getElementById("loginBtn").addEventListener("click", () => {
-        const v = document.getElementById("pwInput").value;
-        if (v === ADMIN_PASSWORD) {
-          sessionStorage.setItem("adminAuth", "yes");
-          document.getElementById("loginErr").textContent = "";
-          showDashboard();
-        } else {
-          document.getElementById("loginErr").textContent = "Wrong password.";
-          document.getElementById("pwInput").value = "";
-        }
-      });
-      document.getElementById("logoutBtn").addEventListener("click", () => {
-        sessionStorage.removeItem("adminAuth");
-        location.reload();
-      });
-      if (sessionStorage.getItem("adminAuth") === "yes") showDashboard();
+  // ── Auth ──
+  document.getElementById('pwInput').addEventListener('keydown', e => { if(e.key==='Enter') document.getElementById('loginBtn').click(); });
+  document.getElementById('loginBtn').addEventListener('click', () => {
+    const v = document.getElementById('pwInput').value;
+    if (v === ADMIN_PASSWORD) {
+      sessionStorage.setItem('adminAuth','yes');
+      document.getElementById('loginErr').textContent = '';
+      showDashboard();
+    } else {
+      document.getElementById('loginErr').textContent = 'Wrong password.';
+      document.getElementById('pwInput').value = '';
+    }
+  });
+  document.getElementById('logoutBtn').addEventListener('click', () => { sessionStorage.removeItem('adminAuth'); location.reload(); });
+  if (sessionStorage.getItem('adminAuth')==='yes') showDashboard();
 
-      function showDashboard() {
-        document.getElementById("loginScreen").style.display = "none";
-        document.getElementById("dashboard").style.display = "flex";
-        startClock();
-        loadOverview();
-        populatePartySelects();
-        loadUsers();
-        loadSuggestions();
-        loadReports();
-        loadBans();
-        loadDMConvs();
-        loadAnnounce();
-        setInterval(loadActivity, 5000);
-        loadActivity();
-      }
+  function showDashboard() {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'flex';
+    startClock();
+    loadOverview();
+    populatePartySelects();
+    loadUsers();
+    loadSuggestions();
+    loadReports();
+    loadBans();
+    loadDMConvs();
+    loadAnnounce();
+    setInterval(loadActivity, 5000);
+    loadActivity();
+  }
 
-      // ── Clock ──
-      function startClock() {
-        const el = document.getElementById("topbarTime");
-        setInterval(() => {
-          el.textContent = new Date().toLocaleTimeString();
-        }, 1000);
-      }
+  // ── Clock ──
+  function startClock() {
+    const el = document.getElementById('topbarTime');
+    setInterval(() => { el.textContent = new Date().toLocaleTimeString(); }, 1000);
+  }
 
-      // ── Toast ──
-      function toast(msg, type = "success") {
-        const t = document.getElementById("toast");
-        t.textContent = msg;
-        t.className = "show " + type;
-        setTimeout(() => (t.className = ""), 2800);
-      }
+  // ── Toast ──
+  function toast(msg, type='success') {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.className = 'show ' + type;
+    setTimeout(() => t.className = '', 2800);
+  }
 
-      // ── Modal ──
-      let modalCb = null;
-      function confirm2(title, body, cb) {
-        document.getElementById("modalTitle").textContent = title;
-        document.getElementById("modalBody").textContent = body;
-        document.getElementById("modalBg").classList.add("open");
-        modalCb = cb;
-      }
-      function closeModal() {
-        document.getElementById("modalBg").classList.remove("open");
-        modalCb = null;
-      }
-      document.getElementById("modalConfirmBtn").onclick = () => {
-        closeModal();
-        if (modalCb) modalCb();
-      };
+  // ── Modal ──
+  let modalCb = null;
+  function confirm2(title, body, cb) {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalBody').textContent = body;
+    document.getElementById('modalBg').classList.add('open');
+    modalCb = cb;
+  }
+  function closeModal() { document.getElementById('modalBg').classList.remove('open'); modalCb = null; }
+  document.getElementById('modalConfirmBtn').onclick = () => { closeModal(); if(modalCb) modalCb(); };
 
-      // ── Sidebar nav ──
-      document.querySelectorAll(".sidebar-item").forEach((item) => {
-        item.addEventListener("click", () => {
-          document
-            .querySelectorAll(".sidebar-item")
-            .forEach((i) => i.classList.remove("active"));
-          item.classList.add("active");
-          document
-            .querySelectorAll(".page")
-            .forEach((p) => p.classList.remove("active"));
-          document
-            .getElementById("page-" + item.dataset.page)
-            .classList.add("active");
-          // load data for page
-          const p = item.dataset.page;
-          if (p === "parties") loadParties();
-          if (p === "bans") loadBans();
-          if (p === "messages") {
-            loadDMConvs();
-            populatePartySelects();
-          }
-          if (p === "broadcast") populatePartySelects();
-          if (p === "suggestions") loadSuggestions();
-          if (p === "reports") loadReports();
-          if (p === "announce") loadAnnounce();
-          if (p === "activity") loadActivity();
-          if (p === "users") loadUsers();
-        });
-      });
+  // ── Sidebar nav ──
+  document.querySelectorAll('.sidebar-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + item.dataset.page).classList.add('active');
+      // load data for page
+      const p = item.dataset.page;
+      if (p==='parties') loadParties();
+      if (p==='bans') loadBans();
+      if (p==='messages') { loadDMConvs(); populatePartySelects(); }
+      if (p==='broadcast') populatePartySelects();
+      if (p==='suggestions') loadSuggestions();
+      if (p==='reports') loadReports();
+      if (p==='announce') loadAnnounce();
+      if (p==='activity') loadActivity();
+      if (p==='users') loadUsers();
+    });
+  });
 
-      // ── Helpers ──
-      const esc = (s) =>
-        String(s)
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;");
-      function fmtDate(ts) {
-        if (!ts) return "—";
-        try {
-          return new Date(ts).toLocaleDateString("en-GB", {
-            day: "numeric",
-            month: "short",
-            hour: "2-digit",
-            minute: "2-digit",
-          });
-        } catch (e) {
-          return ts;
-        }
-      }
-      function ago(ts) {
-        const s = Math.floor((Date.now() - ts) / 1000);
-        if (s < 60) return s + "s ago";
-        if (s < 3600) return Math.floor(s / 60) + "m ago";
-        return Math.floor(s / 3600) + "h ago";
-      }
+  // ── Helpers ──
+  const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  function fmtDate(ts) { if(!ts) return '—'; try { return new Date(ts).toLocaleDateString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}); } catch(e){return ts;} }
+  function ago(ts) { const s=Math.floor((Date.now()-ts)/1000); if(s<60) return s+'s ago'; if(s<3600) return Math.floor(s/60)+'m ago'; return Math.floor(s/3600)+'h ago'; }
 
-      // ══════════════════════════════════════════════
-      // OVERVIEW
-      // ══════════════════════════════════════════════
-      function loadOverview() {
-        fbGet("/users", (data) => {
-          const users = data ? Object.values(data) : [];
-          document.getElementById("statUsers").textContent = users.length;
-          // Recent signups
-          const sorted = users
-            .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0))
-            .slice(0, 6);
-          document.getElementById("recentSignups").innerHTML = sorted.length
-            ? sorted
-                .map(
-                  (u) =>
-                    `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);">
-          <div class="uavatar">${esc(u.emoji || "👤")}</div>
+  // ══════════════════════════════════════════════
+  // OVERVIEW
+  // ══════════════════════════════════════════════
+  function loadOverview() {
+    fbGet('/users', data => {
+      const users = data ? Object.values(data) : [];
+      document.getElementById('statUsers').textContent = users.length;
+      // Recent signups
+      const sorted = users.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0)).slice(0,6);
+      document.getElementById('recentSignups').innerHTML = sorted.length ? sorted.map(u =>
+        `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);">
+          <div class="uavatar">${esc(u.emoji||'👤')}</div>
           <div style="flex:1;"><div style="font-size:12px;font-weight:700;">${esc(u.name)}</div><div style="font-size:10px;color:var(--text3);">${fmtDate(u.createdAt)}</div></div>
-          ${u.isAdmin ? '<span class="pill pill-purple">Admin</span>' : ""}
-        </div>`,
-                )
-                .join("")
-            : '<div class="empty"><span class="emoji">👤</span>No users yet</div>';
-        });
+          ${u.isAdmin ? '<span class="pill pill-purple">Admin</span>' : ''}
+        </div>`
+      ).join('') : '<div class="empty"><span class="emoji">👤</span>No users yet</div>';
+    });
 
-        fbGet("/parties", (data) => {
-          const parties = data ? Object.values(data) : [];
-          const active = parties.filter((p) => p && p.active);
-          document.getElementById("statParties").textContent = active.length;
-          document.getElementById("activePartiesPanel").innerHTML =
-            active.length
-              ? active
-                  .map((p) => {
-                    const members = p.members ? Object.values(p.members) : [];
-                    return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);">
+    fbGet('/parties', data => {
+      const parties = data ? Object.values(data) : [];
+      const active = parties.filter(p=>p&&p.active);
+      document.getElementById('statParties').textContent = active.length;
+      document.getElementById('activePartiesPanel').innerHTML = active.length ? active.map(p => {
+        const members = p.members ? Object.values(p.members) : [];
+        return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);">
           <div style="font-size:20px;">🎮</div>
           <div style="flex:1;"><div style="font-size:12px;font-weight:700;">${esc(p.name)}</div><div style="font-size:10px;color:var(--text3);">by ${esc(p.host)} · ${members.length} members</div></div>
         </div>`;
-                  })
-                  .join("")
-              : '<div class="empty"><span class="emoji">🎮</span>No active parties</div>';
-        });
+      }).join('') : '<div class="empty"><span class="emoji">🎮</span>No active parties</div>';
+    });
 
-        fbGet("/friendRequests", (data) => {
-          const reqs = data ? Object.values(data) : [];
-          document.getElementById("statFriendReqs").textContent = reqs.filter(
-            (r) => r && r.status === "pending",
-          ).length;
-        });
+    fbGet('/friendRequests', data => {
+      const reqs = data ? Object.values(data) : [];
+      document.getElementById('statFriendReqs').textContent = reqs.filter(r=>r&&r.status==='pending').length;
+    });
 
-        fbGet("/dms", (data) => {
-          document.getElementById("statDMs").textContent = data
-            ? Object.keys(data).length
-            : 0;
-        });
+    fbGet('/dms', data => {
+      document.getElementById('statDMs').textContent = data ? Object.keys(data).length : 0;
+    });
 
-        fbGet("/suggestions", (data) => {
-          const s = data ? Object.values(data) : [];
-          document.getElementById("suggBadge").textContent = s.length;
-          document.getElementById("overviewSuggestions").innerHTML = s.length
-            ? s
-                .slice(-5)
-                .reverse()
-                .map(
-                  (sg) =>
-                    `<div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;"><span style="font-weight:700;">${esc(sg.name)}</span> ${sg.note ? '<span style="color:var(--text3);">— ' + esc(sg.note) + "</span>" : ""}</div>`,
-                )
-                .join("")
-            : '<div class="empty"><span class="emoji">💡</span>No suggestions</div>';
-        });
-      }
+    fbGet('/suggestions', data => {
+      const s = data ? Object.values(data) : [];
+      document.getElementById('suggBadge').textContent = s.length;
+      document.getElementById('overviewSuggestions').innerHTML = s.length ? s.slice(-5).reverse().map(sg=>
+        `<div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;"><span style="font-weight:700;">${esc(sg.name)}</span> ${sg.note?'<span style="color:var(--text3);">— '+esc(sg.note)+'</span>':''}</div>`
+      ).join('') : '<div class="empty"><span class="emoji">💡</span>No suggestions</div>';
+    });
+  }
 
-      // ══════════════════════════════════════════════
-      // LIVE ACTIVITY
-      // ══════════════════════════════════════════════
-      const activityLog = [];
-      function addActivity(icon, msg, color = "var(--accent)") {
-        activityLog.unshift({ icon, msg, color, ts: Date.now() });
-        if (activityLog.length > 50) activityLog.pop();
-        renderActivity();
-      }
+  // ══════════════════════════════════════════════
+  // LIVE ACTIVITY
+  // ══════════════════════════════════════════════
+  const activityLog = [];
+  function addActivity(icon, msg, color='var(--accent)') {
+    activityLog.unshift({icon,msg,color,ts:Date.now()});
+    if(activityLog.length>50) activityLog.pop();
+    renderActivity();
+  }
 
-      function loadActivity() {
-        fbGet("/parties", (data) => {
-          const parties = data ? Object.values(data) : [];
-          const active = parties.filter((p) => p && p.active);
-          const el = document.getElementById("activityLog");
-          if (!el) return;
-          let html = `<div style="margin-bottom:14px;display:flex;gap:10px;">
+  function loadActivity() {
+    fbGet('/parties', data => {
+      const parties = data ? Object.values(data) : [];
+      const active = parties.filter(p=>p&&p.active);
+      const el = document.getElementById('activityLog');
+      if(!el) return;
+      let html = `<div style="margin-bottom:14px;display:flex;gap:10px;">
         <span class="pill pill-green">● ${active.length} active parties</span>
         <span class="pill pill-blue">Updated ${new Date().toLocaleTimeString()}</span>
       </div>`;
-          if (!active.length) {
-            el.innerHTML =
-              html +
-              '<div class="empty"><span class="emoji">⚡</span>No active parties right now</div>';
-            return;
-          }
-          html += active
-            .map((p) => {
-              const msgs = p.messages ? Object.values(p.messages) : [];
-              const last = msgs.length
-                ? msgs.sort((a, b) => b.ts - a.ts)[0]
-                : null;
-              const members = p.members ? Object.values(p.members) : [];
-              return `<div class="log-entry">
+      if(!active.length) { el.innerHTML = html + '<div class="empty"><span class="emoji">⚡</span>No active parties right now</div>'; return; }
+      html += active.map(p=>{
+        const msgs = p.messages ? Object.values(p.messages) : [];
+        const last = msgs.length ? msgs.sort((a,b)=>b.ts-a.ts)[0] : null;
+        const members = p.members ? Object.values(p.members) : [];
+        return `<div class="log-entry">
           <div class="log-dot" style="background:var(--green);"></div>
-          <div class="log-msg"><b>${esc(p.name)}</b> — ${members.map((m) => esc(m.emoji + " " + m.name)).join(", ")} ${last ? '<br><span style="color:var(--text3);">Last: ' + esc(last.author) + ": " + esc((last.text || "").slice(0, 60)) + "</span>" : ""}</div>
+          <div class="log-msg"><b>${esc(p.name)}</b> — ${members.map(m=>esc(m.emoji+' '+m.name)).join(', ')} ${last?'<br><span style="color:var(--text3);">Last: '+esc(last.author)+': '+esc((last.text||'').slice(0,60))+'</span>':''}</div>
           <div class="log-time">${members.length} members</div>
         </div>`;
-            })
-            .join("");
-          el.innerHTML = html;
-        });
-      }
-      function renderActivity() {
-        const el = document.getElementById("activityLog");
-        if (!el) return;
-        el.innerHTML = activityLog
-          .map(
-            (e) =>
-              `<div class="log-entry"><div class="log-dot" style="background:${e.color};"></div><div class="log-msg">${esc(e.msg)}</div><div class="log-time">${ago(e.ts)}</div></div>`,
-          )
-          .join("");
-      }
+      }).join('');
+      el.innerHTML = html;
+    });
+  }
+  function renderActivity() {
+    const el = document.getElementById('activityLog');
+    if(!el) return;
+    el.innerHTML = activityLog.map(e=>`<div class="log-entry"><div class="log-dot" style="background:${e.color};"></div><div class="log-msg">${esc(e.msg)}</div><div class="log-time">${ago(e.ts)}</div></div>`).join('');
+  }
 
-      // ══════════════════════════════════════════════
-      // USERS
-      // ══════════════════════════════════════════════
-      let allUsers = {};
-      function loadUsers() {
-        fbGet("/users", (data) => {
-          allUsers = data || {};
-          renderUsersTable(Object.entries(allUsers));
-        });
-      }
-      function filterUsers() {
-        const q = document.getElementById("userSearch").value.toLowerCase();
-        const filtered = Object.entries(allUsers).filter(
-          ([, u]) => u.name && u.name.toLowerCase().includes(q),
-        );
-        renderUsersTable(filtered);
-      }
-      function renderUsersTable(entries) {
-        const tbody = document.getElementById("usersTable");
-        if (!entries.length) {
-          tbody.innerHTML =
-            '<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3);">No users found</td></tr>';
-          return;
-        }
-        fbGet("/users", (_) => {});
-        tbody.innerHTML = entries
-          .map(([uid, u]) => {
-            return `<tr>
-        <td><div style="display:flex;align-items:center;gap:8px;"><div class="uavatar">${esc(u.emoji || "👤")}</div><div><div style="font-size:12px;font-weight:700;">${esc(u.name || "?")}</div>${u.isAdmin ? '<span class="pill pill-purple" style="margin-top:2px;">Admin</span>' : ""}</div></div></td>
-        <td style="font-size:10px;color:var(--text3);font-family:var(--mono);">${uid.slice(0, 12)}...</td>
+  // ══════════════════════════════════════════════
+  // USERS
+  // ══════════════════════════════════════════════
+  let allUsers = {};
+  function loadUsers() {
+    fbGet('/users', data => {
+      allUsers = data || {};
+      renderUsersTable(Object.entries(allUsers));
+    });
+  }
+  function filterUsers() {
+    const q = document.getElementById('userSearch').value.toLowerCase();
+    const filtered = Object.entries(allUsers).filter(([,u])=>u.name&&u.name.toLowerCase().includes(q));
+    renderUsersTable(filtered);
+  }
+  function renderUsersTable(entries) {
+    const tbody = document.getElementById('usersTable');
+    if(!entries.length){ tbody.innerHTML='<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3);">No users found</td></tr>'; return; }
+    fbGet('/users', _ => {});
+    tbody.innerHTML = entries.map(([uid,u])=>{
+      return `<tr>
+        <td><div style="display:flex;align-items:center;gap:8px;"><div class="uavatar">${esc(u.emoji||'👤')}</div><div><div style="font-size:12px;font-weight:700;">${esc(u.name||'?')}</div>${u.isAdmin?'<span class="pill pill-purple" style="margin-top:2px;">Admin</span>':''}</div></div></td>
+        <td style="font-size:10px;color:var(--text3);font-family:var(--mono);">${uid.slice(0,12)}...</td>
         <td style="font-size:11px;">${fmtDate(u.createdAt)}</td>
-        <td style="font-size:11px;">${u.lastSeen ? ago(u.lastSeen) : "—"}</td>
+        <td style="font-size:11px;">${u.lastSeen?ago(u.lastSeen):'—'}</td>
         <td><span class="pill pill-blue" id="fcount-${uid}">...</span></td>
         <td style="display:flex;gap:5px;flex-wrap:wrap;">
-          <button class="btn btn-ghost" onclick="quickEditUser('${uid}','${esc(u.name || "")}')">Edit</button>
-          <button class="btn btn-red" onclick="quickBan('${uid}','${esc(u.name || "")}')">Ban</button>
+          <button class="btn btn-ghost" onclick="quickEditUser('${uid}','${esc(u.name||'')}')">Edit</button>
+          <button class="btn btn-red" onclick="quickBan('${uid}','${esc(u.name||'')}')">Ban</button>
         </td>
       </tr>`;
-          })
-          .join("");
-        // Load friend counts
-        entries.forEach(([uid]) => {
-          fbGet("/users/" + uid + "/friends", (f) => {
-            const el = document.getElementById("fcount-" + uid);
-            if (el) el.textContent = f ? Object.keys(f).length : 0;
+    }).join('');
+    // Load friend counts
+    entries.forEach(([uid])=>{
+      fbGet('/users/'+uid+'/friends', f => {
+        const el = document.getElementById('fcount-'+uid);
+        if(el) el.textContent = f ? Object.keys(f).length : 0;
+      });
+    });
+  }
+
+  function quickEditUser(uid, name) {
+    document.getElementById('editUserSearch').value = name;
+    findUserForEdit();
+    document.querySelectorAll('.sidebar-item').forEach(i=>i.classList.remove('active'));
+    document.querySelector('[data-page="useredit"]').classList.add('active');
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById('page-useredit').classList.add('active');
+  }
+
+  function quickBan(uid, name) {
+    confirm2('Ban User', `Ban @${name}? They will be flagged and cannot log in.`, () => {
+      fbPatch('/users/'+uid, {banned:true, bannedAt:Date.now()}, () => {
+        fbPatch('/bans/'+uid, {name:name, bannedAt:Date.now()}, () => {
+          toast('✓ Banned @'+name); loadUsers(); loadBans();
+        });
+      });
+    });
+  }
+
+  // ══════════════════════════════════════════════
+  // EDIT USER
+  // ══════════════════════════════════════════════
+  let editingUid = null;
+  function findUserForEdit() {
+    const name = document.getElementById('editUserSearch').value.trim();
+    if(!name) return;
+    fbGet('/users', data => {
+      if(!data) { toast('No users found','error'); return; }
+      const found = Object.entries(data).find(([,u])=>u.name===name);
+      if(!found) { toast('User not found: '+name,'error'); return; }
+      editingUid = found[0];
+      const u = found[1];
+      document.getElementById('editUserPanel').style.display = 'block';
+      document.getElementById('euName').value = u.name || '';
+      document.getElementById('euEmoji').value = u.emoji || '';
+      // Load streak
+      fbGet('/userData/'+editingUid, ud => {
+        const streak = ud && ud.streak ? ud.streak.count || 0 : 0;
+        document.getElementById('euStreak').value = streak;
+        // Build achievement grid
+        const unlocked = ud && ud.achievements ? ud.achievements : [];
+        buildAchGrid(unlocked);
+        // Load favs
+        const favs = ud && ud.favs ? ud.favs : [];
+        document.getElementById('euFavsList').textContent = favs.length ? 'Current: ' + favs.join(', ') : 'No favourites';
+      });
+      toast('✓ Loaded @'+name);
+    });
+  }
+
+  function buildAchGrid(unlocked) {
+    const grid = document.getElementById('euAchGrid');
+    grid.innerHTML = ACHIEVEMENTS.map(a => {
+      const on = unlocked.includes(a.id);
+      return `<button class="btn ${on?'btn-yellow':'btn-ghost'}" data-ach="${a.id}" onclick="toggleAch('${a.id}',this)" style="font-size:11px;">${a.icon} ${a.name}</button>`;
+    }).join('');
+  }
+
+  function toggleAch(achId, btn) {
+    if(!editingUid) return;
+    fbGet('/userData/'+editingUid+'/achievements', achs => {
+      let list = achs || [];
+      if(list.includes(achId)) {
+        list = list.filter(a=>a!==achId);
+        btn.className = 'btn btn-ghost'; btn.style.cssText='font-size:11px;';
+      } else {
+        list.push(achId);
+        btn.className = 'btn btn-yellow'; btn.style.cssText='font-size:11px;';
+      }
+      fbSet('/userData/'+editingUid+'/achievements', list, () => toast('✓ Achievement updated'));
+    });
+  }
+
+  function saveUserProfile() {
+    if(!editingUid) return;
+    const name = document.getElementById('euName').value.trim();
+    const emoji = document.getElementById('euEmoji').value.trim();
+    const pass = document.getElementById('euPass').value.trim();
+    if(!name) { toast('Name cannot be empty','error'); return; }
+    const update = {name, emoji};
+    if(pass) {
+      let h = 0;
+      for(let i=0;i<pass.length;i++) h = Math.imul(31,h)+pass.charCodeAt(i)|0;
+      update.passwordHash = 'h'+Math.abs(h).toString(36);
+    }
+    fbPatch('/users/'+editingUid, update, () => toast('✓ Profile saved'));
+  }
+
+  function saveStreak() {
+    if(!editingUid) return;
+    const count = parseInt(document.getElementById('euStreak').value) || 0;
+    fbPatch('/userData/'+editingUid+'/streak', {count, lastDay: new Date().toISOString().slice(0,10)}, () => toast('✓ Streak set to '+count+' days 🔥'));
+  }
+
+  function addFavGame() {
+    if(!editingUid) return;
+    const gameId = document.getElementById('euFavGame').value.trim();
+    if(!gameId) return;
+    fbGet('/userData/'+editingUid+'/favs', favs => {
+      const list = favs || [];
+      if(!list.includes(gameId)) list.push(gameId);
+      fbSet('/userData/'+editingUid+'/favs', list, () => {
+        toast('✓ Added '+gameId+' to favourites');
+        document.getElementById('euFavsList').textContent = 'Current: '+list.join(', ');
+        document.getElementById('euFavGame').value='';
+      });
+    });
+  }
+
+  function banUser() {
+    if(!editingUid) return;
+    const name = document.getElementById('euName').value;
+    confirm2('Ban User','This will flag their account. They cannot log in until unbanned.', () => {
+      fbPatch('/users/'+editingUid, {banned:true, bannedAt:Date.now()}, () => {
+        fbPatch('/bans/'+editingUid, {name, bannedAt:Date.now()}, () => {
+          toast('✓ User banned'); loadBans();
+        });
+      });
+    });
+  }
+
+  function clearUserHistory() {
+    if(!editingUid) return;
+    confirm2('Clear Play History','This will delete their play history and play times.', () => {
+      fbDelete('/userData/'+editingUid+'/recentGames', () => {
+        fbDelete('/userData/'+editingUid+'/playTimes', () => toast('✓ Play history cleared'));
+      });
+    });
+  }
+
+  function clearUserAchievements() {
+    if(!editingUid) return;
+    confirm2('Clear Achievements','This will remove all their unlocked achievements.', () => {
+      fbSet('/userData/'+editingUid+'/achievements', [], () => {
+        buildAchGrid([]); toast('✓ Achievements cleared');
+      });
+    });
+  }
+
+  function clearUserFriends() {
+    if(!editingUid) return;
+    confirm2('Remove All Friends','This removes them from all friend lists.', () => {
+      fbGet('/users/'+editingUid+'/friends', friends => {
+        const fids = friends ? Object.keys(friends) : [];
+        fids.forEach(fid => fbDelete('/users/'+fid+'/friends/'+editingUid));
+        fbDelete('/users/'+editingUid+'/friends', () => toast('✓ All friends removed'));
+      });
+    });
+  }
+
+  function deleteUser() {
+    if(!editingUid) return;
+    const name = document.getElementById('euName').value;
+    confirm2('DELETE ACCOUNT','This permanently deletes @'+name+' and all their data. CANNOT be undone.', () => {
+      const uid = editingUid;
+      // 1. Remove from all friends' friend lists
+      fbGet('/users/'+uid+'/friends', friends => {
+        if(friends) Object.keys(friends).forEach(fid => fbDelete('/users/'+fid+'/friends/'+uid));
+      });
+      // 2. Remove pending friend requests involving this user
+      fbGet('/friendRequests', reqs => {
+        if(reqs) Object.entries(reqs).forEach(([rid,r]) => {
+          if(r && (r.fromId===uid || r.toId===uid)) fbDelete('/friendRequests/'+rid);
+        });
+      });
+      // 3. Remove from party member lists
+      fbGet('/parties', parties => {
+        if(parties) Object.entries(parties).forEach(([pid,p]) => {
+          if(!p || !p.members) return;
+          Object.entries(p.members).forEach(([mid,m]) => {
+            if(m && m.uid===uid) fbDelete('/parties/'+pid+'/members/'+mid);
           });
         });
-      }
-
-      function quickEditUser(uid, name) {
-        document.getElementById("editUserSearch").value = name;
-        findUserForEdit();
-        document
-          .querySelectorAll(".sidebar-item")
-          .forEach((i) => i.classList.remove("active"));
-        document
-          .querySelector('[data-page="useredit"]')
-          .classList.add("active");
-        document
-          .querySelectorAll(".page")
-          .forEach((p) => p.classList.remove("active"));
-        document.getElementById("page-useredit").classList.add("active");
-      }
-
-      function quickBan(uid, name) {
-        confirm2(
-          "Ban User",
-          `Ban @${name}? They will be flagged and cannot log in.`,
-          () => {
-            fbPatch(
-              "/users/" + uid,
-              { banned: true, bannedAt: Date.now() },
-              () => {
-                fbPatch("/bans/" + uid, { name, bannedAt: Date.now() }, () => {
-                  toast("✓ Banned @" + name);
-                  loadUsers();
-                  loadBans();
-                });
-              },
-            );
-          },
-        );
-      }
-
-      // ══════════════════════════════════════════════
-      // EDIT USER
-      // ══════════════════════════════════════════════
-      let editingUid = null;
-      function findUserForEdit() {
-        const name = document.getElementById("editUserSearch").value.trim();
-        if (!name) return;
-        fbGet("/users", (data) => {
-          if (!data) {
-            toast("No users found", "error");
-            return;
-          }
-          const found = Object.entries(data).find(([, u]) => u.name === name);
-          if (!found) {
-            toast("User not found: " + name, "error");
-            return;
-          }
-          editingUid = found[0];
-          const u = found[1];
-          document.getElementById("editUserPanel").style.display = "block";
-          document.getElementById("euName").value = u.name || "";
-          document.getElementById("euEmoji").value = u.emoji || "";
-          // Load streak
-          fbGet("/userData/" + editingUid, (ud) => {
-            const streak = ud && ud.streak ? ud.streak.count || 0 : 0;
-            document.getElementById("euStreak").value = streak;
-            // Build achievement grid
-            const unlocked = ud && ud.achievements ? ud.achievements : [];
-            buildAchGrid(unlocked);
-            // Load favs
-            const favs = ud && ud.favs ? ud.favs : [];
-            document.getElementById("euFavsList").textContent = favs.length
-              ? "Current: " + favs.join(", ")
-              : "No favourites";
-          });
-          toast("✓ Loaded @" + name);
-        });
-      }
-
-      function buildAchGrid(unlocked) {
-        const grid = document.getElementById("euAchGrid");
-        grid.innerHTML = ACHIEVEMENTS.map((a) => {
-          const on = unlocked.includes(a.id);
-          return `<button class="btn ${on ? "btn-yellow" : "btn-ghost"}" data-ach="${a.id}" onclick="toggleAch('${a.id}',this)" style="font-size:11px;">${a.icon} ${a.name}</button>`;
-        }).join("");
-      }
-
-      function toggleAch(achId, btn) {
-        if (!editingUid) return;
-        fbGet("/userData/" + editingUid + "/achievements", (achs) => {
-          let list = achs || [];
-          if (list.includes(achId)) {
-            list = list.filter((a) => a !== achId);
-            btn.className = "btn btn-ghost";
-            btn.style.cssText = "font-size:11px;";
-          } else {
-            list.push(achId);
-            btn.className = "btn btn-yellow";
-            btn.style.cssText = "font-size:11px;";
-          }
-          fbSet("/userData/" + editingUid + "/achievements", list, () =>
-            toast("✓ Achievement updated"),
-          );
-        });
-      }
-
-      function saveUserProfile() {
-        if (!editingUid) return;
-        const name = document.getElementById("euName").value.trim();
-        const emoji = document.getElementById("euEmoji").value.trim();
-        const pass = document.getElementById("euPass").value.trim();
-        if (!name) {
-          toast("Name cannot be empty", "error");
-          return;
-        }
-        const update = { name, emoji };
-        if (pass) {
-          let h = 0;
-          for (let i = 0; i < pass.length; i++)
-            h = (Math.imul(31, h) + pass.charCodeAt(i)) | 0;
-          update.passwordHash = "h" + Math.abs(h).toString(36);
-        }
-        fbPatch("/users/" + editingUid, update, () => toast("✓ Profile saved"));
-      }
-
-      function saveStreak() {
-        if (!editingUid) return;
-        const count = parseInt(document.getElementById("euStreak").value) || 0;
-        fbPatch(
-          "/userData/" + editingUid + "/streak",
-          { count, lastDay: new Date().toISOString().slice(0, 10) },
-          () => toast("✓ Streak set to " + count + " days 🔥"),
-        );
-      }
-
-      function addFavGame() {
-        if (!editingUid) return;
-        const gameId = document.getElementById("euFavGame").value.trim();
-        if (!gameId) return;
-        fbGet("/userData/" + editingUid + "/favs", (favs) => {
-          const list = favs || [];
-          if (!list.includes(gameId)) list.push(gameId);
-          fbSet("/userData/" + editingUid + "/favs", list, () => {
-            toast("✓ Added " + gameId + " to favourites");
-            document.getElementById("euFavsList").textContent =
-              "Current: " + list.join(", ");
-            document.getElementById("euFavGame").value = "";
+      });
+      // 4. Delete user record and userData
+      fbDelete('/users/'+uid, () => {
+        fbDelete('/userData/'+uid, () => {
+          fbDelete('/bans/'+uid, () => {
+            toast('✓ Account fully deleted: @'+name);
+            document.getElementById('editUserPanel').style.display='none';
+            editingUid=null;
+            document.getElementById('editUserSearch').value='';
+            loadUsers();
           });
         });
-      }
+      });
+    });
+  }
 
-      function banUser() {
-        if (!editingUid) return;
-        const name = document.getElementById("euName").value;
-        confirm2(
-          "Ban User",
-          "This will flag their account. They cannot log in until unbanned.",
-          () => {
-            fbPatch(
-              "/users/" + editingUid,
-              { banned: true, bannedAt: Date.now() },
-              () => {
-                fbPatch(
-                  "/bans/" + editingUid,
-                  { name, bannedAt: Date.now() },
-                  () => {
-                    toast("✓ User banned");
-                    loadBans();
-                  },
-                );
-              },
-            );
-          },
-        );
-      }
+  function makeUserAdmin() {
+    if(!editingUid) return;
+    fbPatch('/users/'+editingUid, {isAdmin:true}, () => toast('⚡ Admin badge granted'));
+  }
 
-      function clearUserHistory() {
-        if (!editingUid) return;
-        confirm2(
-          "Clear Play History",
-          "This will delete their play history and play times.",
-          () => {
-            fbDelete("/userData/" + editingUid + "/recentGames", () => {
-              fbDelete("/userData/" + editingUid + "/playTimes", () =>
-                toast("✓ Play history cleared"),
-              );
-            });
-          },
-        );
-      }
-
-      function clearUserAchievements() {
-        if (!editingUid) return;
-        confirm2(
-          "Clear Achievements",
-          "This will remove all their unlocked achievements.",
-          () => {
-            fbSet("/userData/" + editingUid + "/achievements", [], () => {
-              buildAchGrid([]);
-              toast("✓ Achievements cleared");
-            });
-          },
-        );
-      }
-
-      function clearUserFriends() {
-        if (!editingUid) return;
-        confirm2(
-          "Remove All Friends",
-          "This removes them from all friend lists.",
-          () => {
-            fbGet("/users/" + editingUid + "/friends", (friends) => {
-              const fids = friends ? Object.keys(friends) : [];
-              fids.forEach((fid) =>
-                fbDelete("/users/" + fid + "/friends/" + editingUid),
-              );
-              fbDelete("/users/" + editingUid + "/friends", () =>
-                toast("✓ All friends removed"),
-              );
-            });
-          },
-        );
-      }
-
-      function deleteUser() {
-        if (!editingUid) return;
-        const name = document.getElementById("euName").value;
-        confirm2(
-          "DELETE ACCOUNT",
-          "This permanently deletes @" +
-            name +
-            " and all their data. CANNOT be undone.",
-          () => {
-            fbDelete("/users/" + editingUid);
-            fbDelete("/userData/" + editingUid, () => {
-              toast("✓ Account deleted");
-              document.getElementById("editUserPanel").style.display = "none";
-              editingUid = null;
-            });
-          },
-        );
-      }
-
-      function makeUserAdmin() {
-        if (!editingUid) return;
-        fbPatch("/users/" + editingUid, { isAdmin: true }, () =>
-          toast("⚡ Admin badge granted"),
-        );
-      }
-
-      // ══════════════════════════════════════════════
-      // BANS
-      // ══════════════════════════════════════════════
-      function loadBans() {
-        fbGet("/bans", (data) => {
-          const el = document.getElementById("bansPanel");
-          if (!data || !Object.keys(data).length) {
-            el.innerHTML =
-              '<div class="empty"><span class="emoji">✅</span>No banned users</div>';
-            return;
-          }
-          el.innerHTML = Object.entries(data)
-            .map(
-              ([uid, b]) =>
-                `<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);">
+  // ══════════════════════════════════════════════
+  // BANS
+  // ══════════════════════════════════════════════
+  function loadBans() {
+    fbGet('/bans', data => {
+      const el = document.getElementById('bansPanel');
+      if(!data||!Object.keys(data).length){ el.innerHTML='<div class="empty"><span class="emoji">✅</span>No banned users</div>'; return; }
+      el.innerHTML = Object.entries(data).map(([uid,b])=>
+        `<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);">
           <span class="pill pill-red">BANNED</span>
-          <div style="flex:1;font-size:12px;font-weight:700;">${esc(b.name || uid)}</div>
+          <div style="flex:1;font-size:12px;font-weight:700;">${esc(b.name||uid)}</div>
           <div style="font-size:11px;color:var(--text3);">${fmtDate(b.bannedAt)}</div>
-          <button class="btn btn-green" onclick="unbanUser('${uid}','${esc(b.name || uid)}')">Unban</button>
-        </div>`,
-            )
-            .join("");
-        });
-      }
+          <button class="btn btn-green" onclick="unbanUser('${uid}','${esc(b.name||uid)}')">Unban</button>
+        </div>`
+      ).join('');
+    });
+  }
 
-      function unbanUser(uid, name) {
-        fbDelete("/bans/" + uid, () => {
-          fbPatch("/users/" + uid, { banned: false }, () => {
-            toast("✓ Unbanned " + name);
-            loadBans();
-          });
-        });
-      }
+  function unbanUser(uid, name) {
+    fbDelete('/bans/'+uid, () => {
+      fbPatch('/users/'+uid, {banned:false}, () => {
+        toast('✓ Unbanned '+name); loadBans();
+      });
+    });
+  }
 
-      // ══════════════════════════════════════════════
-      // PARTIES
-      // ══════════════════════════════════════════════
-      function loadParties() {
-        fbGet("/parties", (data) => {
-          const tbody = document.getElementById("partiesTable");
-          if (!data) {
-            tbody.innerHTML =
-              '<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3);">No parties</td></tr>';
-            return;
-          }
-          const entries = Object.entries(data).sort(
-            (a, b) => (b[1].createdAt || 0) - (a[1].createdAt || 0),
-          );
-          tbody.innerHTML = entries
-            .map(([pid, p]) => {
-              const members = p.members ? Object.values(p.members) : [];
-              const msgs = p.messages ? Object.keys(p.messages).length : 0;
-              return `<tr>
-          <td style="font-size:12px;font-weight:700;">${esc(p.name || "?")}</td>
-          <td style="font-size:12px;">${esc(p.host || "?")}</td>
+  // ══════════════════════════════════════════════
+  // PARTIES
+  // ══════════════════════════════════════════════
+  function loadParties() {
+    fbGet('/parties', data => {
+      const tbody = document.getElementById('partiesTable');
+      if(!data){ tbody.innerHTML='<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3);">No parties</td></tr>'; return; }
+      const entries = Object.entries(data).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));
+      tbody.innerHTML = entries.map(([pid,p])=>{
+        const members = p.members ? Object.values(p.members) : [];
+        const msgs = p.messages ? Object.keys(p.messages).length : 0;
+        return `<tr>
+          <td style="font-size:12px;font-weight:700;">${esc(p.name||'?')}</td>
+          <td style="font-size:12px;">${esc(p.host||'?')}</td>
           <td><span class="pill pill-blue">${members.length}</span></td>
           <td style="font-size:11px;color:var(--text3);">${msgs}</td>
-          <td>${p.active ? '<span class="pill pill-green">Active</span>' : '<span class="pill pill-gray">Disbanded</span>'}</td>
+          <td>${p.active?'<span class="pill pill-green">Active</span>':'<span class="pill pill-gray">Disbanded</span>'}</td>
           <td style="display:flex;gap:5px;">
-            <button class="btn btn-yellow" onclick="forceDisband('${pid}','${esc(p.name || "")}')">Disband</button>
-            <button class="btn btn-red" onclick="deleteParty('${pid}','${esc(p.name || "")}')">Delete</button>
+            <button class="btn btn-yellow" onclick="forceDisband('${pid}','${esc(p.name||'')}')">Disband</button>
+            <button class="btn btn-red" onclick="deleteParty('${pid}','${esc(p.name||'')}')">Delete</button>
           </td>
         </tr>`;
-            })
-            .join("");
-        });
-      }
+      }).join('');
+    });
+  }
 
-      function forceDisband(pid, name) {
-        confirm2("Disband Party", 'Force-disband "' + name + '"?', () => {
-          fbPatch("/parties/" + pid, { active: false }, () => {
-            toast("✓ Party disbanded");
-            loadParties();
-          });
-        });
-      }
+  function forceDisband(pid,name) {
+    confirm2('Disband Party','Force-disband "'+name+'"?', () => {
+      fbPatch('/parties/'+pid, {active:false}, () => { toast('✓ Party disbanded'); loadParties(); });
+    });
+  }
 
-      function deleteParty(pid, name) {
-        confirm2(
-          "Delete Party",
-          'Permanently delete "' + name + '" and all its messages?',
-          () => {
-            fbDelete("/parties/" + pid, () => {
-              toast("✓ Party deleted");
-              loadParties();
-            });
-          },
-        );
-      }
+  function deleteParty(pid,name) {
+    confirm2('Delete Party','Permanently delete "'+name+'" and all its messages?', () => {
+      fbDelete('/parties/'+pid, () => { toast('✓ Party deleted'); loadParties(); });
+    });
+  }
 
-      // ══════════════════════════════════════════════
-      // MESSAGES
-      // ══════════════════════════════════════════════
-      function populatePartySelects() {
-        fbGet("/parties", (data) => {
-          const active = data
-            ? Object.values(data).filter((p) => p && p.active)
-            : [];
-          const opts = active
-            .map((p) => `<option value="${esc(p.id)}">${esc(p.name)}</option>`)
-            .join("");
-          const selects = ["partyMsgSelect", "targetPartySelect"];
-          selects.forEach((id) => {
-            const el = document.getElementById(id);
-            if (el) el.innerHTML = opts || "<option>No active parties</option>";
-          });
-        });
-      }
+  // ══════════════════════════════════════════════
+  // MESSAGES
+  // ══════════════════════════════════════════════
+  function populatePartySelects() {
+    fbGet('/parties', data => {
+      const active = data ? Object.values(data).filter(p=>p&&p.active) : [];
+      const opts = active.map(p=>`<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('');
+      const selects = ['partyMsgSelect','targetPartySelect'];
+      selects.forEach(id => { const el=document.getElementById(id); if(el) el.innerHTML = opts||'<option>No active parties</option>'; });
+    });
+  }
 
-      function loadPartyMsgs() {
-        const pid = document.getElementById("partyMsgSelect").value;
-        if (!pid) return;
-        fbGet("/parties/" + pid + "/messages", (data) => {
-          const el = document.getElementById("partyMsgsView");
-          if (!data) {
-            el.innerHTML = '<div class="empty">No messages</div>';
-            return;
-          }
-          const msgs = Object.values(data).sort((a, b) => a.ts - b.ts);
-          el.innerHTML = msgs
-            .map(
-              (m) =>
-                `<div style="padding:5px 0;border-bottom:1px solid var(--border);font-size:11px;">
+  function loadPartyMsgs() {
+    const pid = document.getElementById('partyMsgSelect').value;
+    if(!pid) return;
+    fbGet('/parties/'+pid+'/messages', data => {
+      const el = document.getElementById('partyMsgsView');
+      if(!data){ el.innerHTML='<div class="empty">No messages</div>'; return; }
+      const msgs = Object.values(data).sort((a,b)=>a.ts-b.ts);
+      el.innerHTML = msgs.map(m=>
+        `<div style="padding:5px 0;border-bottom:1px solid var(--border);font-size:11px;">
           <span style="color:var(--text3);">${ago(m.ts)}</span>
-          <span style="font-weight:700;margin:0 5px;">${m.system ? "[System]" : esc(m.author)}</span>
-          <span style="color:var(--text2);">${esc((m.text || "").slice(0, 120))}</span>
-        </div>`,
-            )
-            .join("");
-        });
-      }
+          <span style="font-weight:700;margin:0 5px;">${m.system?'[System]':esc(m.author)}</span>
+          <span style="color:var(--text2);">${esc((m.text||'').slice(0,120))}</span>
+        </div>`
+      ).join('');
+    });
+  }
 
-      function loadDMConvs() {
-        fbGet("/dms", (data) => {
-          const el = document.getElementById("dmConvsPanel");
-          if (!data || !Object.keys(data).length) {
-            el.innerHTML =
-              '<div class="empty"><span class="emoji">💬</span>No DMs yet</div>';
-            return;
-          }
-          const entries = Object.entries(data);
-          el.innerHTML = entries
-            .map(([cid, conv]) => {
-              const msgs = conv.messages ? Object.values(conv.messages) : [];
-              const last = msgs.length
-                ? msgs.sort((a, b) => b.ts - a.ts)[0]
-                : null;
-              return `<div style="padding:8px 0;border-bottom:1px solid var(--border);">
+  function loadDMConvs() {
+    fbGet('/dms', data => {
+      const el = document.getElementById('dmConvsPanel');
+      if(!data||!Object.keys(data).length){ el.innerHTML='<div class="empty"><span class="emoji">💬</span>No DMs yet</div>'; return; }
+      const entries = Object.entries(data);
+      el.innerHTML = entries.map(([cid,conv])=>{
+        const msgs = conv.messages ? Object.values(conv.messages) : [];
+        const last = msgs.length ? msgs.sort((a,b)=>b.ts-a.ts)[0] : null;
+        return `<div style="padding:8px 0;border-bottom:1px solid var(--border);">
           <div style="font-size:11px;font-weight:700;color:var(--accent);">${cid}</div>
-          ${last ? `<div style="font-size:11px;color:var(--text2);">${esc(last.fromName)}: ${esc((last.text || "").slice(0, 60))}</div>` : ""}
+          ${last?`<div style="font-size:11px;color:var(--text2);">${esc(last.fromName)}: ${esc((last.text||'').slice(0,60))}</div>`:'' }
           <div style="font-size:10px;color:var(--text3);">${msgs.length} messages</div>
         </div>`;
-            })
-            .join("");
-        });
-      }
+      }).join('');
+    });
+  }
 
-      // ══════════════════════════════════════════════
-      // SUGGESTIONS & REPORTS
-      // ══════════════════════════════════════════════
-      function loadSuggestions() {
-        fbGet("/suggestions", (data) => {
-          const el = document.getElementById("suggestionsPanel");
-          if (!data || !Object.keys(data).length) {
-            el.innerHTML =
-              '<div class="empty"><span class="emoji">💡</span>No suggestions yet</div>';
-            return;
-          }
-          const items = Object.values(data).reverse();
-          el.innerHTML = items
-            .map(
-              (s) =>
-                `<div style="padding:10px 0;border-bottom:1px solid var(--border);">
+  // ══════════════════════════════════════════════
+  // SUGGESTIONS & REPORTS
+  // ══════════════════════════════════════════════
+  function loadSuggestions() {
+    fbGet('/suggestions', data => {
+      const el = document.getElementById('suggestionsPanel');
+      if(!data||!Object.keys(data).length){ el.innerHTML='<div class="empty"><span class="emoji">💡</span>No suggestions yet</div>'; return; }
+      const items = Object.values(data).reverse();
+      el.innerHTML = items.map(s=>
+        `<div style="padding:10px 0;border-bottom:1px solid var(--border);">
           <div style="font-size:13px;font-weight:700;">${esc(s.name)}</div>
-          ${s.note ? `<div style="font-size:11px;color:var(--text2);margin-top:2px;">${esc(s.note)}</div>` : ""}
+          ${s.note?`<div style="font-size:11px;color:var(--text2);margin-top:2px;">${esc(s.note)}</div>`:''}
           <div style="font-size:10px;color:var(--text3);margin-top:3px;">${fmtDate(s.date)}</div>
-        </div>`,
-            )
-            .join("");
-        });
-      }
+        </div>`
+      ).join('');
+    });
+  }
 
-      function clearSuggestions() {
-        confirm2("Clear Suggestions", "Delete all game suggestions?", () => {
-          fbDelete("/suggestions", () => {
-            toast("✓ Suggestions cleared");
-            loadSuggestions();
-          });
-        });
-      }
+  function clearSuggestions() {
+    confirm2('Clear Suggestions','Delete all game suggestions?', () => {
+      fbDelete('/suggestions', () => { toast('✓ Suggestions cleared'); loadSuggestions(); });
+    });
+  }
 
-      function loadReports() {
-        fbGet("/brokenReports", (data) => {
-          const el = document.getElementById("reportsPanel");
-          if (!data || !Object.keys(data).length) {
-            el.innerHTML =
-              '<div class="empty"><span class="emoji">✅</span>No bug reports! Great!</div>';
-            return;
-          }
-          const items = Object.values(data).reverse();
-          el.innerHTML = items
-            .map((r) => {
-              const g =
-                typeof games !== "undefined" &&
-                games.find((x) => x.id === r.gameId);
-              return `<div style="padding:10px 0;border-bottom:1px solid var(--border);">
+  function loadReports() {
+    fbGet('/brokenReports', data => {
+      const el = document.getElementById('reportsPanel');
+      if(!data||!Object.keys(data).length){ el.innerHTML='<div class="empty"><span class="emoji">✅</span>No bug reports! Great!</div>'; return; }
+      const items = Object.values(data).reverse();
+      el.innerHTML = items.map(r=>{
+        const g = typeof games!=='undefined' && games.find(x=>x.id===r.gameId);
+        return `<div style="padding:10px 0;border-bottom:1px solid var(--border);">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
             <span class="pill pill-red">Bug</span>
-            <span style="font-size:12px;font-weight:700;">${g ? esc(g.title) : esc(r.gameId || "Unknown")}</span>
+            <span style="font-size:12px;font-weight:700;">${g?esc(g.title):esc(r.gameId||'Unknown')}</span>
           </div>
-          ${r.note ? `<div style="font-size:11px;color:var(--text2);">${esc(r.note)}</div>` : '<div style="font-size:11px;color:var(--text3);">No description</div>'}
+          ${r.note?`<div style="font-size:11px;color:var(--text2);">${esc(r.note)}</div>`:'<div style="font-size:11px;color:var(--text3);">No description</div>'}
           <div style="font-size:10px;color:var(--text3);margin-top:3px;">${fmtDate(r.date)}</div>
         </div>`;
-            })
-            .join("");
-        });
-      }
+      }).join('');
+    });
+  }
 
-      function clearReports() {
-        confirm2("Clear Reports", "Delete all bug reports?", () => {
-          fbDelete("/brokenReports", () => {
-            toast("✓ Reports cleared");
-            loadReports();
+  function clearReports() {
+    confirm2('Clear Reports','Delete all bug reports?', () => {
+      fbDelete('/brokenReports', () => { toast('✓ Reports cleared'); loadReports(); });
+    });
+  }
+
+  // ══════════════════════════════════════════════
+  // ANNOUNCEMENTS
+  // ══════════════════════════════════════════════
+  function loadAnnounce() {
+    const saved = localStorage.getItem('adminAnnounce') || '';
+    document.getElementById('announceText').value = saved;
+    updateAnnouncePreview();
+  }
+
+  document.getElementById('announceText')?.addEventListener('input', updateAnnouncePreview);
+
+  function updateAnnouncePreview() {
+    const v = document.getElementById('announceText').value.trim();
+    document.getElementById('announcePreview').textContent = v || '(no message — banner will be hidden)';
+  }
+
+  function saveAnnounce() {
+    const v = document.getElementById('announceText').value.trim();
+    localStorage.setItem('adminAnnounce', v);
+    toast('✓ Announcement saved');
+  }
+
+  function clearAnnounce() {
+    document.getElementById('announceText').value = '';
+    localStorage.removeItem('adminAnnounce');
+    updateAnnouncePreview();
+    toast('✓ Banner cleared');
+  }
+
+  function quickAnnounce(msg) {
+    document.getElementById('announceText').value = msg;
+    localStorage.setItem('adminAnnounce', msg);
+    updateAnnouncePreview();
+    toast(msg ? '✓ Announcement set' : '✓ Banner cleared');
+  }
+
+  // ══════════════════════════════════════════════
+  // BROADCAST
+  // ══════════════════════════════════════════════
+  function broadcastToAll() {
+    const msg = document.getElementById('broadcastMsg').value.trim();
+    if(!msg){ toast('Enter a message','error'); return; }
+    confirm2('Broadcast','Send this to ALL active parties: "'+msg.slice(0,60)+'"?', () => {
+      fbGet('/parties', data => {
+        if(!data){ toast('No parties','error'); return; }
+        const active = Object.values(data).filter(p=>p&&p.active);
+        let done = 0;
+        if(!active.length){ toast('No active parties','error'); return; }
+        active.forEach(p => {
+          fbPush('/parties/'+p.id+'/messages', {author:'📡 Admin', emoji:'⚡', text:msg, ts:Date.now(), system:true}, () => {
+            done++;
+            if(done===active.length) { toast('✓ Broadcast sent to '+done+' parties'); document.getElementById('broadcastMsg').value=''; }
           });
         });
-      }
+      });
+    });
+  }
 
-      // ══════════════════════════════════════════════
-      // ANNOUNCEMENTS
-      // ══════════════════════════════════════════════
-      function loadAnnounce() {
-        const saved = localStorage.getItem("adminAnnounce") || "";
-        document.getElementById("announceText").value = saved;
-        updateAnnouncePreview();
-      }
+  function msgSpecificParty() {
+    const pid = document.getElementById('targetPartySelect').value;
+    const msg = document.getElementById('targetPartyMsg').value.trim();
+    if(!pid||!msg){ toast('Select a party and enter a message','error'); return; }
+    fbPush('/parties/'+pid+'/messages', {author:'📡 Admin', emoji:'⚡', text:msg, ts:Date.now(), system:true}, () => {
+      toast('✓ Message sent'); document.getElementById('targetPartyMsg').value='';
+    });
+  }
 
-      document
-        .getElementById("announceText")
-        ?.addEventListener("input", updateAnnouncePreview);
+  // ══════════════════════════════════════════════
+  // DATABASE BROWSER
+  // ══════════════════════════════════════════════
+  function readDbPath() {
+    const path = document.getElementById('dbPath').value.trim();
+    if(!path){ toast('Enter a path','error'); return; }
+    fbGet(path, data => {
+      document.getElementById('dbResult').value = data !== null ? JSON.stringify(data, null, 2) : 'null (path not found)';
+    });
+  }
 
-      function updateAnnouncePreview() {
-        const v = document.getElementById("announceText").value.trim();
-        document.getElementById("announcePreview").textContent =
-          v || "(no message — banner will be hidden)";
-      }
+  function writeDbPath(method) {
+    const path = document.getElementById('dbWritePath').value.trim();
+    const valStr = document.getElementById('dbWriteVal').value.trim();
+    if(!path||!valStr){ toast('Fill in path and value','error'); return; }
+    let val;
+    try { val = JSON.parse(valStr); } catch(e) { val = valStr; }
+    confirm2('Write to Database','Write to path: '+path+'?', () => {
+      if(method==='patch') fbPatch(path, val, ()=>toast('✓ Patched'));
+      else fbSet(path, val, ()=>toast('✓ Set'));
+    });
+  }
 
-      function saveAnnounce() {
-        const v = document.getElementById("announceText").value.trim();
-        localStorage.setItem("adminAnnounce", v);
-        toast("✓ Announcement saved");
-      }
+  function deleteDbPath() {
+    const path = document.getElementById('dbWritePath').value.trim();
+    if(!path){ toast('Enter a path','error'); return; }
+    confirm2('Delete Path','DELETE '+path+'? This cannot be undone.', () => {
+      fbDelete(path, ()=>toast('✓ Deleted'));
+    });
+  }
 
-      function clearAnnounce() {
-        document.getElementById("announceText").value = "";
-        localStorage.removeItem("adminAnnounce");
-        updateAnnouncePreview();
-        toast("✓ Banner cleared");
-      }
-
-      function quickAnnounce(msg) {
-        document.getElementById("announceText").value = msg;
-        localStorage.setItem("adminAnnounce", msg);
-        updateAnnouncePreview();
-        toast(msg ? "✓ Announcement set" : "✓ Banner cleared");
-      }
-
-      // ══════════════════════════════════════════════
-      // BROADCAST
-      // ══════════════════════════════════════════════
-      function broadcastToAll() {
-        const msg = document.getElementById("broadcastMsg").value.trim();
-        if (!msg) {
-          toast("Enter a message", "error");
-          return;
-        }
-        confirm2(
-          "Broadcast",
-          'Send this to ALL active parties: "' + msg.slice(0, 60) + '"?',
-          () => {
-            fbGet("/parties", (data) => {
-              if (!data) {
-                toast("No parties", "error");
-                return;
-              }
-              const active = Object.values(data).filter((p) => p && p.active);
-              let done = 0;
-              if (!active.length) {
-                toast("No active parties", "error");
-                return;
-              }
-              active.forEach((p) => {
-                fbPush(
-                  "/parties/" + p.id + "/messages",
-                  {
-                    author: "📡 Admin",
-                    emoji: "⚡",
-                    text: msg,
-                    ts: Date.now(),
-                    system: true,
-                  },
-                  () => {
-                    done++;
-                    if (done === active.length) {
-                      toast("✓ Broadcast sent to " + done + " parties");
-                      document.getElementById("broadcastMsg").value = "";
-                    }
-                  },
-                );
-              });
-            });
-          },
-        );
-      }
-
-      function msgSpecificParty() {
-        const pid = document.getElementById("targetPartySelect").value;
-        const msg = document.getElementById("targetPartyMsg").value.trim();
-        if (!pid || !msg) {
-          toast("Select a party and enter a message", "error");
-          return;
-        }
-        fbPush(
-          "/parties/" + pid + "/messages",
-          {
-            author: "📡 Admin",
-            emoji: "⚡",
-            text: msg,
-            ts: Date.now(),
-            system: true,
-          },
-          () => {
-            toast("✓ Message sent");
-            document.getElementById("targetPartyMsg").value = "";
-          },
-        );
-      }
-
-      // ══════════════════════════════════════════════
-      // DATABASE BROWSER
-      // ══════════════════════════════════════════════
-      function readDbPath() {
-        const path = document.getElementById("dbPath").value.trim();
-        if (!path) {
-          toast("Enter a path", "error");
-          return;
-        }
-        fbGet(path, (data) => {
-          document.getElementById("dbResult").value =
-            data !== null
-              ? JSON.stringify(data, null, 2)
-              : "null (path not found)";
+  // ══════════════════════════════════════════════
+  // DANGER ZONE
+  // ══════════════════════════════════════════════
+  function deleteInactiveParties() {
+    confirm2('Delete Inactive Parties','Remove all disbaned parties from database?', () => {
+      fbGet('/parties', data => {
+        if(!data){ toast('No parties','error'); return; }
+        let count = 0;
+        Object.entries(data).forEach(([pid,p]) => {
+          if(p && !p.active) { fbDelete('/parties/'+pid); count++; }
         });
-      }
+        toast('✓ Deleted '+count+' inactive parties');
+      });
+    });
+  }
 
-      function writeDbPath(method) {
-        const path = document.getElementById("dbWritePath").value.trim();
-        const valStr = document.getElementById("dbWriteVal").value.trim();
-        if (!path || !valStr) {
-          toast("Fill in path and value", "error");
-          return;
-        }
-        let val;
-        try {
-          val = JSON.parse(valStr);
-        } catch (e) {
-          val = valStr;
-        }
-        confirm2("Write to Database", "Write to path: " + path + "?", () => {
-          if (method === "patch") fbPatch(path, val, () => toast("✓ Patched"));
-          else fbSet(path, val, () => toast("✓ Set"));
+  function clearOldRequests() {
+    confirm2('Clear Old Requests','Delete all accepted/denied friend requests?', () => {
+      fbGet('/friendRequests', data => {
+        if(!data){ toast('No requests','error'); return; }
+        let count=0;
+        Object.entries(data).forEach(([rid,r]) => {
+          if(r && r.status!=='pending') { fbDelete('/friendRequests/'+rid); count++; }
         });
-      }
+        toast('✓ Cleared '+count+' old requests');
+      });
+    });
+  }
 
-      function deleteDbPath() {
-        const path = document.getElementById("dbWritePath").value.trim();
-        if (!path) {
-          toast("Enter a path", "error");
-          return;
-        }
-        confirm2(
-          "Delete Path",
-          "DELETE " + path + "? This cannot be undone.",
-          () => {
-            fbDelete(path, () => toast("✓ Deleted"));
-          },
-        );
-      }
+  function wipeDMs() {
+    confirm2('WIPE ALL DMs','Permanently delete every direct message conversation?', () => {
+      fbDelete('/dms', () => toast('✓ All DMs wiped'));
+    });
+  }
 
-      // ══════════════════════════════════════════════
-      // DANGER ZONE
-      // ══════════════════════════════════════════════
-      function deleteInactiveParties() {
-        confirm2(
-          "Delete Inactive Parties",
-          "Remove all disbaned parties from database?",
-          () => {
-            fbGet("/parties", (data) => {
-              if (!data) {
-                toast("No parties", "error");
-                return;
-              }
-              let count = 0;
-              Object.entries(data).forEach(([pid, p]) => {
-                if (p && !p.active) {
-                  fbDelete("/parties/" + pid);
-                  count++;
-                }
-              });
-              toast("✓ Deleted " + count + " inactive parties");
-            });
-          },
-        );
-      }
-
-      function clearOldRequests() {
-        confirm2(
-          "Clear Old Requests",
-          "Delete all accepted/denied friend requests?",
-          () => {
-            fbGet("/friendRequests", (data) => {
-              if (!data) {
-                toast("No requests", "error");
-                return;
-              }
-              let count = 0;
-              Object.entries(data).forEach(([rid, r]) => {
-                if (r && r.status !== "pending") {
-                  fbDelete("/friendRequests/" + rid);
-                  count++;
-                }
-              });
-              toast("✓ Cleared " + count + " old requests");
-            });
-          },
-        );
-      }
-
-      function wipeDMs() {
-        confirm2(
-          "WIPE ALL DMs",
-          "Permanently delete every direct message conversation?",
-          () => {
-            fbDelete("/dms", () => toast("✓ All DMs wiped"));
-          },
-        );
-      }
-
-      function resetAllStreaks() {
-        confirm2("Reset All Streaks", "Set every user streak to 0?", () => {
-          fbGet("/users", (data) => {
-            if (!data) {
-              toast("No users");
-              return;
-            }
-            Object.keys(data).forEach((uid) => {
-              fbPatch("/userData/" + uid + "/streak", {
-                count: 0,
-                lastDay: "",
-              });
-            });
-            toast("✓ All streaks reset");
-          });
+  function resetAllStreaks() {
+    confirm2('Reset All Streaks','Set every user streak to 0?', () => {
+      fbGet('/users', data => {
+        if(!data){ toast('No users'); return; }
+        Object.keys(data).forEach(uid => {
+          fbPatch('/userData/'+uid+'/streak', {count:0, lastDay:''});
         });
-      }
+        toast('✓ All streaks reset');
+      });
+    });
+  }
 
-      function nukeDatabase() {
-        const code = prompt(
-          "Type NUKE to confirm deleting the ENTIRE database:",
-        );
-        if (code !== "NUKE") {
-          toast("Cancelled");
-          return;
-        }
-        const code2 = prompt("Are you 100% sure? Type YES:");
-        if (code2 !== "YES") {
-          toast("Cancelled");
-          return;
-        }
-        fetch(DB + "/.json", { method: "DELETE" }).then(() =>
-          toast("☢️ Database nuked"),
-        );
-      }
-    </script>
-  </body>
+  function nukeDatabase() {
+    const code = prompt('Type NUKE to confirm deleting the ENTIRE database:');
+    if(code !== 'NUKE'){ toast('Cancelled'); return; }
+    const code2 = prompt('Are you 100% sure? Type YES:');
+    if(code2 !== 'YES'){ toast('Cancelled'); return; }
+    fetch(DB+'/.json', {method:'DELETE'}).then(()=>toast('☢️ Database nuked'));
+  }
+</script>
+</body>
 </html>
