@@ -474,7 +474,7 @@
       '<div id="chatMsgs" style="flex:1;overflow-y:auto;padding:10px 14px;display:flex;flex-direction:column;min-height:220px;"></div>' +
       '<div style="display:flex;gap:8px;padding:10px 14px;border-top:1px solid var(--border,rgba(255,255,255,0.06));flex-shrink:0;">' +
         '<input id="chatInput" type="text" maxlength="200" placeholder="Say something..." style="'+inputStyle()+'" />' +
-        '<button id="chatSend" style="'+bigBtn('var(--accent,#6c8fff)')+'flex-shrink:0;padding:8px 16px;">Send</button>' +
+        '<button id="chatSend" style="flex-shrink:0;background:linear-gradient(135deg,var(--accent,#6c8fff),#4a6ee8);border:none;color:#fff;width:36px;height:36px;border-radius:9px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">➤</button>' +
       '</div>';
 
     document.getElementById('chatBack').onclick = function(){ stopPoll(); currentPartyId=null; showView('lobby'); };
@@ -693,7 +693,7 @@
         '<div id="dmMsgs" style="flex:1;overflow-y:auto;padding:10px 14px;display:flex;flex-direction:column;min-height:220px;"></div>' +
         '<div style="display:flex;gap:8px;padding:10px 14px;border-top:1px solid var(--border,rgba(255,255,255,0.06));flex-shrink:0;">' +
           '<input id="dmInput" type="text" maxlength="500" placeholder="Message '+esc(fName)+'..." style="'+inputStyle()+'" />' +
-          '<button id="dmSend" style="'+bigBtn('var(--accent,#6c8fff)')+'flex-shrink:0;padding:8px 16px;">Send</button>' +
+          '<button id="dmSend" style="flex-shrink:0;background:linear-gradient(135deg,var(--accent,#6c8fff),#4a6ee8);border:none;color:#fff;width:36px;height:36px;border-radius:9px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">➤</button>' +
         '</div>';
 
       document.getElementById('dmBack').onclick = function(){ stopPoll(); currentDmId=null; showView('dms'); };
