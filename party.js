@@ -293,6 +293,8 @@
       if (user.passwordHash !== hashPass(pass)) { err.textContent = 'Wrong password.'; setBtn('loginBtn','Log In'); return; }
       saveSession({ uid:uid, name:user.name, emoji:user.emoji, passwordHash:user.passwordHash });
       fbUpdate('/users/'+uid, { lastSeen: Date.now() });
+      hookPageEvents();
+      syncLocalToAccount(uid);
       showView('lobby');
     });
   }
@@ -355,6 +357,8 @@
         passwordHash: hash, createdAt: Date.now(), lastSeen: Date.now()
       }, function(){
         saveSession({ uid:uid, name:uname, emoji:emoji, passwordHash:hash });
+        hookPageEvents();
+        syncLocalToAccount(uid);
         showView('lobby');
       });
     });
@@ -420,20 +424,33 @@
     var name = val('cfInput');
     var err = document.getElementById('cfErr');
     if (!name) { err.textContent='Enter a party name.'; return; }
-    setBtn('cfSubmit','Creating...');
+    setBtn('cfSubmit','Checking...');
     var session = me();
-    var game = currentGame();
-    var partyId = gid();
-    var party = {
-      id:partyId, name:name, host:session.name, hostUid:session.uid, active:true,
-      gameId:game?game.id:null, gameImg:game?game.img:null, gameName:game?game.title:null,
-      createdAt:Date.now(), members:{}, messages:{}
-    };
-    party.members[gid()] = { uid:session.uid, name:session.name, emoji:session.emoji, joinedAt:Date.now() };
-    fbSet('/parties/'+partyId, party, function(){
-      fbPush('/parties/'+partyId+'/messages', {
-        author:'System', emoji:'🎉', text:session.name+' created the party!', ts:Date.now(), system:true
-      }, function(){ openPartyChat(partyId); });
+    // Check if user already owns an active party
+    fbGet('/parties', function(allParties){
+      if (allParties) {
+        var existing = Object.values(allParties).find(function(p){ return p && p.active && p.hostUid === session.uid; });
+        if (existing) {
+          var errEl = document.getElementById('cfErr');
+          if (errEl) errEl.textContent = 'You already have an active party! Disband it first.';
+          setBtn('cfSubmit','🎉 Create');
+          return;
+        }
+      }
+      setBtn('cfSubmit','Creating...');
+      var game = currentGame();
+      var partyId = gid();
+      var party = {
+        id:partyId, name:name, host:session.name, hostUid:session.uid, active:true,
+        gameId:game?game.id:null, gameImg:game?game.img:null, gameName:game?game.title:null,
+        createdAt:Date.now(), members:{}, messages:{}
+      };
+      party.members[gid()] = { uid:session.uid, name:session.name, emoji:session.emoji, joinedAt:Date.now() };
+      fbSet('/parties/'+partyId, party, function(){
+        fbPush('/parties/'+partyId+'/messages', {
+          author:'System', emoji:'🎉', text:session.name+' created the party!', ts:Date.now(), system:true
+        }, function(){ openPartyChat(partyId); });
+      });
     });
   }
 
@@ -819,11 +836,71 @@
   function setMsg(el, text, color) { if(el){ el.textContent=text; el.style.color=color; } }
 
   // ══════════════════════════════════════════════
+  // ACCOUNT SYNC — localStorage <-> Firebase
+  // ══════════════════════════════════════════════
+
+  // Push local game data up to Firebase when logging in
+  function syncLocalToAccount(uid) {
+    var payload = {};
+    // Favourites
+    try { var favs = JSON.parse(localStorage.getItem('favs')||'[]'); if(favs.length) payload.favs = favs; } catch(e){}
+    // Ratings
+    try { var ratings = JSON.parse(localStorage.getItem('ratings')||'{}'); if(Object.keys(ratings).length) payload.ratings = ratings; } catch(e){}
+    // Achievements
+    try { var ach = JSON.parse(localStorage.getItem('achievements')||'[]'); if(ach.length) payload.achievements = ach; } catch(e){}
+    // Play history
+    try { var recent = JSON.parse(localStorage.getItem('recent2')||'[]'); if(recent.length) payload.recentGames = recent.slice(0,30); } catch(e){}
+    // Play times
+    try { var times = JSON.parse(localStorage.getItem('playTimes')||'{}'); if(Object.keys(times).length) payload.playTimes = times; } catch(e){}
+    // Challenge streak
+    try { var streak = JSON.parse(localStorage.getItem('challengeStreak')||'{}'); if(streak.count) payload.streak = streak; } catch(e){}
+    if (Object.keys(payload).length) {
+      fbUpdate('/userData/'+uid, payload);
+    }
+    // Also pull account data DOWN and merge
+    fbGet('/userData/'+uid, function(data){
+      if (!data) return;
+      if (data.favs) { try { var cur=JSON.parse(localStorage.getItem('favs')||'[]'); var merged=[...new Set([...cur,...data.favs])]; localStorage.setItem('favs',JSON.stringify(merged)); } catch(e){} }
+      if (data.ratings) { try { var cur=JSON.parse(localStorage.getItem('ratings')||'{}'); localStorage.setItem('ratings',JSON.stringify(Object.assign({},data.ratings,cur))); } catch(e){} }
+      if (data.achievements) { try { var cur=JSON.parse(localStorage.getItem('achievements')||'[]'); var merged=[...new Set([...cur,...data.achievements])]; localStorage.setItem('achievements',JSON.stringify(merged)); } catch(e){} }
+      if (data.streak) { try { var cur=JSON.parse(localStorage.getItem('challengeStreak')||'{}'); if(!cur.count||data.streak.count>cur.count) localStorage.setItem('challengeStreak',JSON.stringify(data.streak)); } catch(e){} }
+    });
+  }
+
+  // Push a specific key to Firebase (called by the page scripts on changes)
+  function pushGameDataKey(key, value) {
+    var session = me(); if(!session||!session.uid) return;
+    var payload = {}; payload[key] = value;
+    fbUpdate('/userData/'+session.uid, payload);
+  }
+
+  // Hook into the page's existing localStorage writes so data auto-saves to account
+  function hookPageEvents() {
+    var session = me(); if(!session) return;
+    // Watch for localStorage changes made by the game site scripts
+    var origSetItem = localStorage.setItem.bind(localStorage);
+    localStorage.setItem = function(k, v) {
+      origSetItem(k, v);
+      if (k === 'favs') { try { pushGameDataKey('favs', JSON.parse(v)); } catch(e){} }
+      else if (k === 'ratings') { try { pushGameDataKey('ratings', JSON.parse(v)); } catch(e){} }
+      else if (k === 'achievements') { try { pushGameDataKey('achievements', JSON.parse(v)); } catch(e){} }
+      else if (k === 'recent2') { try { pushGameDataKey('recentGames', JSON.parse(v).slice(0,30)); } catch(e){} }
+      else if (k === 'playTimes') { try { pushGameDataKey('playTimes', JSON.parse(v)); } catch(e){} }
+      else if (k === 'challengeStreak') { try { pushGameDataKey('streak', JSON.parse(v)); } catch(e){} }
+    };
+  }
+
+  // ══════════════════════════════════════════════
   // INIT
   // ══════════════════════════════════════════════
   function init() {
     cleanNavbar();
     injectButton();
+    // If already logged in, hook localStorage so data auto-syncs
+    if (loggedIn()) {
+      hookPageEvents();
+      syncLocalToAccount(me().uid);
+    }
   }
 
   if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', init);
