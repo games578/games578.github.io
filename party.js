@@ -137,7 +137,8 @@
   }
 
   // ── Panel ─────────────────────────────────────
-  function togglePanel() {
+  function togglePanel(e) {
+    if (e) e.stopPropagation();
     var panel = document.getElementById('partyPanel');
     if (!panel) { buildPanel(); showView('lobby'); return; }
     if (panel.style.opacity === '0' || panel.style.opacity === '') {
@@ -191,7 +192,7 @@
       t.onclick = function(){ showView(t.dataset.view); };
     });
 
-    document.addEventListener('click', function outsideClick(e){
+    document.addEventListener('mousedown', function outsideClick(e){
       var panel = document.getElementById('partyPanel');
       var btn = document.getElementById('partyBtn');
       if (!panel || panel.style.opacity === '0') return;
@@ -236,7 +237,7 @@
       '</div>' +
       '<div id="lobbyList" style="flex:1;overflow-y:auto;"></div>';
 
-    document.getElementById('showCreateBtn').onclick = function(){ showCreateForm(body); };
+    document.getElementById('showCreateBtn').onclick = function(e){ e.stopPropagation(); showCreateForm(body); };
 
     function loadList() {
       fbGet('/parties', function(data) {
@@ -268,10 +269,10 @@
         });
         list.innerHTML = html;
         list.querySelectorAll('.lobbyJoinBtn').forEach(function(b){
-          b.onclick = function(){ doJoin(b.dataset.pid); };
+          b.onclick = function(e){ e.stopPropagation(); doJoin(b.dataset.pid); };
         });
         list.querySelectorAll('.lobbyOpenBtn').forEach(function(b){
-          b.onclick = function(){ openChat(b.dataset.pid); };
+          b.onclick = function(e){ e.stopPropagation(); openChat(b.dataset.pid); };
         });
       });
     }
@@ -297,9 +298,9 @@
 
     setTimeout(function(){ var inp = document.getElementById('cfInput'); if(inp) inp.focus(); }, 50);
 
-    document.getElementById('cfCancel').onclick = function(){ showView('lobby'); };
-    document.getElementById('cfSubmit').onclick = doCreate;
-    document.getElementById('cfInput').onkeydown = function(e){ if(e.key==='Enter') doCreate(); };
+    document.getElementById('cfCancel').onclick = function(e){ e.stopPropagation(); showView('lobby'); };
+    document.getElementById('cfSubmit').onclick = function(e){ e.stopPropagation(); doCreate(); };
+    document.getElementById('cfInput').onkeydown = function(e){ if(e.key==='Enter'){ e.stopPropagation(); doCreate(); } };
 
     function doCreate() {
       var name = (document.getElementById('cfInput').value || '').trim();
