@@ -269,31 +269,28 @@
   function showCreateForm(body, db) {
     if (!myName()) { switchTab('profile'); return; }
     const game = getCurrentGame();
-    const overlay = document.createElement('div');
-    overlay.style.cssText = 'position:absolute;inset:0;background:rgba(0,0,0,0.7);z-index:10;display:flex;align-items:center;justify-content:center;border-radius:16px;backdrop-filter:blur(2px);';
-    overlay.innerHTML = `
-      <div style="background:var(--bg3,#111827);border:1px solid var(--border2);border-radius:14px;padding:20px;width:300px;margin:16px;">
-        <div style="font-size:15px;font-weight:800;margin-bottom:4px;font-family:'Syne',sans-serif;color:var(--text,#f0f4ff);">Create a Party</div>
-        <div style="font-size:12px;color:var(--text2);margin-bottom:14px;">Friends can join from the lobby</div>
-        <input id="cfName" type="text" maxlength="40" placeholder="Party name..." value="${game?escHtml(game.title+' party'):''}" style="width:100%;background:rgba(108,143,255,0.06);border:1px solid var(--border2);border-radius:9px;padding:9px 12px;color:var(--text,#f0f4ff);font-size:13px;outline:none;font-family:inherit;box-sizing:border-box;margin-bottom:12px;" />
-        <div style="display:flex;gap:8px;">
-          <button id="cfCancel" style="flex:1;background:rgba(255,255,255,0.06);border:1px solid var(--border2);color:var(--text2);padding:9px;border-radius:9px;cursor:pointer;font-size:13px;font-family:inherit;">Cancel</button>
-          <button id="cfCreate" style="flex:2;background:linear-gradient(135deg,var(--accent,#6c8fff),#4a6ee8);border:none;color:white;padding:9px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:700;font-family:inherit;">🎉 Create</button>
-        </div>
-        <div id="cfErr" style="font-size:12px;color:#ff7c94;margin-top:8px;text-align:center;min-height:14px;"></div>
-      </div>`;
-    const panel = document.getElementById('partyPanel');
-    panel.style.position = 'relative';
-    panel.appendChild(overlay);
-    overlay.querySelector('#cfCancel').addEventListener('click', () => overlay.remove());
-    overlay.querySelector('#cfCreate').addEventListener('click', () => {
-      const n = overlay.querySelector('#cfName')?.value.trim();
-      if (!n) { overlay.querySelector('#cfErr').textContent = 'Enter a party name.'; return; }
-      overlay.querySelector('#cfCreate').textContent = 'Creating...';
-      overlay.remove();
+    const topBar = body.querySelector('div:first-child');
+    if (!topBar) return;
+    topBar.innerHTML = `
+      <div style="font-size:13px;font-weight:700;color:var(--text,#f0f4ff);margin-bottom:10px;">🎉 Create a Party</div>
+      <input id="cfName" type="text" maxlength="40" placeholder="Party name..." value="${game ? escHtml(game.title + ' party') : ''}" style="width:100%;background:rgba(108,143,255,0.06);border:1px solid var(--border2);border-radius:9px;padding:9px 12px;color:var(--text,#f0f4ff);font-size:13px;outline:none;font-family:inherit;box-sizing:border-box;margin-bottom:10px;" />
+      <div style="display:flex;gap:8px;">
+        <button id="cfCancel" style="flex:1;background:rgba(255,255,255,0.06);border:1px solid var(--border2);color:var(--text2);padding:9px;border-radius:9px;cursor:pointer;font-size:13px;font-family:inherit;">Cancel</button>
+        <button id="cfCreate" style="flex:2;background:linear-gradient(135deg,var(--accent,#6c8fff),#4a6ee8);border:none;color:white;padding:9px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:700;font-family:inherit;">🎉 Create</button>
+      </div>
+      <div id="cfErr" style="font-size:12px;color:#ff7c94;margin-top:6px;min-height:14px;"></div>
+    `;
+    setTimeout(() => document.getElementById('cfName')?.focus(), 50);
+    document.getElementById('cfCancel')?.addEventListener('click', () => renderLobby(body, db));
+    document.getElementById('cfCreate')?.addEventListener('click', () => {
+      const n = document.getElementById('cfName')?.value.trim();
+      if (!n) { document.getElementById('cfErr').textContent = 'Enter a party name.'; return; }
+      document.getElementById('cfCreate').textContent = 'Creating...';
       createParty(n, db);
     });
-    setTimeout(() => overlay.querySelector('#cfName')?.focus(), 50);
+    document.getElementById('cfName')?.addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('cfCreate')?.click();
+    });
   }
 
   // ══════════════════════════════════════════════
