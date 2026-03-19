@@ -6,7 +6,7 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1191415751531949"
       crossorigin="anonymous"
     ></script>
-    <meta name="google-adsense-account" content="ca-pub-1191415751531949">
+    <meta name="google-adsense-account" content="ca-pub-1191415751531949" />
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-63P2MBJX61"
@@ -23,6 +23,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Math Games 67</title>
     <link rel="icon" type="image/png" href="logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
       *,
       *::before,
@@ -33,62 +38,84 @@
       }
 
       :root {
-        --bg: #0e0e0e;
-        --bg2: #141414;
-        --bg3: #1a1a1a;
-        --bg4: #1e1e1e;
+        --bg: #080b12;
+        --bg2: #0d1220;
+        --bg3: #111827;
+        --bg4: #1a2235;
         --border: rgba(255, 255, 255, 0.06);
-        --border2: rgba(255, 255, 255, 0.1);
-        --text: white;
-        --text2: rgba(255, 255, 255, 0.5);
-        --text3: rgba(255, 255, 255, 0.3);
-        --accent: #3182ce;
-        --accent2: rgba(99, 179, 237, 0.2);
-        --accent3: #90cdf4;
-        --shimmer1: #1e1e1e;
-        --shimmer2: #2a2a2a;
-        --card-bg: #1e1e1e;
-        --navbar-bg: rgba(14, 14, 14, 0.75);
-        --sidebar-bg: #141414;
-        --footer-bg: #0a0a0a;
+        --border2: rgba(255, 255, 255, 0.11);
+        --text: #f0f4ff;
+        --text2: rgba(200, 210, 255, 0.55);
+        --text3: rgba(200, 210, 255, 0.3);
+        --accent: #6c8fff;
+        --accent2: rgba(108, 143, 255, 0.15);
+        --accent3: #a5bcff;
+        --neon: #00e5ff;
+        --neon2: rgba(0, 229, 255, 0.12);
+        --green: #00e5a0;
+        --red: #ff5c7a;
+        --shimmer1: #111827;
+        --shimmer2: #1e2d45;
+        --card-bg: #111827;
+        --navbar-bg: rgba(8, 11, 18, 0.85);
+        --sidebar-bg: #0d1220;
+        --notif-dot: #ff5c7a;
+        --friends-online: #00e5a0;
       }
       body.light {
-        --bg: #f0f2f5;
-        --bg2: #e8eaed;
+        --bg: #f3f6ff;
+        --bg2: #eaf0ff;
         --bg3: #ffffff;
-        --bg4: #f8f9fa;
-        --border: rgba(0, 0, 0, 0.08);
+        --bg4: #f0f4ff;
+        --border: rgba(0, 0, 0, 0.07);
         --border2: rgba(0, 0, 0, 0.12);
-        --text: #1a1a2e;
-        --text2: rgba(0, 0, 0, 0.5);
-        --text3: rgba(0, 0, 0, 0.35);
-        --accent: #2563eb;
-        --accent2: rgba(37, 99, 235, 0.12);
-        --accent3: #1d4ed8;
-        --shimmer1: #e8eaed;
-        --shimmer2: #d1d5db;
+        --text: #0f172a;
+        --text2: rgba(0, 0, 0, 0.52);
+        --text3: rgba(0, 0, 0, 0.32);
+        --accent: #3b5bfc;
+        --accent2: rgba(59, 91, 252, 0.1);
+        --accent3: #1e3de4;
+        --neon: #0099bb;
+        --neon2: rgba(0, 153, 187, 0.1);
+        --shimmer1: #e8edf8;
+        --shimmer2: #d0d8f0;
         --card-bg: #ffffff;
-        --navbar-bg: rgba(240, 242, 245, 0.9);
-        --sidebar-bg: #e8eaed;
-        --footer-bg: #e2e4e8;
+        --navbar-bg: rgba(243, 246, 255, 0.92);
+        --sidebar-bg: #eaf0ff;
       }
 
       body {
-        font-family: "Segoe UI", system-ui, sans-serif;
+        font-family: "DM Sans", system-ui, sans-serif;
         background: var(--bg);
         color: var(--text);
         display: flex;
         flex-direction: column;
         min-height: 100vh;
         transition:
-          background 0.25s,
-          color 0.25s;
+          background 0.3s,
+          color 0.3s;
+        overflow-x: hidden;
+      }
+
+      /* ── Noise texture overlay ── */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+        opacity: 0.4;
+      }
+      body > * {
+        position: relative;
+        z-index: 1;
       }
 
       /* ── Announcement banner ── */
       .announce-bar {
-        background: linear-gradient(90deg, #1a3a5c, #1e4976);
-        border-bottom: 1px solid rgba(99, 179, 237, 0.25);
+        background: linear-gradient(90deg, #0d2040, #0a1830);
+        border-bottom: 1px solid rgba(108, 143, 255, 0.2);
         padding: 9px 16px;
         display: flex;
         align-items: center;
@@ -96,12 +123,13 @@
         gap: 10px;
         font-size: 13px;
         position: relative;
+        font-family: "DM Sans", sans-serif;
       }
       .announce-bar span {
-        color: rgba(255, 255, 255, 0.9);
+        color: rgba(255, 255, 255, 0.85);
       }
       .announce-bar strong {
-        color: #90cdf4;
+        color: var(--accent3);
       }
       .announce-close {
         position: absolute;
@@ -127,9 +155,11 @@
         align-items: center;
         padding: 0 16px 0 0;
         background: var(--navbar-bg);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        box-shadow: 0 1px 0 var(--border);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow:
+          0 1px 0 var(--border),
+          0 4px 24px rgba(0, 0, 0, 0.3);
         position: sticky;
         top: 0;
         z-index: 200;
@@ -141,7 +171,7 @@
         width: 64px;
         flex-shrink: 0;
         justify-content: center;
-        opacity: 0.9;
+        opacity: 0.92;
         transition: opacity 0.2s;
         height: 100%;
       }
@@ -164,7 +194,7 @@
         left: 13px;
         top: 50%;
         transform: translateY(-50%);
-        color: rgba(99, 179, 237, 0.6);
+        color: rgba(108, 143, 255, 0.55);
         font-size: 17px;
         pointer-events: none;
         z-index: 1;
@@ -172,81 +202,140 @@
       .search-wrapper input.search {
         width: 100%;
         padding: 9px 16px 9px 36px;
-        border-radius: 8px;
+        border-radius: 10px;
         border: 1px solid var(--accent2);
         background: var(--accent2);
         color: var(--text);
         font-size: 14px;
         outline: none;
+        font-family: "DM Sans", sans-serif;
         transition:
-          border 0.2s,
-          background 0.2s,
-          box-shadow 0.2s;
+          border 0.25s,
+          background 0.25s,
+          box-shadow 0.25s;
       }
       .search-wrapper input.search::placeholder {
-        color: rgba(99, 179, 237, 0.35);
+        color: rgba(108, 143, 255, 0.4);
         letter-spacing: 0.02em;
       }
       .search-wrapper input.search:focus {
-        border-color: rgba(99, 179, 237, 0.5);
-        background: rgba(99, 179, 237, 0.07);
+        border-color: rgba(108, 143, 255, 0.55);
+        background: rgba(108, 143, 255, 0.08);
         box-shadow:
-          0 0 16px rgba(99, 179, 237, 0.12),
-          inset 0 0 12px rgba(99, 179, 237, 0.04);
+          0 0 0 3px rgba(108, 143, 255, 0.12),
+          0 0 20px rgba(108, 143, 255, 0.1);
       }
 
       .random-btn {
         flex-shrink: 0;
-        background: rgba(255, 255, 255, 0.07);
-        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         color: var(--text);
         padding: 7px 14px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 13px;
-        font-weight: 500;
-        white-space: nowrap;
-        transition:
-          background 0.2s,
-          border-color 0.2s;
-      }
-      .random-btn:hover {
-        background: rgba(255, 255, 255, 0.14);
-        border-color: rgba(255, 255, 255, 0.25);
-      }
-
-      .panic-btn {
-        flex-shrink: 0;
-        background: rgba(220, 38, 38, 0.15);
-        border: 1px solid rgba(220, 38, 38, 0.35);
-        color: #fc8181;
-        padding: 7px 14px;
-        border-radius: 8px;
+        border-radius: 9px;
         cursor: pointer;
         font-size: 13px;
         font-weight: 600;
         white-space: nowrap;
+        font-family: "DM Sans", sans-serif;
         transition:
           background 0.2s,
-          border-color 0.2s;
+          border-color 0.2s,
+          transform 0.15s;
+      }
+      .random-btn:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.22);
+        transform: scale(1.04);
+      }
+      .random-btn:active {
+        transform: scale(0.97);
+      }
+
+      .panic-btn {
+        flex-shrink: 0;
+        background: rgba(255, 92, 122, 0.12);
+        border: 1px solid rgba(255, 92, 122, 0.3);
+        color: #ff7c94;
+        padding: 7px 14px;
+        border-radius: 9px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 700;
+        white-space: nowrap;
+        font-family: "DM Sans", sans-serif;
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          transform 0.15s;
         margin-left: 6px;
       }
       .panic-btn:hover {
-        background: rgba(220, 38, 38, 0.3);
-        border-color: rgba(220, 38, 38, 0.6);
+        background: rgba(255, 92, 122, 0.25);
+        border-color: rgba(255, 92, 122, 0.55);
+        transform: scale(1.04);
       }
 
+      /* Icon buttons in navbar */
+      .nav-icon-btn {
+        flex-shrink: 0;
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text);
+        width: 38px;
+        height: 38px;
+        border-radius: 9px;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+        margin-left: 6px;
+        font-family: "DM Sans", sans-serif;
+      }
+      .nav-icon-btn:hover {
+        background: rgba(255, 255, 255, 0.12);
+        transform: scale(1.08);
+      }
+
+      /* Notification badge on icon button */
+      .nav-icon-btn .notif-count {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: var(--notif-dot);
+        color: white;
+        font-size: 9px;
+        font-weight: 800;
+        min-width: 16px;
+        height: 16px;
+        border-radius: 8px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 0 3px;
+        border: 2px solid var(--bg);
+      }
+      .nav-icon-btn .notif-count.visible {
+        display: flex;
+      }
+
+      /* Suggestions */
       .suggestions {
         display: none;
         position: absolute;
-        top: calc(100% + 6px);
+        top: calc(100% + 8px);
         left: 0;
         right: 0;
         background: var(--bg3);
         border: 1px solid var(--border2);
-        border-radius: 10px;
+        border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 10px 32px rgba(0, 0, 0, 0.7);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8);
         z-index: 300;
       }
       .suggestions.visible {
@@ -256,7 +345,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        padding: 9px 14px;
+        padding: 10px 14px;
         cursor: pointer;
         transition: background 0.12s;
         text-decoration: none;
@@ -264,24 +353,17 @@
       }
       .suggestion-item:hover,
       .suggestion-item.active {
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba(108, 143, 255, 0.1);
       }
       .suggestion-item img {
-        width: 30px;
-        height: 30px;
-        border-radius: 6px;
+        width: 32px;
+        height: 32px;
+        border-radius: 7px;
         object-fit: cover;
         flex-shrink: 0;
       }
       .suggestion-item span {
         font-size: 13px;
-      }
-      .suggestion-item .match {
-        color: var(--text);
-        font-weight: 600;
-      }
-      .suggestion-item .rest {
-        color: var(--text2);
       }
 
       /* ── Layout ── */
@@ -296,7 +378,7 @@
         flex-shrink: 0;
         background: var(--sidebar-bg);
         border-right: 1px solid var(--border);
-        transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: width 0.28s cubic-bezier(0.4, 0, 0.2, 1);
         overflow: hidden;
         position: sticky;
         top: 70px;
@@ -307,13 +389,13 @@
         z-index: 100;
       }
       .sidebar:hover {
-        width: 190px;
+        width: 195px;
       }
       .nav-item {
         display: flex;
         align-items: center;
         gap: 12px;
-        padding: 11px 0 11px 18px;
+        padding: 10px 0 10px 18px;
         cursor: pointer;
         white-space: nowrap;
         color: var(--text2);
@@ -325,14 +407,15 @@
           background 0.15s,
           color 0.15s,
           border-color 0.15s;
+        font-family: "DM Sans", sans-serif;
       }
       .nav-item:hover {
-        background: rgba(128, 128, 128, 0.08);
+        background: rgba(108, 143, 255, 0.08);
         color: var(--text);
       }
       .nav-item.active {
-        background: rgba(128, 128, 128, 0.1);
-        color: var(--text);
+        background: rgba(108, 143, 255, 0.12);
+        color: var(--accent3);
         border-left-color: var(--accent);
       }
       .nav-emoji {
@@ -389,9 +472,10 @@
         background: none;
         border: none;
         min-width: 52px;
+        font-family: "DM Sans", sans-serif;
       }
       .mobile-nav-item.active {
-        color: var(--text);
+        color: var(--accent3);
       }
       .mobile-nav-item .mn-emoji {
         font-size: 20px;
@@ -405,26 +489,57 @@
         min-width: 0;
       }
 
-      /* ── Daily game hero ── */
+      /* ── Daily hero ── */
       .daily-hero {
-        border-radius: 14px;
+        border-radius: 16px;
         overflow: hidden;
-        margin-bottom: 36px;
-        background: linear-gradient(135deg, #1a2a3a 0%, #0e1a2a 100%);
-        border: 1px solid rgba(99, 179, 237, 0.2);
+        margin-bottom: 32px;
+        background: linear-gradient(
+          135deg,
+          #0d1e38 0%,
+          #081428 60%,
+          #0d1838 100%
+        );
+        border: 1px solid rgba(108, 143, 255, 0.2);
         display: flex;
         align-items: center;
         gap: 24px;
-        padding: 20px 24px;
+        padding: 22px 28px;
         position: relative;
+        box-shadow:
+          0 4px 32px rgba(0, 0, 0, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        animation: heroFadeIn 0.5s ease both;
+      }
+      .daily-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          ellipse 60% 80% at 80% 50%,
+          rgba(108, 143, 255, 0.08),
+          transparent
+        );
+      }
+      @keyframes heroFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
       .daily-hero-img {
-        width: 90px;
-        height: 90px;
-        border-radius: 12px;
+        width: 96px;
+        height: 96px;
+        border-radius: 14px;
         object-fit: cover;
         flex-shrink: 0;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
       }
       .daily-hero-info {
         flex: 1;
@@ -433,43 +548,36 @@
       .daily-hero-label {
         font-size: 11px;
         font-weight: 700;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #90cdf4;
-        margin-bottom: 6px;
+        color: var(--accent3);
+        margin-bottom: 7px;
+        font-family: "Syne", sans-serif;
       }
       .daily-hero-title {
-        font-size: 22px;
-        font-weight: 700;
-        margin-bottom: 8px;
+        font-size: 24px;
+        font-weight: 800;
+        margin-bottom: 12px;
+        font-family: "Syne", sans-serif;
       }
       .daily-hero-btn {
         display: inline-block;
-        background: #3182ce;
+        background: linear-gradient(135deg, var(--accent), #4a6ee8);
         color: white;
-        padding: 8px 20px;
-        border-radius: 8px;
+        padding: 9px 22px;
+        border-radius: 9px;
         text-decoration: none;
         font-size: 13px;
-        font-weight: 600;
-        transition: background 0.2s;
+        font-weight: 700;
+        transition:
+          transform 0.18s,
+          box-shadow 0.18s;
+        box-shadow: 0 4px 16px rgba(108, 143, 255, 0.35);
+        font-family: "DM Sans", sans-serif;
       }
       .daily-hero-btn:hover {
-        background: #2b6cb0;
-      }
-      .daily-hero-skeleton {
-        width: 90px;
-        height: 90px;
-        border-radius: 12px;
-        flex-shrink: 0;
-        background: linear-gradient(
-          90deg,
-          #1e2e3e 25%,
-          #2a3e50 50%,
-          #1e2e3e 75%
-        );
-        background-size: 200% 100%;
-        animation: shimmer 1.4s infinite;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(108, 143, 255, 0.5);
       }
 
       /* ── Section ── */
@@ -485,15 +593,18 @@
         border-bottom: 1px solid var(--border);
       }
       .section-title {
-        font-size: 16px;
-        font-weight: 700;
+        font-size: 15px;
+        font-weight: 800;
+        font-family: "Syne", sans-serif;
+        letter-spacing: 0.01em;
       }
       .section-count {
         font-size: 11px;
         color: var(--text2);
-        background: rgba(128, 128, 128, 0.1);
-        padding: 2px 8px;
+        background: rgba(108, 143, 255, 0.1);
+        padding: 2px 9px;
         border-radius: 20px;
+        font-family: "DM Sans", sans-serif;
       }
       .section-grid {
         display: grid;
@@ -501,10 +612,10 @@
         gap: 10px;
       }
 
-      /* ── Card ── */
+      /* ── Cards ── */
       .card {
         background: var(--card-bg);
-        border-radius: 10px;
+        border-radius: 12px;
         overflow: hidden;
         cursor: pointer;
         display: flex;
@@ -512,117 +623,158 @@
         justify-content: center;
         aspect-ratio: 1/1;
         position: relative;
-        transition: transform 0.18s;
         border: 1px solid var(--border);
+        transition:
+          transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+          border-color 0.2s,
+          box-shadow 0.22s;
+        will-change: transform;
       }
       .card:hover {
-        transform: scale(1.06);
+        transform: scale(1.08) translateY(-3px);
+        border-color: rgba(108, 143, 255, 0.4);
+        box-shadow:
+          0 12px 32px rgba(0, 0, 0, 0.5),
+          0 0 0 1px rgba(108, 143, 255, 0.2);
       }
       .card:hover .card-label {
         opacity: 1;
         transform: translateY(0);
       }
+      .card:hover .card-glow {
+        opacity: 1;
+      }
+      .card:active {
+        transform: scale(1.02) translateY(-1px);
+      }
+
+      /* Glow behind card */
+      .card-glow {
+        position: absolute;
+        inset: -20%;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(108, 143, 255, 0.18),
+          transparent 70%
+        );
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+        z-index: 0;
+      }
       .card a {
         display: block;
         width: 100%;
         height: 100%;
+        position: relative;
+        z-index: 1;
       }
       .card img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
+        border-radius: 11px;
       }
       .card-label {
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+        z-index: 3;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
         color: white;
         font-size: 10px;
-        font-weight: 600;
-        padding: 16px 6px 6px;
+        font-weight: 700;
+        padding: 18px 6px 7px;
         text-align: center;
         opacity: 0;
-        transform: translateY(4px);
+        transform: translateY(5px);
         transition:
-          opacity 0.18s,
-          transform 0.18s;
+          opacity 0.2s,
+          transform 0.2s;
         pointer-events: none;
-        line-height: 1.2;
+        line-height: 1.3;
+        font-family: "DM Sans", sans-serif;
+        letter-spacing: 0.01em;
       }
+
+      /* Favourite button */
       .fav-btn {
         position: absolute;
         top: 5px;
         right: 5px;
-        background: rgba(0, 0, 0, 0.55);
+        background: rgba(0, 0, 0, 0.6);
         border: none;
         border-radius: 50%;
-        width: 26px;
-        height: 26px;
+        width: 28px;
+        height: 28px;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         font-size: 13px;
         opacity: 0;
+        z-index: 4;
         transition:
           opacity 0.15s,
-          transform 0.15s;
-        z-index: 2;
+          transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
         padding: 0;
+        backdrop-filter: blur(4px);
       }
-      .card:hover .fav-btn {
-        opacity: 1;
-      }
-      .fav-btn:hover {
-        transform: scale(1.2);
-      }
+      .card:hover .fav-btn,
       .fav-btn.active {
         opacity: 1;
       }
+      .fav-btn:hover {
+        transform: scale(1.3);
+      }
+
+      /* Rating popup */
       .rate-popup {
         position: absolute;
         top: 5px;
         left: 5px;
         display: none;
         gap: 4px;
-        z-index: 3;
+        z-index: 4;
       }
       .card:hover .rate-popup {
         display: flex;
       }
       .rate-btn {
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(0, 0, 0, 0.65);
         border: none;
-        border-radius: 6px;
-        padding: 3px 6px;
+        border-radius: 7px;
+        padding: 4px 7px;
         cursor: pointer;
         font-size: 12px;
         line-height: 1;
         transition:
-          transform 0.15s,
+          transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
           background 0.15s;
+        backdrop-filter: blur(4px);
       }
       .rate-btn:hover {
-        transform: scale(1.2);
+        transform: scale(1.3);
       }
       .rate-btn.voted {
-        background: rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.2);
       }
+
       .rating-badge {
         position: absolute;
         bottom: 5px;
         left: 5px;
         background: rgba(0, 0, 0, 0.65);
         border-radius: 6px;
-        padding: 2px 5px;
+        padding: 2px 6px;
         font-size: 11px;
         opacity: 0;
         transition: opacity 0.15s;
         pointer-events: none;
-        z-index: 2;
+        z-index: 3;
         display: none;
       }
       .rating-badge.has-rating {
@@ -636,22 +788,23 @@
         top: 5px;
         left: 50%;
         transform: translateX(-50%);
-        background: linear-gradient(135deg, #3182ce, #2b6cb0);
+        background: linear-gradient(135deg, var(--accent), #4a6ee8);
         color: white;
         font-size: 9px;
         font-weight: 800;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
-        padding: 2px 7px;
+        padding: 2px 8px;
         border-radius: 20px;
         pointer-events: none;
         z-index: 4;
-        box-shadow: 0 2px 8px rgba(49, 130, 206, 0.5);
+        box-shadow: 0 2px 10px rgba(108, 143, 255, 0.5);
+        font-family: "Syne", sans-serif;
       }
 
       /* Shimmer */
       .skeleton {
-        border-radius: 10px;
+        border-radius: 12px;
         aspect-ratio: 1/1;
         border: 1px solid var(--border);
         background: linear-gradient(
@@ -661,7 +814,7 @@
           var(--shimmer1) 75%
         );
         background-size: 200% 100%;
-        animation: shimmer 1.4s infinite;
+        animation: shimmer 1.6s infinite;
       }
       @keyframes shimmer {
         0% {
@@ -672,15 +825,15 @@
         }
       }
 
-      /* ── Smooth section transitions ── */
+      /* ── Section transitions ── */
       #content,
       #searchResults {
-        animation: fadeSlideIn 0.22s ease both;
+        animation: fadeSlideIn 0.25s ease both;
       }
       @keyframes fadeSlideIn {
         from {
           opacity: 0;
-          transform: translateY(8px);
+          transform: translateY(10px);
         }
         to {
           opacity: 1;
@@ -688,22 +841,22 @@
         }
       }
       .section {
-        animation: fadeSlideIn 0.2s ease both;
+        animation: fadeSlideIn 0.22s ease both;
       }
       .section:nth-child(2) {
-        animation-delay: 0.03s;
+        animation-delay: 0.04s;
       }
       .section:nth-child(3) {
-        animation-delay: 0.06s;
+        animation-delay: 0.08s;
       }
       .section:nth-child(4) {
-        animation-delay: 0.09s;
-      }
-      .section:nth-child(5) {
         animation-delay: 0.12s;
       }
+      .section:nth-child(5) {
+        animation-delay: 0.16s;
+      }
       .section:nth-child(6) {
-        animation-delay: 0.15s;
+        animation-delay: 0.2s;
       }
 
       /* Search results */
@@ -732,14 +885,15 @@
       .modal-overlay {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.75);
+        background: rgba(0, 0, 0, 0.8);
         z-index: 1000;
         display: flex;
         align-items: center;
         justify-content: center;
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.2s;
+        transition: opacity 0.22s;
+        backdrop-filter: blur(4px);
       }
       .modal-overlay.open {
         opacity: 1;
@@ -748,21 +902,23 @@
       .modal {
         background: var(--bg3);
         border: 1px solid var(--border2);
-        border-radius: 14px;
+        border-radius: 16px;
         padding: 28px;
         width: 100%;
-        max-width: 440px;
+        max-width: 460px;
         margin: 16px;
-        transform: translateY(12px);
-        transition: transform 0.2s;
+        transform: translateY(16px) scale(0.97);
+        transition: transform 0.25s cubic-bezier(0.34, 1.2, 0.64, 1);
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7);
       }
       .modal-overlay.open .modal {
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
       .modal h2 {
-        font-size: 17px;
-        font-weight: 700;
+        font-size: 18px;
+        font-weight: 800;
         margin-bottom: 6px;
+        font-family: "Syne", sans-serif;
       }
       .modal p {
         font-size: 13px;
@@ -772,20 +928,23 @@
       .modal input,
       .modal textarea {
         width: 100%;
-        background: rgba(128, 128, 128, 0.08);
+        background: rgba(108, 143, 255, 0.06);
         border: 1px solid var(--border2);
-        border-radius: 8px;
+        border-radius: 9px;
         padding: 10px 14px;
         color: var(--text);
         font-size: 14px;
         outline: none;
         margin-bottom: 12px;
-        font-family: inherit;
-        transition: border-color 0.2s;
+        font-family: "DM Sans", sans-serif;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
       }
       .modal input:focus,
       .modal textarea:focus {
-        border-color: rgba(99, 179, 237, 0.5);
+        border-color: rgba(108, 143, 255, 0.5);
+        box-shadow: 0 0 0 3px rgba(108, 143, 255, 0.1);
       }
       .modal textarea {
         resize: vertical;
@@ -798,38 +957,44 @@
         margin-top: 4px;
       }
       .modal-cancel {
-        background: rgba(128, 128, 128, 0.1);
+        background: rgba(255, 255, 255, 0.06);
         border: 1px solid var(--border2);
         color: var(--text2);
         padding: 8px 18px;
-        border-radius: 8px;
+        border-radius: 9px;
         cursor: pointer;
         font-size: 13px;
         transition: background 0.2s;
+        font-family: "DM Sans", sans-serif;
       }
       .modal-cancel:hover {
-        background: rgba(128, 128, 128, 0.18);
+        background: rgba(255, 255, 255, 0.12);
       }
       .modal-submit {
-        background: var(--accent);
+        background: linear-gradient(135deg, var(--accent), #4a6ee8);
         border: none;
         color: white;
-        padding: 8px 18px;
-        border-radius: 8px;
+        padding: 8px 20px;
+        border-radius: 9px;
         cursor: pointer;
         font-size: 13px;
-        font-weight: 600;
-        transition: background 0.2s;
+        font-weight: 700;
+        transition:
+          transform 0.18s,
+          box-shadow 0.18s;
+        font-family: "DM Sans", sans-serif;
+        box-shadow: 0 4px 14px rgba(108, 143, 255, 0.35);
       }
       .modal-submit:hover {
-        background: #2b6cb0;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(108, 143, 255, 0.5);
       }
       .modal-success {
         text-align: center;
         padding: 12px 0 4px;
       }
       .modal-success .big-emoji {
-        font-size: 40px;
+        font-size: 44px;
         margin-bottom: 10px;
         display: block;
       }
@@ -839,24 +1004,528 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        background: rgba(128, 128, 128, 0.08);
-        border: 1px solid var(--border2);
-        color: var(--text2);
+        background: rgba(108, 143, 255, 0.08);
+        border: 1px solid rgba(108, 143, 255, 0.2);
+        color: var(--accent3);
         padding: 8px 16px;
-        border-radius: 8px;
+        border-radius: 9px;
         cursor: pointer;
         font-size: 13px;
         margin-top: 16px;
         transition:
           background 0.2s,
           color 0.2s;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 500;
       }
       .suggest-btn:hover {
-        background: rgba(128, 128, 128, 0.16);
-        color: var(--text);
+        background: rgba(108, 143, 255, 0.16);
       }
 
-      /* Cookie banner */
+      /* ── ====== NOTIFICATION SYSTEM ====== ── */
+      .notif-panel {
+        position: fixed;
+        top: 78px;
+        right: 16px;
+        width: 340px;
+        max-height: 480px;
+        background: var(--bg3);
+        border: 1px solid var(--border2);
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+        z-index: 1100;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(-10px) scale(0.97);
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          transform 0.25s cubic-bezier(0.34, 1.2, 0.64, 1),
+          opacity 0.2s;
+      }
+      .notif-panel.open {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        pointer-events: all;
+      }
+      .notif-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 18px 12px;
+        border-bottom: 1px solid var(--border);
+        flex-shrink: 0;
+      }
+      .notif-header h3 {
+        font-size: 15px;
+        font-weight: 800;
+        font-family: "Syne", sans-serif;
+      }
+      .notif-mark-all {
+        font-size: 12px;
+        color: var(--accent3);
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 600;
+        transition: opacity 0.15s;
+      }
+      .notif-mark-all:hover {
+        opacity: 0.7;
+      }
+      .notif-list {
+        overflow-y: auto;
+        flex: 1;
+      }
+      .notif-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 13px 16px;
+        border-bottom: 1px solid var(--border);
+        cursor: pointer;
+        transition: background 0.15s;
+        position: relative;
+      }
+      .notif-item:last-child {
+        border-bottom: none;
+      }
+      .notif-item:hover {
+        background: rgba(108, 143, 255, 0.07);
+      }
+      .notif-item.unread {
+        background: rgba(108, 143, 255, 0.05);
+      }
+      .notif-item.unread::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--accent);
+        border-radius: 0 3px 3px 0;
+      }
+      .notif-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        background: rgba(108, 143, 255, 0.12);
+      }
+      .notif-icon.green {
+        background: rgba(0, 229, 160, 0.12);
+      }
+      .notif-icon.red {
+        background: rgba(255, 92, 122, 0.12);
+      }
+      .notif-icon.yellow {
+        background: rgba(255, 210, 0, 0.12);
+      }
+      .notif-body {
+        flex: 1;
+        min-width: 0;
+      }
+      .notif-title {
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 2px;
+        line-height: 1.3;
+      }
+      .notif-sub {
+        font-size: 11px;
+        color: var(--text2);
+        line-height: 1.4;
+      }
+      .notif-time {
+        font-size: 10px;
+        color: var(--text3);
+        margin-top: 3px;
+      }
+      .notif-empty {
+        text-align: center;
+        padding: 40px 20px;
+        color: var(--text3);
+        font-size: 13px;
+      }
+      .notif-empty .emoji {
+        font-size: 32px;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      /* ── ====== FRIENDS / MULTIPLAYER LOBBY ====== ── */
+      .friends-panel {
+        position: fixed;
+        top: 78px;
+        right: 16px;
+        width: 320px;
+        max-height: 500px;
+        background: var(--bg3);
+        border: 1px solid var(--border2);
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+        z-index: 1100;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(-10px) scale(0.97);
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          transform 0.25s cubic-bezier(0.34, 1.2, 0.64, 1),
+          opacity 0.2s;
+      }
+      .friends-panel.open {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        pointer-events: all;
+      }
+      .friends-header {
+        padding: 16px 18px 12px;
+        border-bottom: 1px solid var(--border);
+        flex-shrink: 0;
+      }
+      .friends-header h3 {
+        font-size: 15px;
+        font-weight: 800;
+        font-family: "Syne", sans-serif;
+        margin-bottom: 10px;
+      }
+      .friends-tabs {
+        display: flex;
+        gap: 6px;
+      }
+      .friends-tab {
+        flex: 1;
+        padding: 6px 10px;
+        border-radius: 8px;
+        border: 1px solid var(--border2);
+        background: none;
+        color: var(--text2);
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.18s;
+        font-family: "DM Sans", sans-serif;
+      }
+      .friends-tab.active {
+        background: rgba(108, 143, 255, 0.15);
+        border-color: rgba(108, 143, 255, 0.35);
+        color: var(--accent3);
+      }
+      .friends-body {
+        overflow-y: auto;
+        flex: 1;
+        padding: 8px 0;
+      }
+
+      /* Friends list items */
+      .friend-row {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        padding: 10px 16px;
+        cursor: pointer;
+        transition: background 0.15s;
+      }
+      .friend-row:hover {
+        background: rgba(108, 143, 255, 0.07);
+      }
+      .friend-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        flex-shrink: 0;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .friend-status {
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        border: 2px solid var(--bg3);
+      }
+      .friend-status.online {
+        background: var(--green);
+      }
+      .friend-status.away {
+        background: #ffcc00;
+      }
+      .friend-status.offline {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .friend-info {
+        flex: 1;
+        min-width: 0;
+      }
+      .friend-name {
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .friend-activity {
+        font-size: 11px;
+        color: var(--text2);
+        margin-top: 1px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .friend-action {
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 7px;
+        border: 1px solid var(--border2);
+        background: none;
+        color: var(--text2);
+        cursor: pointer;
+        font-family: "DM Sans", sans-serif;
+        transition: all 0.15s;
+        white-space: nowrap;
+      }
+      .friend-action:hover {
+        background: rgba(108, 143, 255, 0.12);
+        color: var(--accent3);
+        border-color: rgba(108, 143, 255, 0.3);
+      }
+      .friend-action.invite {
+        background: rgba(0, 229, 160, 0.1);
+        color: var(--green);
+        border-color: rgba(0, 229, 160, 0.25);
+      }
+      .friend-action.invite:hover {
+        background: rgba(0, 229, 160, 0.2);
+      }
+
+      /* Lobby section */
+      .lobby-section {
+        padding: 12px 16px 8px;
+      }
+      .lobby-section h4 {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text3);
+        margin-bottom: 10px;
+        font-family: "Syne", sans-serif;
+      }
+      .lobby-game-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        background: rgba(108, 143, 255, 0.07);
+        border-radius: 10px;
+        margin-bottom: 8px;
+        border: 1px solid rgba(108, 143, 255, 0.12);
+      }
+      .lobby-game-img {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+      .lobby-game-info {
+        flex: 1;
+        min-width: 0;
+      }
+      .lobby-game-title {
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 1px;
+      }
+      .lobby-game-players {
+        font-size: 11px;
+        color: var(--text2);
+      }
+      .lobby-join-btn {
+        font-size: 11px;
+        font-weight: 700;
+        padding: 5px 12px;
+        border-radius: 7px;
+        background: linear-gradient(135deg, var(--accent), #4a6ee8);
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-family: "DM Sans", sans-serif;
+        box-shadow: 0 2px 8px rgba(108, 143, 255, 0.3);
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
+      }
+      .lobby-join-btn:hover {
+        transform: scale(1.06);
+        box-shadow: 0 4px 14px rgba(108, 143, 255, 0.45);
+      }
+
+      /* Add friend input */
+      .add-friend-wrap {
+        padding: 10px 16px 14px;
+        border-top: 1px solid var(--border);
+        flex-shrink: 0;
+      }
+      .add-friend-row {
+        display: flex;
+        gap: 8px;
+      }
+      .add-friend-row input {
+        flex: 1;
+        background: rgba(108, 143, 255, 0.06);
+        border: 1px solid var(--border2);
+        border-radius: 8px;
+        padding: 8px 12px;
+        color: var(--text);
+        font-size: 13px;
+        outline: none;
+        font-family: "DM Sans", sans-serif;
+        transition: border-color 0.2s;
+      }
+      .add-friend-row input:focus {
+        border-color: rgba(108, 143, 255, 0.45);
+      }
+      .add-friend-btn {
+        background: linear-gradient(135deg, var(--accent), #4a6ee8);
+        border: none;
+        color: white;
+        padding: 8px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 700;
+        font-family: "DM Sans", sans-serif;
+        box-shadow: 0 2px 8px rgba(108, 143, 255, 0.3);
+        transition: transform 0.15s;
+      }
+      .add-friend-btn:hover {
+        transform: scale(1.06);
+      }
+
+      /* Online count chip */
+      .online-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: rgba(0, 229, 160, 0.1);
+        border: 1px solid rgba(0, 229, 160, 0.2);
+        color: var(--green);
+        font-size: 11px;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 20px;
+        margin-left: 8px;
+        vertical-align: middle;
+        font-family: "DM Sans", sans-serif;
+      }
+      .online-chip::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--green);
+        animation: pulse-dot 2s infinite;
+      }
+      @keyframes pulse-dot {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.7);
+        }
+      }
+
+      /* ── Daily challenge bar ── */
+      .challenge-bar {
+        background: linear-gradient(135deg, #0c1e12, #091710);
+        border: 1px solid rgba(0, 229, 160, 0.18);
+        border-radius: 14px;
+        padding: 14px 20px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+        cursor: pointer;
+        transition:
+          border-color 0.2s,
+          transform 0.18s;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+      }
+      .challenge-bar:hover {
+        border-color: rgba(0, 229, 160, 0.35);
+        transform: translateY(-1px);
+      }
+      .challenge-streak-wrap {
+        text-align: center;
+        flex-shrink: 0;
+        min-width: 52px;
+      }
+      .challenge-streak-num {
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--green);
+        line-height: 1;
+        font-family: "Syne", sans-serif;
+      }
+      .challenge-streak-lbl {
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: rgba(0, 229, 160, 0.45);
+        margin-top: 1px;
+      }
+      .challenge-info {
+        flex: 1;
+        min-width: 0;
+      }
+      .challenge-title {
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--green);
+        margin-bottom: 2px;
+        font-family: "Syne", sans-serif;
+        letter-spacing: 0.03em;
+      }
+      .challenge-desc {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.35);
+      }
+      .challenge-action {
+        background: rgba(0, 229, 160, 0.14);
+        border: 1px solid rgba(0, 229, 160, 0.3);
+        color: var(--green);
+        padding: 6px 16px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+        flex-shrink: 0;
+        font-family: "DM Sans", sans-serif;
+        transition: background 0.15s;
+      }
+      .challenge-bar:hover .challenge-action {
+        background: rgba(0, 229, 160, 0.25);
+      }
+      .challenge-action.done {
+        opacity: 0.4;
+      }
+
+      /* ── Cookie banner ── */
       .cookie-banner {
         position: fixed;
         bottom: 0;
@@ -888,36 +1557,31 @@
         flex-shrink: 0;
       }
       .cookie-accept {
-        background: var(--accent);
+        background: linear-gradient(135deg, var(--accent), #4a6ee8);
         border: none;
         color: white;
         padding: 7px 18px;
-        border-radius: 7px;
+        border-radius: 8px;
         cursor: pointer;
         font-size: 13px;
-        font-weight: 600;
-        transition: background 0.2s;
-      }
-      .cookie-accept:hover {
-        background: #2b6cb0;
+        font-weight: 700;
+        font-family: "DM Sans", sans-serif;
       }
       .cookie-decline {
-        background: rgba(128, 128, 128, 0.08);
+        background: rgba(255, 255, 255, 0.06);
         border: 1px solid var(--border2);
         color: var(--text2);
         padding: 7px 14px;
-        border-radius: 7px;
+        border-radius: 8px;
         cursor: pointer;
         font-size: 13px;
+        font-family: "DM Sans", sans-serif;
         transition: background 0.2s;
       }
-      .cookie-decline:hover {
-        background: rgba(128, 128, 128, 0.16);
-      }
 
-      /* Footer */
+      /* ── Footer ── */
       footer {
-        background: var(--footer-bg);
+        background: #050810;
         border-top: 1px solid var(--border);
         margin-top: 24px;
         padding: 48px 8% 28px;
@@ -937,16 +1601,17 @@
       .footer-brand p {
         font-size: 13px;
         color: var(--text3);
-        line-height: 1.75;
+        line-height: 1.8;
         max-width: 280px;
       }
       .footer-col h4 {
         font-size: 11px;
         font-weight: 700;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
         color: var(--text2);
         margin-bottom: 14px;
+        font-family: "Syne", sans-serif;
       }
       .footer-col ul {
         list-style: none;
@@ -992,90 +1657,46 @@
       /* ── Theme toggle ── */
       .theme-btn {
         flex-shrink: 0;
-        background: rgba(128, 128, 128, 0.08);
-        border: 1px solid var(--border2);
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         color: var(--text);
-        width: 36px;
-        height: 36px;
-        border-radius: 8px;
+        width: 38px;
+        height: 38px;
+        border-radius: 9px;
         cursor: pointer;
         font-size: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: background 0.2s;
+        transition:
+          background 0.2s,
+          transform 0.15s;
         margin-left: 6px;
       }
       .theme-btn:hover {
-        background: rgba(128, 128, 128, 0.16);
+        background: rgba(255, 255, 255, 0.12);
+        transform: scale(1.08);
       }
 
-      /* ── Stats page ── */
-      .stats-page {
-        padding: 24px 0;
-      }
+      /* ── Stats / Settings / Achievements (reused from original, restyled) ── */
       .stats-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 14px;
-        margin-bottom: 32px;
-      }
-      .stat-card {
-        background: var(--bg3);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 20px;
-        text-align: center;
-      }
-      .stat-card .stat-val {
-        font-size: 32px;
-        font-weight: 800;
-        color: var(--accent3);
-      }
-      .stat-card .stat-label {
-        font-size: 12px;
-        color: var(--text2);
-        margin-top: 4px;
-      }
-
-      /* ── Theme btn ── */
-      .nav-icon-btn {
-        flex-shrink: 0;
-        background: var(--bb);
-        border: 1px solid var(--bb2);
-        color: var(--text);
-        padding: 7px 12px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 13px;
-        white-space: nowrap;
-        transition: background 0.2s;
-      }
-      .nav-icon-btn:hover {
-        background: rgba(128, 128, 128, 0.15);
-      }
-
-      /* ── Stats page ── */
-      .stats-page {
-        padding: 4px 0 16px;
-      }
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
         margin-bottom: 28px;
       }
       .stat-card {
         background: var(--bg3);
         border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 18px 12px;
+        border-radius: 14px;
+        padding: 20px 16px;
         text-align: center;
       }
       .stat-val {
-        font-size: 28px;
+        font-size: 30px;
         font-weight: 800;
         color: var(--accent3);
+        font-family: "Syne", sans-serif;
       }
       body.light .stat-val {
         color: var(--accent);
@@ -1096,9 +1717,9 @@
         border-bottom: none;
       }
       .history-img {
-        width: 36px;
-        height: 36px;
-        border-radius: 7px;
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
         object-fit: cover;
         flex-shrink: 0;
       }
@@ -1124,93 +1745,40 @@
         text-decoration: none;
         background: var(--accent2);
         padding: 4px 10px;
-        border-radius: 6px;
+        border-radius: 7px;
         flex-shrink: 0;
-        font-weight: 600;
+        font-weight: 700;
         transition: background 0.15s;
       }
-      body.light .history-play {
-        color: var(--accent);
-      }
       .history-play:hover {
-        background: rgba(99, 179, 237, 0.2);
+        background: rgba(108, 143, 255, 0.25);
       }
 
-      /* ── Daily challenge bar ── */
-      .challenge-bar {
-        background: linear-gradient(135deg, #0d2418, #0a1f12);
-        border: 1px solid rgba(72, 187, 120, 0.22);
-        border-radius: 12px;
-        padding: 14px 18px;
+      /* Search tags */
+      .search-tags {
         display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 24px;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+      }
+      .search-tag {
+        background: var(--bg3);
+        border: 1px solid var(--border2);
+        color: var(--text2);
+        padding: 4px 11px;
+        border-radius: 20px;
+        font-size: 12px;
         cursor: pointer;
-        transition: border-color 0.2s;
+        transition: all 0.15s;
+        font-family: "DM Sans", sans-serif;
       }
-      .challenge-bar:hover {
-        border-color: rgba(72, 187, 120, 0.4);
-      }
-      .challenge-streak-wrap {
-        text-align: center;
-        flex-shrink: 0;
-        min-width: 48px;
-      }
-      .challenge-streak-num {
-        font-size: 24px;
-        font-weight: 800;
-        color: #68d391;
-        line-height: 1;
-      }
-      .challenge-streak-lbl {
-        font-size: 9px;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: rgba(104, 211, 145, 0.5);
-        margin-top: 1px;
-      }
-      .challenge-info {
-        flex: 1;
-        min-width: 0;
-      }
-      .challenge-title {
-        font-size: 12px;
-        font-weight: 700;
-        color: #68d391;
-        margin-bottom: 2px;
-      }
-      .challenge-desc {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.38);
-      }
-      .challenge-action {
-        background: rgba(72, 187, 120, 0.18);
-        border: 1px solid rgba(72, 187, 120, 0.35);
-        color: #68d391;
-        padding: 6px 14px;
-        border-radius: 7px;
-        font-size: 12px;
-        font-weight: 600;
-        white-space: nowrap;
-        flex-shrink: 0;
-      }
-      .challenge-bar:hover .challenge-action {
-        background: rgba(72, 187, 120, 0.3);
-      }
-      .challenge-action.done {
-        opacity: 0.45;
+      .search-tag.active {
+        background: var(--accent2);
+        border-color: rgba(108, 143, 255, 0.4);
+        color: var(--accent3);
       }
 
-      /* Card label always visible on touch */
-      @media (hover: none) {
-        .card-label {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* ── Settings page ── */
+      /* Settings rows */
       .settings-page {
         padding: 4px 0 16px;
       }
@@ -1226,6 +1794,7 @@
         margin-bottom: 12px;
         padding-bottom: 8px;
         border-bottom: 1px solid var(--border);
+        font-family: "Syne", sans-serif;
       }
       .settings-row {
         display: flex;
@@ -1255,19 +1824,20 @@
         border: 1px solid var(--border2);
         color: var(--text);
         padding: 6px 10px;
-        border-radius: 7px;
+        border-radius: 8px;
         font-size: 13px;
         cursor: pointer;
         outline: none;
         flex-shrink: 0;
+        font-family: "DM Sans", sans-serif;
       }
       .settings-toggle {
         position: relative;
-        width: 40px;
-        height: 22px;
+        width: 42px;
+        height: 24px;
         flex-shrink: 0;
-        background: rgba(128, 128, 128, 0.2);
-        border-radius: 11px;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
         border: none;
         cursor: pointer;
         transition: background 0.2s;
@@ -1276,8 +1846,8 @@
       .settings-toggle::after {
         content: "";
         position: absolute;
-        top: 3px;
-        left: 3px;
+        top: 4px;
+        left: 4px;
         width: 16px;
         height: 16px;
         border-radius: 50%;
@@ -1291,9 +1861,9 @@
         transform: translateX(18px);
       }
       .settings-danger-btn {
-        background: rgba(220, 38, 38, 0.12);
-        border: 1px solid rgba(220, 38, 38, 0.3);
-        color: #fc8181;
+        background: rgba(255, 92, 122, 0.1);
+        border: 1px solid rgba(255, 92, 122, 0.28);
+        color: #ff7c94;
         padding: 7px 16px;
         border-radius: 8px;
         cursor: pointer;
@@ -1301,13 +1871,14 @@
         font-weight: 600;
         transition: background 0.2s;
         flex-shrink: 0;
+        font-family: "DM Sans", sans-serif;
       }
       .settings-danger-btn:hover {
-        background: rgba(220, 38, 38, 0.25);
+        background: rgba(255, 92, 122, 0.22);
       }
       .settings-safe-btn {
         background: var(--accent2);
-        border: 1px solid rgba(99, 179, 237, 0.3);
+        border: 1px solid rgba(108, 143, 255, 0.28);
         color: var(--accent3);
         padding: 7px 16px;
         border-radius: 8px;
@@ -1316,15 +1887,13 @@
         font-weight: 600;
         transition: background 0.2s;
         flex-shrink: 0;
-      }
-      body.light .settings-safe-btn {
-        color: var(--accent);
+        font-family: "DM Sans", sans-serif;
       }
       .settings-safe-btn:hover {
-        background: rgba(99, 179, 237, 0.2);
+        background: rgba(108, 143, 255, 0.22);
       }
 
-      /* ── Achievements ── */
+      /* Achievements */
       .achievements-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -1333,13 +1902,13 @@
       .achievement {
         background: var(--bg3);
         border: 1px solid var(--border);
-        border-radius: 12px;
+        border-radius: 13px;
         padding: 14px 12px;
         text-align: center;
         transition: border-color 0.2s;
       }
       .achievement.unlocked {
-        border-color: rgba(251, 191, 36, 0.4);
+        border-color: rgba(251, 191, 36, 0.35);
         background: rgba(251, 191, 36, 0.04);
       }
       .achievement-icon {
@@ -1349,12 +1918,13 @@
       }
       .achievement.locked .achievement-icon {
         filter: grayscale(1);
-        opacity: 0.35;
+        opacity: 0.3;
       }
       .achievement-name {
         font-size: 12px;
         font-weight: 700;
         margin-bottom: 2px;
+        font-family: "Syne", sans-serif;
       }
       .achievement.locked .achievement-name {
         color: var(--text2);
@@ -1367,44 +1937,26 @@
       .achievement-badge {
         display: inline-block;
         font-size: 9px;
-        font-weight: 700;
-        letter-spacing: 0.06em;
+        font-weight: 800;
+        letter-spacing: 0.07em;
         text-transform: uppercase;
-        padding: 2px 6px;
+        padding: 2px 7px;
         border-radius: 10px;
         margin-bottom: 5px;
-        background: rgba(251, 191, 36, 0.2);
+        background: rgba(251, 191, 36, 0.18);
         color: #f6c90e;
       }
       .achievement.locked .achievement-badge {
-        background: rgba(128, 128, 128, 0.15);
+        background: rgba(255, 255, 255, 0.07);
         color: var(--text2);
       }
 
-      /* ── Better search ── */
-      .search-tags {
-        display: flex;
-        gap: 6px;
-        flex-wrap: wrap;
-        margin-bottom: 12px;
-      }
-      .search-tag {
-        background: var(--bg3);
-        border: 1px solid var(--border2);
-        color: var(--text2);
-        padding: 4px 10px;
-        border-radius: 20px;
-        font-size: 12px;
-        cursor: pointer;
-        transition: all 0.15s;
-      }
-      .search-tag.active {
-        background: var(--accent2);
-        border-color: rgba(99, 179, 237, 0.4);
-        color: var(--accent3);
-      }
-      body.light .search-tag.active {
-        color: var(--accent);
+      /* Card label touch always-on */
+      @media (hover: none) {
+        .card-label {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       @media (max-width: 800px) {
@@ -1429,15 +1981,17 @@
           flex-direction: column;
           text-align: center;
         }
-        .random-btn .random-label {
-          display: none;
-        }
         .daily-hero {
           flex-direction: column;
           text-align: center;
         }
         .stats-grid {
           grid-template-columns: repeat(2, 1fr);
+        }
+        .notif-panel,
+        .friends-panel {
+          width: calc(100vw - 32px);
+          right: 16px;
         }
       }
       @media (max-width: 480px) {
@@ -1462,9 +2016,9 @@
     </div>
 
     <div class="navbar">
-      <a href="index.html" class="logo-link">
-        <img src="logo.png" alt="Home" class="logo" />
-      </a>
+      <a href="index.html" class="logo-link"
+        ><img src="logo.png" alt="Home" class="logo"
+      /></a>
       <div class="search-wrapper">
         <input
           type="text"
@@ -1479,10 +2033,59 @@
         🎲 <span class="random-label">Random</span>
       </button>
       <button class="nav-icon-btn" id="statsBtn" title="Your Stats">📊</button>
-      <button class="nav-icon-btn" id="themeBtn" title="Toggle theme">
-        🌙
+
+      <!-- Notifications button -->
+      <button class="nav-icon-btn" id="notifBtn" title="Notifications">
+        🔔
+        <span class="notif-count" id="notifCount">0</span>
       </button>
+
+      <!-- Friends button -->
+      <button class="nav-icon-btn" id="friendsBtn" title="Friends & Lobby">
+        👥
+        <span class="notif-count" id="friendsOnlineCount">0</span>
+      </button>
+
+      <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
       <button class="panic-btn" id="panicBtn">🚨 Panic</button>
+    </div>
+
+    <!-- ── Notification Panel ── -->
+    <div class="notif-panel" id="notifPanel">
+      <div class="notif-header">
+        <h3>Notifications</h3>
+        <button class="notif-mark-all" id="markAllRead">Mark all read</button>
+      </div>
+      <div class="notif-list" id="notifList"></div>
+    </div>
+
+    <!-- ── Friends & Lobby Panel ── -->
+    <div class="friends-panel" id="friendsPanel">
+      <div class="friends-header">
+        <h3>
+          Friends <span class="online-chip" id="onlineChip">0 online</span>
+        </h3>
+        <div class="friends-tabs">
+          <button class="friends-tab active" data-tab="friends" id="tabFriends">
+            Friends
+          </button>
+          <button class="friends-tab" data-tab="lobby" id="tabLobby">
+            🎮 Lobby
+          </button>
+        </div>
+      </div>
+      <div class="friends-body" id="friendsBody"></div>
+      <div class="add-friend-wrap">
+        <div class="add-friend-row">
+          <input
+            type="text"
+            id="addFriendInput"
+            placeholder="Enter username to add..."
+            maxlength="30"
+          />
+          <button class="add-friend-btn" id="addFriendBtn">+ Add</button>
+        </div>
+      </div>
     </div>
 
     <div class="layout">
@@ -1519,41 +2122,45 @@
           ><span class="nav-label">Popular</span>
         </a>
         <div class="nav-divider"></div>
-        <a class="nav-item" data-tag="soccer" href="#">
-          <span class="nav-emoji">⚽</span><span class="nav-label">Soccer</span>
-        </a>
-        <a class="nav-item" data-tag="racing" href="#">
-          <span class="nav-emoji">🏎️</span><span class="nav-label">Racing</span>
-        </a>
-        <a class="nav-item" data-tag="cars" href="#">
-          <span class="nav-emoji">🚗</span><span class="nav-label">Cars</span>
-        </a>
-        <a class="nav-item" data-tag="3d" href="#">
-          <span class="nav-emoji">🎲</span><span class="nav-label">3D</span>
-        </a>
-        <a class="nav-item" data-tag="multiplayer" href="#">
-          <span class="nav-emoji">👥</span
-          ><span class="nav-label">Multiplayer</span>
-        </a>
-        <a class="nav-item" data-tag="adventure" href="#">
-          <span class="nav-emoji">🗺️</span
-          ><span class="nav-label">Adventure</span>
-        </a>
-        <a class="nav-item" data-tag="puzzle" href="#">
-          <span class="nav-emoji">🧩</span><span class="nav-label">Puzzle</span>
-        </a>
-        <a class="nav-item" data-tag="simulators" href="#">
-          <span class="nav-emoji">🕹️</span
-          ><span class="nav-label">Simulators</span>
-        </a>
-        <a class="nav-item" data-tag="survival" href="#">
-          <span class="nav-emoji">🛡️</span
-          ><span class="nav-label">Survival</span>
-        </a>
-        <a class="nav-item" data-tag="girls" href="#">
-          <span class="nav-emoji">💅</span
-          ><span class="nav-label">For Girls</span>
-        </a>
+        <a class="nav-item" data-tag="soccer" href="#"
+          ><span class="nav-emoji">⚽</span
+          ><span class="nav-label">Soccer</span></a
+        >
+        <a class="nav-item" data-tag="racing" href="#"
+          ><span class="nav-emoji">🏎️</span
+          ><span class="nav-label">Racing</span></a
+        >
+        <a class="nav-item" data-tag="cars" href="#"
+          ><span class="nav-emoji">🚗</span
+          ><span class="nav-label">Cars</span></a
+        >
+        <a class="nav-item" data-tag="3d" href="#"
+          ><span class="nav-emoji">🎲</span><span class="nav-label">3D</span></a
+        >
+        <a class="nav-item" data-tag="multiplayer" href="#"
+          ><span class="nav-emoji">👥</span
+          ><span class="nav-label">Multiplayer</span></a
+        >
+        <a class="nav-item" data-tag="adventure" href="#"
+          ><span class="nav-emoji">🗺️</span
+          ><span class="nav-label">Adventure</span></a
+        >
+        <a class="nav-item" data-tag="puzzle" href="#"
+          ><span class="nav-emoji">🧩</span
+          ><span class="nav-label">Puzzle</span></a
+        >
+        <a class="nav-item" data-tag="simulators" href="#"
+          ><span class="nav-emoji">🕹️</span
+          ><span class="nav-label">Simulators</span></a
+        >
+        <a class="nav-item" data-tag="survival" href="#"
+          ><span class="nav-emoji">🛡️</span
+          ><span class="nav-label">Survival</span></a
+        >
+        <a class="nav-item" data-tag="girls" href="#"
+          ><span class="nav-emoji">💅</span
+          ><span class="nav-label">For Girls</span></a
+        >
       </nav>
 
       <main class="main" id="main">
@@ -1596,21 +2203,9 @@
           <h4>Contact</h4>
           <ul>
             <li>
-              <a
-                href="/cdn-cgi/l/email-protection#9aecf6fbfeeaf3f6f3eaf9f2eff1abaedafdf7fbf3f6b4f9f5f7"
-                >📧 Send us an email</a
-              >
+              <a href="mailto:info@mathgames67.com">📧 Send us an email</a>
             </li>
-            <li>
-              <span
-                ><a
-                  href="/cdn-cgi/l/email-protection"
-                  class="__cf_email__"
-                  data-cfemail="2553494441554c494c55464d504e1411654248444c490b464a48"
-                  >[email&#160;protected]</a
-                ></span
-              >
-            </li>
+            <li><span>info@mathgames67.com</span></li>
             <li>
               <span class="footer-note">We reply within 24–48 hours</span>
             </li>
@@ -1650,7 +2245,7 @@
       <div class="modal">
         <div id="suggestForm">
           <h2>💡 Suggest a Game</h2>
-          <p>Know a game we should add? Let us know and we'll try to add it!</p>
+          <p>Know a game we should add? Let us know!</p>
           <input
             type="text"
             id="suggestName"
@@ -1672,13 +2267,7 @@
         <div id="suggestSuccess" class="modal-success" style="display: none">
           <span class="big-emoji">🎉</span>
           <h2>Thanks!</h2>
-          <p
-            style="
-              color: rgba(255, 255, 255, 0.45);
-              font-size: 13px;
-              margin-top: 8px;
-            "
-          >
+          <p style="color: var(--text2); font-size: 13px; margin-top: 8px">
             Your suggestion has been saved. We'll check it out!
           </p>
           <div
@@ -1695,11 +2284,7 @@
     <div class="cookie-banner" id="cookieBanner">
       <p>
         🍪 We use localStorage to save your favourites, ratings and recently
-        played games. No tracking, no ads data — just your preferences.
-        <a
-          href="/cdn-cgi/l/email-protection#1f69737e7b6f7673766f7c776a742e2b5f78727e7673317c7072"
-          >Learn more</a
-        >
+        played games. No tracking — just your preferences.
       </p>
       <div class="cookie-btns">
         <button class="cookie-decline" id="cookieDecline">Decline</button>
@@ -1709,10 +2294,13 @@
 
     <script src="games.js"></script>
     <script>
-      // ── Panic key ──
+      // ── Panic ──
       document.addEventListener("keydown", (e) => {
         if (e.key === "`")
           window.location.href = "https://classroom.google.com";
+      });
+      document.getElementById("panicBtn").addEventListener("click", () => {
+        window.location.href = "https://classroom.google.com";
       });
 
       // ── Theme ──
@@ -1729,7 +2317,7 @@
         applyTheme(theme);
       });
 
-      // ── Settings storage ──
+      // ── Settings ──
       function getSettings() {
         try {
           return JSON.parse(localStorage.getItem("siteSettings") || "{}");
@@ -1737,23 +2325,21 @@
           return {};
         }
       }
-      function saveSetting(key, val) {
+      function saveSetting(k, v) {
         const s = getSettings();
-        s[key] = val;
+        s[k] = v;
         try {
           localStorage.setItem("siteSettings", JSON.stringify(s));
         } catch {}
       }
-      function getSetting(key, def) {
-        const v = getSettings()[key];
+      function getSetting(k, def) {
+        const v = getSettings()[k];
         return v !== undefined ? v : def;
       }
-
-      // Apply saved column setting immediately
       const savedCols = getSetting("columns", 6);
       document.documentElement.style.setProperty("--grid-cols", savedCols);
 
-      // ── Cookie banner ──
+      // ── Cookie ──
       const cookieBanner = document.getElementById("cookieBanner");
       if (localStorage.getItem("cookieChoice"))
         cookieBanner.style.display = "none";
@@ -1766,11 +2352,11 @@
         cookieBanner.style.display = "none";
       });
 
-      // ── Announcement banner ──
+      // ── Announce ──
       const announceBanner = document.getElementById("announceBanner");
-      const announceText = document.getElementById("announceText");
       const adminMsg = localStorage.getItem("adminAnnounce");
-      if (adminMsg) announceText.innerHTML = adminMsg;
+      if (adminMsg)
+        document.getElementById("announceText").innerHTML = adminMsg;
       if (sessionStorage.getItem("announceClosed"))
         announceBanner.style.display = "none";
       document.getElementById("announceClose").addEventListener("click", () => {
@@ -1847,7 +2433,381 @@
         return h + "h " + (m % 60) + "m";
       }
 
-      // ── Achievements system ──
+      // ─────────────────────────────────────────
+      // ── NOTIFICATION SYSTEM ──
+      // ─────────────────────────────────────────
+      const DEFAULT_NOTIFS = [
+        {
+          id: "n1",
+          icon: "🆕",
+          iconClass: "",
+          title: "New games added!",
+          sub: "Minecraft, Terraria, Ultrakill and more are now available.",
+          time: "2m ago",
+          unread: true,
+        },
+        {
+          id: "n2",
+          icon: "🏆",
+          iconClass: "yellow",
+          title: "Achievement unlocked!",
+          sub: 'You earned "First Steps" — play your first game.',
+          time: "5m ago",
+          unread: true,
+        },
+        {
+          id: "n3",
+          icon: "🎯",
+          iconClass: "green",
+          title: "Daily Challenge ready",
+          sub: "Today's challenge: play Slope to keep your streak!",
+          time: "1h ago",
+          unread: true,
+        },
+        {
+          id: "n4",
+          icon: "👥",
+          iconClass: "",
+          title: "Friend request",
+          sub: 'Player "CoolGamer99" wants to be your friend.',
+          time: "2h ago",
+          unread: false,
+        },
+        {
+          id: "n5",
+          icon: "🔥",
+          iconClass: "red",
+          title: "Trending now",
+          sub: "Crazy Cattle 3D is going viral — give it a try!",
+          time: "3h ago",
+          unread: false,
+        },
+      ];
+
+      function getNotifs() {
+        try {
+          return JSON.parse(localStorage.getItem("notifications") || "null");
+        } catch {
+          return null;
+        }
+      }
+      function saveNotifs(n) {
+        try {
+          localStorage.setItem("notifications", JSON.stringify(n));
+        } catch {}
+      }
+      let notifications =
+        getNotifs() || JSON.parse(JSON.stringify(DEFAULT_NOTIFS));
+      saveNotifs(notifications);
+
+      function unreadCount() {
+        return notifications.filter((n) => n.unread).length;
+      }
+      function updateNotifBadge() {
+        const cnt = unreadCount();
+        const el = document.getElementById("notifCount");
+        el.textContent = cnt;
+        el.classList.toggle("visible", cnt > 0);
+      }
+
+      function renderNotifList() {
+        const list = document.getElementById("notifList");
+        if (!notifications.length) {
+          list.innerHTML =
+            '<div class="notif-empty"><span class="emoji">🔔</span>No notifications yet</div>';
+          return;
+        }
+        list.innerHTML = "";
+        notifications.forEach((n, i) => {
+          const div = document.createElement("div");
+          div.className = "notif-item" + (n.unread ? " unread" : "");
+          div.innerHTML = `<div class="notif-icon ${n.iconClass || ""}">${n.icon}</div><div class="notif-body"><div class="notif-title">${n.title}</div><div class="notif-sub">${n.sub}</div><div class="notif-time">${n.time}</div></div>`;
+          div.addEventListener("click", () => {
+            notifications[i].unread = false;
+            saveNotifs(notifications);
+            updateNotifBadge();
+            renderNotifList();
+          });
+          list.appendChild(div);
+        });
+      }
+
+      function addNotification(icon, iconClass, title, sub) {
+        const n = {
+          id: "n" + Date.now(),
+          icon,
+          iconClass,
+          title,
+          sub,
+          time: "just now",
+          unread: true,
+        };
+        notifications.unshift(n);
+        saveNotifs(notifications);
+        updateNotifBadge();
+        renderNotifList();
+        showNotifToast(icon, title);
+      }
+
+      function showNotifToast(icon, title) {
+        const toast = document.createElement("div");
+        toast.style.cssText =
+          "position:fixed;top:80px;right:16px;z-index:2000;background:var(--bg3);border:1px solid var(--border2);border-radius:12px;padding:11px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,0.6);transform:translateX(120%);transition:transform 0.3s;max-width:280px;font-family:DM Sans,sans-serif;";
+        toast.innerHTML = `<span style="font-size:22px">${icon}</span><div><div style="font-size:12px;color:var(--accent3);font-weight:700;margin-bottom:2px">New Notification</div><div style="font-size:13px;font-weight:600">${title}</div></div>`;
+        document.body.appendChild(toast);
+        requestAnimationFrame(() => {
+          toast.style.transform = "translateX(0)";
+        });
+        setTimeout(() => {
+          toast.style.transform = "translateX(120%)";
+          setTimeout(() => toast.remove(), 300);
+        }, 3200);
+      }
+
+      // Notification panel toggle
+      const notifPanel = document.getElementById("notifPanel");
+      const notifBtn = document.getElementById("notifBtn");
+      notifBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        friendsPanel.classList.remove("open");
+        notifPanel.classList.toggle("open");
+      });
+      document.getElementById("markAllRead").addEventListener("click", () => {
+        notifications.forEach((n) => (n.unread = false));
+        saveNotifs(notifications);
+        updateNotifBadge();
+        renderNotifList();
+      });
+
+      // ─────────────────────────────────────────
+      // ── FRIENDS & LOBBY SYSTEM ──
+      // ─────────────────────────────────────────
+      const DEMO_FRIENDS = [
+        {
+          id: "f1",
+          name: "CoolGamer99",
+          emoji: "🦊",
+          status: "online",
+          activity: "Playing Minecraft",
+          canInvite: true,
+        },
+        {
+          id: "f2",
+          name: "ProSloper",
+          emoji: "🐉",
+          status: "online",
+          activity: "Playing Slope",
+          canInvite: true,
+        },
+        {
+          id: "f3",
+          name: "BlastMaster",
+          emoji: "🤖",
+          status: "away",
+          activity: "Was playing Among Us",
+          canInvite: false,
+        },
+        {
+          id: "f4",
+          name: "NinjaFox",
+          emoji: "🐺",
+          status: "online",
+          activity: "Playing 1v1 LOL",
+          canInvite: true,
+        },
+        {
+          id: "f5",
+          name: "PuzzleKing",
+          emoji: "🦁",
+          status: "offline",
+          activity: "Last seen 2h ago",
+          canInvite: false,
+        },
+        {
+          id: "f6",
+          name: "SpeedRacer",
+          emoji: "🐯",
+          status: "offline",
+          activity: "Last seen yesterday",
+          canInvite: false,
+        },
+      ];
+
+      const DEMO_LOBBIES = [
+        { gameId: "minecraft", players: 3, max: 8 },
+        { gameId: "among-us", players: 5, max: 10 },
+        { gameId: "1v1-lol", players: 2, max: 4 },
+      ];
+
+      function getFriends() {
+        try {
+          return JSON.parse(localStorage.getItem("friends") || "null");
+        } catch {
+          return null;
+        }
+      }
+      function saveFriends(f) {
+        try {
+          localStorage.setItem("friends", JSON.stringify(f));
+        } catch {}
+      }
+      let friendsList =
+        getFriends() || JSON.parse(JSON.stringify(DEMO_FRIENDS));
+      saveFriends(friendsList);
+
+      function onlineFriendsCount() {
+        return friendsList.filter((f) => f.status === "online").length;
+      }
+
+      function updateFriendsBadge() {
+        const cnt = onlineFriendsCount();
+        const el = document.getElementById("friendsOnlineCount");
+        el.textContent = cnt;
+        el.classList.toggle("visible", cnt > 0);
+        document.getElementById("onlineChip").textContent = cnt + " online";
+      }
+
+      let activeTab = "friends";
+
+      function renderFriendsBody() {
+        const body = document.getElementById("friendsBody");
+        body.innerHTML = "";
+        if (activeTab === "friends") {
+          if (!friendsList.length) {
+            body.innerHTML =
+              '<div class="notif-empty"><span class="emoji">👥</span>No friends yet — add some above!</div>';
+            return;
+          }
+          // Sort: online first
+          const sorted = [...friendsList].sort((a, b) => {
+            const order = { online: 0, away: 1, offline: 2 };
+            return order[a.status] - order[b.status];
+          });
+          sorted.forEach((f) => {
+            const row = document.createElement("div");
+            row.className = "friend-row";
+            row.innerHTML = `
+              <div class="friend-avatar" style="background:rgba(108,143,255,0.1)">
+                ${f.emoji}
+                <div class="friend-status ${f.status}"></div>
+              </div>
+              <div class="friend-info">
+                <div class="friend-name">${f.name}</div>
+                <div class="friend-activity">${f.activity}</div>
+              </div>
+              ${f.canInvite ? `<button class="friend-action invite" data-id="${f.id}">Invite</button>` : `<button class="friend-action" data-id="${f.id}" disabled style="opacity:0.35;cursor:default">${f.status === "offline" ? "Offline" : "Away"}</button>`}
+            `;
+            if (f.canInvite) {
+              row
+                .querySelector(".friend-action")
+                .addEventListener("click", () => {
+                  addNotification(
+                    "👥",
+                    "",
+                    "Invite sent!",
+                    `You invited ${f.name} to play together.`,
+                  );
+                });
+            }
+            body.appendChild(row);
+          });
+        } else {
+          // Lobby tab
+          const sec = document.createElement("div");
+          sec.className = "lobby-section";
+          sec.innerHTML = "<h4>Active Lobbies</h4>";
+          DEMO_LOBBIES.forEach((lb) => {
+            const g = games.find((x) => x.id === lb.gameId);
+            if (!g) return;
+            const row = document.createElement("div");
+            row.className = "lobby-game-row";
+            row.innerHTML = `
+              <img class="lobby-game-img" src="${g.img}" alt="${g.title}" />
+              <div class="lobby-game-info">
+                <div class="lobby-game-title">${g.title}</div>
+                <div class="lobby-game-players">👤 ${lb.players}/${lb.max} players</div>
+              </div>
+              <button class="lobby-join-btn">Join</button>
+            `;
+            row
+              .querySelector(".lobby-join-btn")
+              .addEventListener("click", () => {
+                addNotification(
+                  "🎮",
+                  "green",
+                  "Joining lobby!",
+                  `You joined a ${g.title} lobby with ${lb.players} others.`,
+                );
+                addRecent(g.id);
+                window.location.href = "play.html?" + g.id;
+              });
+            sec.appendChild(row);
+          });
+          body.appendChild(sec);
+        }
+      }
+
+      // Friends panel toggle
+      const friendsPanel = document.getElementById("friendsPanel");
+      const friendsBtn = document.getElementById("friendsBtn");
+      friendsBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        notifPanel.classList.remove("open");
+        friendsPanel.classList.toggle("open");
+      });
+
+      // Tab switching
+      document.getElementById("tabFriends").addEventListener("click", () => {
+        activeTab = "friends";
+        document.getElementById("tabFriends").classList.add("active");
+        document.getElementById("tabLobby").classList.remove("active");
+        renderFriendsBody();
+      });
+      document.getElementById("tabLobby").addEventListener("click", () => {
+        activeTab = "lobby";
+        document.getElementById("tabLobby").classList.add("active");
+        document.getElementById("tabFriends").classList.remove("active");
+        renderFriendsBody();
+      });
+
+      // Add friend
+      document.getElementById("addFriendBtn").addEventListener("click", () => {
+        const name = document.getElementById("addFriendInput").value.trim();
+        if (!name) return;
+        const emojis = ["🐸", "🦋", "🐬", "🦄", "🐻", "🦊", "🦁", "🐙"];
+        const newFriend = {
+          id: "f" + Date.now(),
+          name,
+          emoji: emojis[Math.floor(Math.random() * emojis.length)],
+          status: "offline",
+          activity: "Just added",
+          canInvite: false,
+        };
+        friendsList.push(newFriend);
+        saveFriends(friendsList);
+        document.getElementById("addFriendInput").value = "";
+        updateFriendsBadge();
+        renderFriendsBody();
+        addNotification(
+          "👥",
+          "green",
+          "Friend request sent!",
+          `Sent a friend request to ${name}.`,
+        );
+      });
+
+      // Close panels on outside click
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest("#notifPanel") && !e.target.closest("#notifBtn"))
+          notifPanel.classList.remove("open");
+        if (
+          !e.target.closest("#friendsPanel") &&
+          !e.target.closest("#friendsBtn")
+        )
+          friendsPanel.classList.remove("open");
+      });
+
+      // ── Achievements ──
       const ACHIEVEMENTS = [
         {
           id: "first_game",
@@ -1930,7 +2890,7 @@
           id: "all_cats",
           icon: "🗺️",
           name: "Explorer",
-          desc: "Play a game from 5 different categories",
+          desc: "Play games from 5 different categories",
           check: () => {
             const r = getRecent();
             const cats = new Set();
@@ -1945,7 +2905,6 @@
           },
         },
       ];
-
       function getUnlocked() {
         try {
           return JSON.parse(localStorage.getItem("achievements") || "[]");
@@ -1966,22 +2925,28 @@
           try {
             localStorage.setItem("achievements", JSON.stringify(unlocked));
           } catch {}
-          newlyUnlocked.forEach((a) => showAchievementToast(a));
+          newlyUnlocked.forEach((a) => {
+            showAchievementToast(a);
+            addNotification(
+              "🏆",
+              "yellow",
+              "Achievement Unlocked!",
+              `"${a.name}" — ${a.desc}`,
+            );
+          });
         }
       }
-
-      // Achievement toast notification
       function showAchievementToast(a) {
         const toast = document.createElement("div");
         toast.style.cssText =
-          "position:fixed;top:80px;right:16px;z-index:2000;background:var(--bg3);border:1px solid rgba(251,191,36,0.4);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,0.5);transform:translateX(120%);transition:transform 0.3s;max-width:260px;";
+          "position:fixed;top:80px;left:16px;z-index:2000;background:var(--bg3);border:1px solid rgba(246,201,14,0.35);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,0.6);transform:translateX(-120%);transition:transform 0.3s;max-width:260px;font-family:DM Sans,sans-serif;";
         toast.innerHTML = `<span style="font-size:24px;line-height:1">${a.icon}</span><div><div style="font-size:11px;color:#f6c90e;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:2px">Achievement Unlocked!</div><div style="font-size:13px;font-weight:600">${a.name}</div><div style="font-size:11px;color:var(--text2)">${a.desc}</div></div>`;
         document.body.appendChild(toast);
         requestAnimationFrame(() => {
           toast.style.transform = "translateX(0)";
         });
         setTimeout(() => {
-          toast.style.transform = "translateX(120%)";
+          toast.style.transform = "translateX(-120%)";
           setTimeout(() => toast.remove(), 300);
         }, 3500);
       }
@@ -2026,12 +2991,11 @@
       function isChallengeComplete() {
         return getStreak().lastDay === todayKey();
       }
-
-      // ── Daily hero ──
       function getDailyGame() {
         const day = Math.floor(Date.now() / 86400000);
         return games[day % games.length];
       }
+
       function buildDailyHero() {
         const game = getDailyGame();
         const hero = document.createElement("div");
@@ -2043,7 +3007,6 @@
         return hero;
       }
 
-      // ── Challenge bar ──
       function buildChallengeBar() {
         const game = getChallengeGame();
         const streak = getStreak();
@@ -2051,7 +3014,7 @@
         const bar = document.createElement("div");
         bar.className = "challenge-bar";
         const streakDisplay = streak.count > 0 ? "🔥" + streak.count : "0";
-        bar.innerHTML = `<div class="challenge-streak-wrap"><div class="challenge-streak-num">${streakDisplay}</div><div class="challenge-streak-lbl">day streak</div></div><div class="challenge-info"><div class="challenge-title">🎯 Daily Challenge</div><div class="challenge-desc">${done ? "✅ Completed today! Come back tomorrow." : 'Play <strong style="color:#68d391">' + game.title + "</strong> to keep your streak!"}</div></div><div class="challenge-action${done ? " done" : ""}">${done ? "✅ Done" : "▶ Play"}</div>`;
+        bar.innerHTML = `<div class="challenge-streak-wrap"><div class="challenge-streak-num">${streakDisplay}</div><div class="challenge-streak-lbl">day streak</div></div><div class="challenge-info"><div class="challenge-title">🎯 Daily Challenge</div><div class="challenge-desc">${done ? "✅ Completed today! Come back tomorrow." : `Play <strong style="color:var(--green)">${game.title}</strong> to keep your streak!`}</div></div><div class="challenge-action${done ? " done" : ""}">${done ? "✅ Done" : "▶ Play"}</div>`;
         if (!done) {
           bar.addEventListener("click", () => {
             markChallengeComplete();
@@ -2063,7 +3026,6 @@
         return bar;
       }
 
-      // ── Top rated ──
       function getTopRated() {
         const ratings = getRatings();
         const liked = games.filter((g) => ratings[g.id] === "up");
@@ -2150,65 +3112,45 @@
         const div = document.createElement("div");
         div.className = "settings-page";
         div.innerHTML = `<div class="section-header" style="margin-bottom:18px"><span class="section-title">⚙️ Settings</span></div>`;
-
-        // Appearance section
         const appearSection = document.createElement("div");
         appearSection.className = "settings-section";
         appearSection.innerHTML = `<h3>Appearance</h3>`;
-
-        // Theme row
+        const isDark = (localStorage.getItem("theme") || "dark") === "dark";
         const themeRow = document.createElement("div");
         themeRow.className = "settings-row";
-        const isDark = (localStorage.getItem("theme") || "dark") === "dark";
         themeRow.innerHTML = `<div class="settings-row-info"><div class="settings-row-label">Dark Mode</div><div class="settings-row-desc">Switch between dark and light themes</div></div><button class="settings-toggle ${isDark ? "on" : ""}" id="settingsThemeToggle"></button>`;
         appearSection.appendChild(themeRow);
-
-        // Grid columns row
         const colRow = document.createElement("div");
         colRow.className = "settings-row";
-        const savedCols = getSetting("columns", 6);
-        colRow.innerHTML = `<div class="settings-row-info"><div class="settings-row-label">Grid Columns</div><div class="settings-row-desc">How many game cards per row</div></div><select class="settings-select" id="settingsCols"><option value="4" ${savedCols == 4 ? "selected" : ""}>4 — Bigger cards</option><option value="5" ${savedCols == 5 ? "selected" : ""}>5</option><option value="6" ${savedCols == 6 ? "selected" : ""}>6 — Default</option><option value="8" ${savedCols == 8 ? "selected" : ""}>8 — More games</option></select>`;
+        const sc = getSetting("columns", 6);
+        colRow.innerHTML = `<div class="settings-row-info"><div class="settings-row-label">Grid Columns</div><div class="settings-row-desc">How many game cards per row</div></div><select class="settings-select" id="settingsCols"><option value="4" ${sc == 4 ? "selected" : ""}>4 — Bigger cards</option><option value="5" ${sc == 5 ? "selected" : ""}>5</option><option value="6" ${sc == 6 ? "selected" : ""}>6 — Default</option><option value="8" ${sc == 8 ? "selected" : ""}>8 — More games</option></select>`;
         appearSection.appendChild(colRow);
-
-        // Always show labels
         const labelRow = document.createElement("div");
         labelRow.className = "settings-row";
         const alwaysLabels = getSetting("alwaysLabels", false);
         labelRow.innerHTML = `<div class="settings-row-info"><div class="settings-row-label">Always Show Game Names</div><div class="settings-row-desc">Show titles on cards without hovering</div></div><button class="settings-toggle ${alwaysLabels ? "on" : ""}" id="settingsLabels"></button>`;
         appearSection.appendChild(labelRow);
         div.appendChild(appearSection);
-
-        // Data section
         const dataSection = document.createElement("div");
         dataSection.className = "settings-section";
         dataSection.innerHTML = `<h3>Your Data</h3>`;
-
-        // Export row
         const exportRow = document.createElement("div");
         exportRow.className = "settings-row";
         exportRow.innerHTML = `<div class="settings-row-info"><div class="settings-row-label">Export Your Data</div><div class="settings-row-desc">Download your play history, favourites & stats as JSON</div></div><button class="settings-safe-btn" id="exportDataBtn">⬇ Export</button>`;
         dataSection.appendChild(exportRow);
-
-        // Clear history
         const clearRow = document.createElement("div");
         clearRow.className = "settings-row";
         clearRow.innerHTML = `<div class="settings-row-info"><div class="settings-row-label">Clear Play History</div><div class="settings-row-desc">Remove all recently played records</div></div><button class="settings-danger-btn" id="clearHistoryBtn">🗑 Clear</button>`;
         dataSection.appendChild(clearRow);
-
-        // Reset all
         const resetRow = document.createElement("div");
         resetRow.className = "settings-row";
         resetRow.innerHTML = `<div class="settings-row-info"><div class="settings-row-label">Reset All Data</div><div class="settings-row-desc">Delete all favourites, ratings, history and settings</div></div><button class="settings-danger-btn" id="resetAllBtn">⚠ Reset Everything</button>`;
         dataSection.appendChild(resetRow);
         div.appendChild(dataSection);
-
-        // About section
         const aboutSection = document.createElement("div");
         aboutSection.className = "settings-section";
         aboutSection.innerHTML = `<h3>About</h3><div class="settings-row"><div class="settings-row-info"><div class="settings-row-label">Math Games 67</div><div class="settings-row-desc">${games.length} games · Built for students</div></div></div>`;
         div.appendChild(aboutSection);
-
-        // Wire up events after render
         setTimeout(() => {
           document
             .getElementById("settingsThemeToggle")
@@ -2218,16 +3160,13 @@
               applyTheme(theme);
               this.classList.toggle("on", theme === "dark");
             });
-
           document
             .getElementById("settingsCols")
             ?.addEventListener("change", function () {
               const v = parseInt(this.value);
               saveSetting("columns", v);
               document.documentElement.style.setProperty("--grid-cols", v);
-              // Rebuild current sections to apply new column count
             });
-
           document
             .getElementById("settingsLabels")
             ?.addEventListener("click", function () {
@@ -2236,7 +3175,6 @@
               saveSetting("alwaysLabels", v);
               document.body.classList.toggle("always-labels", v);
             });
-
           document
             .getElementById("exportDataBtn")
             ?.addEventListener("click", () => {
@@ -2259,7 +3197,6 @@
               a.click();
               URL.revokeObjectURL(url);
             });
-
           document
             .getElementById("clearHistoryBtn")
             ?.addEventListener("click", () => {
@@ -2269,15 +3206,10 @@
                 buildSections("settings");
               }
             });
-
           document
             .getElementById("resetAllBtn")
             ?.addEventListener("click", () => {
-              if (
-                confirm(
-                  "Reset EVERYTHING? Favourites, ratings, history, achievements and settings will all be deleted.",
-                )
-              ) {
+              if (confirm("Reset EVERYTHING?")) {
                 [
                   "favs",
                   "recent2",
@@ -2287,7 +3219,13 @@
                   "challengeStreak",
                   "siteSettings",
                   "theme",
+                  "notifications",
+                  "friends",
                 ].forEach((k) => localStorage.removeItem(k));
+                notifications = JSON.parse(JSON.stringify(DEFAULT_NOTIFS));
+                friendsList = JSON.parse(JSON.stringify(DEMO_FRIENDS));
+                saveNotifs(notifications);
+                saveFriends(friendsList);
                 theme = "dark";
                 applyTheme("dark");
                 buildSections("all");
@@ -2295,10 +3233,10 @@
               }
             });
         }, 50);
-
         return div;
       }
 
+      // ── Search ──
       const searchInput = document.getElementById("searchInput");
       const suggestionsBox = document.getElementById("suggestions");
       const content = document.getElementById("content");
@@ -2322,7 +3260,6 @@
         { tag: "survival", label: "🛡️ Survival" },
         { tag: "girls", label: "💅 For Girls" },
       ];
-
       const newPicks = [
         "a-small-world-cup",
         "bitlife",
@@ -2333,15 +3270,26 @@
         "fruit-ninja",
         "red-ball",
       ];
+      const allTags = [
+        "popular",
+        "soccer",
+        "racing",
+        "cars",
+        "3d",
+        "multiplayer",
+        "adventure",
+        "puzzle",
+        "simulators",
+        "survival",
+        "girls",
+      ];
 
-      // ── Fuzzy search ──
       function fuzzyScore(title, query) {
         title = title.toLowerCase();
         query = query.toLowerCase();
         if (title === query) return 1000;
         if (title.startsWith(query)) return 500 + (100 - title.length);
         if (title.includes(query)) return 200 + (100 - title.indexOf(query));
-        // Fuzzy: check if all query chars appear in order
         let ti = 0,
           score = 0,
           consecutive = 0;
@@ -2359,7 +3307,6 @@
         }
         return score;
       }
-
       function searchGames(query, tagFilter) {
         query = query.trim().toLowerCase();
         let results = games;
@@ -2374,20 +3321,6 @@
       }
 
       let activeTagFilter = null;
-      const allTags = [
-        "popular",
-        "soccer",
-        "racing",
-        "cars",
-        "3d",
-        "multiplayer",
-        "adventure",
-        "puzzle",
-        "simulators",
-        "survival",
-        "girls",
-      ];
-
       function buildSearchTagFilter() {
         searchTagFilter.innerHTML = "";
         allTags.forEach((tag) => {
@@ -2403,7 +3336,6 @@
           searchTagFilter.appendChild(pill);
         });
       }
-
       function runSearch() {
         const query = searchInput.value.trim();
         if (!query && !activeTagFilter) {
@@ -2429,7 +3361,7 @@
         content.style.display = "none";
       }
 
-      // ── Random game ──
+      // ── Random ──
       function goRandom() {
         const g = games[Math.floor(Math.random() * games.length)];
         addRecent(g.id);
@@ -2440,9 +3372,6 @@
       document
         .getElementById("mobileRandom")
         .addEventListener("click", goRandom);
-      document.getElementById("panicBtn").addEventListener("click", () => {
-        window.location.href = "https://classroom.google.com";
-      });
       document
         .getElementById("statsBtn")
         .addEventListener("click", () => activateTag("stats"));
@@ -2496,13 +3425,14 @@
         const myVote = getRatings()[game.id];
         const card = document.createElement("div");
         card.className = "card";
-
+        const glow = document.createElement("div");
+        glow.className = "card-glow";
+        card.appendChild(glow);
         const skel = document.createElement("div");
         skel.className = "skeleton";
         skel.style.cssText =
-          "position:absolute;inset:0;z-index:1;border-radius:10px;";
+          "position:absolute;inset:0;z-index:1;border-radius:11px;";
         card.appendChild(skel);
-
         const a = document.createElement("a");
         a.href = "play.html?" + game.id;
         a.addEventListener("click", () => {
@@ -2516,11 +3446,9 @@
         img.onerror = () => skel.remove();
         img.src = game.img;
         a.appendChild(img);
-
         const label = document.createElement("div");
         label.className = "card-label";
         label.textContent = game.title;
-
         const favBtn = document.createElement("button");
         favBtn.className = "fav-btn" + (isFav ? " active" : "");
         favBtn.textContent = isFav ? "❤️" : "🤍";
@@ -2543,14 +3471,12 @@
             document.querySelector(".nav-item.active")?.dataset.tag;
           if (activeTag === "favourites") buildSections("favourites");
         });
-
         const ratePopup = document.createElement("div");
         ratePopup.className = "rate-popup";
         const badge = document.createElement("div");
         badge.className = "rating-badge" + (myVote ? " has-rating" : "");
         badge.textContent =
           myVote === "up" ? "👍" : myVote === "down" ? "👎" : "";
-
         ["up", "down"].forEach((dir) => {
           const btn = document.createElement("button");
           btn.className = "rate-btn" + (myVote === dir ? " voted" : "");
@@ -2581,14 +3507,12 @@
           });
           ratePopup.appendChild(btn);
         });
-
         if (game.tags && game.tags.includes("new")) {
           const nb = document.createElement("div");
           nb.className = "new-badge";
           nb.textContent = "NEW";
           card.appendChild(nb);
         }
-
         card.appendChild(a);
         card.appendChild(label);
         card.appendChild(favBtn);
@@ -2614,11 +3538,9 @@
       }
 
       function buildSections(tag) {
-        // Trigger fade animation
         content.style.animation = "none";
-        content.offsetHeight; // reflow
+        content.offsetHeight;
         content.style.animation = "";
-
         content.innerHTML = "";
         if (tag === "all") {
           content.appendChild(buildDailyHero());
@@ -2666,14 +3588,13 @@
           if (recentGames.length)
             appendSection("🕐 Recently Played", recentGames);
           else
-            content.innerHTML = `<div class="empty-state"><span class="emoji">🕐</span>No games played yet — go play something!</div>`;
+            content.innerHTML = `<div class="empty-state"><span class="emoji">🕐</span>No games played yet!</div>`;
         } else if (tag === "stats") {
           content.appendChild(buildStatsPage());
         } else if (tag === "achievements") {
           content.appendChild(buildAchievementsPage());
         } else if (tag === "settings") {
           content.appendChild(buildSettingsPage());
-          // Apply always-labels setting
           document.body.classList.toggle(
             "always-labels",
             getSetting("alwaysLabels", false),
@@ -2694,39 +3615,30 @@
         section.innerHTML = `<div class="section-header"><span class="section-title">${label}</span><span class="section-count">${gameList.length}</span></div>`;
         const grid = document.createElement("div");
         grid.className = "section-grid";
-        grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+        grid.style.gridTemplateColumns = `repeat(${cols},1fr)`;
         gameList.forEach((game) => grid.appendChild(makeCard(game)));
         section.appendChild(grid);
         content.appendChild(section);
       }
 
-      function getTopRated() {
-        const ratings = getRatings();
-        const liked = games.filter((g) => ratings[g.id] === "up");
-        if (liked.length) return liked.slice(0, 6);
-        return games
-          .filter((g) => g.tags && g.tags.includes("popular"))
-          .slice(0, 6);
-      }
-
-      // Apply always-labels on load
       document.body.classList.toggle(
         "always-labels",
         getSetting("alwaysLabels", false),
       );
-
       buildSections("all");
-      checkAndUnlock(); // Check achievements on load
+      checkAndUnlock();
+      updateNotifBadge();
+      updateFriendsBadge();
+      renderNotifList();
+      renderFriendsBody();
 
-      // ── Sidebar nav ──
+      // Sidebar nav
       document.querySelectorAll(".nav-item").forEach((item) => {
         item.addEventListener("click", (e) => {
           e.preventDefault();
           activateTag(item.dataset.tag);
         });
       });
-
-      // ── Mobile nav ──
       document
         .querySelectorAll(".mobile-nav-item[data-tag]")
         .forEach((item) => {
@@ -2736,7 +3648,7 @@
           });
         });
 
-      // ── Autocomplete ──
+      // Autocomplete
       let activeIndex = -1;
       function escapeHtml(s) {
         return s
@@ -2744,7 +3656,6 @@
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;");
       }
-
       function showSuggestions(filter) {
         suggestionsBox.innerHTML = "";
         activeIndex = -1;
@@ -2778,7 +3689,6 @@
         });
         suggestionsBox.classList.add("visible");
       }
-
       function setActive(idx) {
         const items = suggestionsBox.querySelectorAll(".suggestion-item");
         items.forEach((el) => el.classList.remove("active"));
@@ -2787,14 +3697,12 @@
           activeIndex = idx;
         }
       }
-
       searchInput.addEventListener("input", () => {
         const filter = searchInput.value.toLowerCase().trim();
         showSuggestions(filter);
         buildSearchTagFilter();
         runSearch();
       });
-
       searchInput.addEventListener("keydown", (e) => {
         const items = suggestionsBox.querySelectorAll(".suggestion-item");
         if (e.key === "ArrowDown") {
@@ -2813,21 +3721,19 @@
           suggestionsBox.classList.remove("visible");
         }
       });
-
       document.addEventListener("click", (e) => {
         if (!e.target.closest(".search-wrapper"))
           suggestionsBox.classList.remove("visible");
       });
-
       searchInput.addEventListener("focus", () => {
         const f = searchInput.value.toLowerCase().trim();
         if (f) showSuggestions(f);
       });
 
-      // Add always-labels CSS
+      // Always-labels CSS
       const styleEl = document.createElement("style");
       styleEl.textContent =
-        "body.always-labels .card-label { opacity:1 !important; transform:translateY(0) !important; }";
+        "body.always-labels .card-label{opacity:1!important;transform:translateY(0)!important;}";
       document.head.appendChild(styleEl);
     </script>
   </body>
