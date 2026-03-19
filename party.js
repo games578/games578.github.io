@@ -554,7 +554,7 @@
         '<div style="font-size:12px;color:var(--text2);margin-bottom:6px;font-weight:700;">Add friend by username</div>' +
         '<div style="display:flex;gap:8px;">' +
           '<input id="addFInput" type="text" maxlength="20" placeholder="Their exact username..." style="'+inputStyle()+'" />' +
-          '<button id="addFBtn" style="'+bigBtn('var(--accent,#6c8fff)')+'flex-shrink:0;padding:8px 14px;">Add</button>' +
+          '<button id="addFBtn" style="flex-shrink:0;background:linear-gradient(135deg,var(--accent,#6c8fff),#4a6ee8);border:none;color:#fff;width:36px;height:36px;border-radius:9px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;">🔍</button>' +
         '</div>' +
         '<div id="addFMsg" style="font-size:12px;margin-top:6px;min-height:14px;"></div>' +
       '</div>' +
