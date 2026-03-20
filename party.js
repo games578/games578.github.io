@@ -836,58 +836,158 @@
   function setMsg(el, text, color) { if(el){ el.textContent=text; el.style.color=color; } }
 
   // ══════════════════════════════════════════════
+  // ══════════════════════════════════════════════
   // ACCOUNT SYNC — localStorage <-> Firebase
   // ══════════════════════════════════════════════
 
-  // Push local game data up to Firebase when logging in
-  function syncLocalToAccount(uid) {
-    var payload = {};
-    // Favourites
-    try { var favs = JSON.parse(localStorage.getItem('favs')||'[]'); if(favs.length) payload.favs = favs; } catch(e){}
-    // Ratings
-    try { var ratings = JSON.parse(localStorage.getItem('ratings')||'{}'); if(Object.keys(ratings).length) payload.ratings = ratings; } catch(e){}
-    // Achievements
-    try { var ach = JSON.parse(localStorage.getItem('achievements')||'[]'); if(ach.length) payload.achievements = ach; } catch(e){}
-    // Play history
-    try { var recent = JSON.parse(localStorage.getItem('recent2')||'[]'); if(recent.length) payload.recentGames = recent.slice(0,30); } catch(e){}
-    // Play times
-    try { var times = JSON.parse(localStorage.getItem('playTimes')||'{}'); if(Object.keys(times).length) payload.playTimes = times; } catch(e){}
-    // Challenge streak
-    try { var streak = JSON.parse(localStorage.getItem('challengeStreak')||'{}'); if(streak.count) payload.streak = streak; } catch(e){}
-    if (Object.keys(payload).length) {
-      fbUpdate('/userData/'+uid, payload);
-    }
-    // Also pull account data DOWN and merge
-    fbGet('/userData/'+uid, function(data){
-      if (!data) return;
-      if (data.favs) { try { var cur=JSON.parse(localStorage.getItem('favs')||'[]'); var merged=[...new Set([...cur,...data.favs])]; localStorage.setItem('favs',JSON.stringify(merged)); } catch(e){} }
-      if (data.ratings) { try { var cur=JSON.parse(localStorage.getItem('ratings')||'{}'); localStorage.setItem('ratings',JSON.stringify(Object.assign({},data.ratings,cur))); } catch(e){} }
-      if (data.achievements) { try { var cur=JSON.parse(localStorage.getItem('achievements')||'[]'); var merged=[...new Set([...cur,...data.achievements])]; localStorage.setItem('achievements',JSON.stringify(merged)); } catch(e){} }
-      if (data.streak) { try { var cur=JSON.parse(localStorage.getItem('challengeStreak')||'{}'); if(!cur.count||data.streak.count>cur.count) localStorage.setItem('challengeStreak',JSON.stringify(data.streak)); } catch(e){} }
+  // Read a localStorage key safely
+  function lsGet(k, fallback) {
+    try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : fallback; } catch(e) { return fallback; }
+  }
+  function lsSet(k, v) {
+    try { localStorage.setItem(k, JSON.stringify(v)); } catch(e) {}
+  }
+
+  // Push ALL local progress up to Firebase
+  function pushAllToCloud(uid) {
+    if (!uid) return;
+    var payload = {
+      favs:        lsGet('favs', []),
+      ratings:     lsGet('ratings', {}),
+      achievements:lsGet('achievements', []),
+      recentGames: lsGet('recent2', []).slice(0, 50),
+      playTimes:   lsGet('playTimes', {}),
+      streak:      lsGet('challengeStreak', {count:0, lastDay:''}),
+      savedAt:     Date.now()
+    };
+    fbUpdate('/userData/'+uid, payload);
+  }
+
+  // Pull progress FROM Firebase and apply to localStorage, then reload page sections
+  function pullFromCloud(uid, cb) {
+    fbGet('/userData/'+uid, function(data) {
+      if (!data) { if(cb) cb(); return; }
+
+      // Merge favourites (union of both)
+      if (data.favs && Array.isArray(data.favs)) {
+        var localFavs = lsGet('favs', []);
+        var merged = Array.from(new Set(localFavs.concat(data.favs)));
+        lsSet('favs', merged);
+      }
+
+      // Merge ratings (cloud wins on conflict since it's newer)
+      if (data.ratings && typeof data.ratings === 'object') {
+        var localRatings = lsGet('ratings', {});
+        var mergedRatings = Object.assign({}, data.ratings, localRatings);
+        lsSet('ratings', mergedRatings);
+      }
+
+      // Merge achievements (union)
+      if (data.achievements && Array.isArray(data.achievements)) {
+        var localAch = lsGet('achievements', []);
+        var mergedAch = Array.from(new Set(localAch.concat(data.achievements)));
+        lsSet('achievements', mergedAch);
+      }
+
+      // Merge play history — combine both lists, dedupe by game id, keep most recent
+      if (data.recentGames && Array.isArray(data.recentGames)) {
+        var localRecent = lsGet('recent2', []);
+        var combined = {};
+        // index by game id, keeping newest timestamp
+        localRecent.concat(data.recentGames).forEach(function(entry) {
+          if (!entry || !entry.id) return;
+          if (!combined[entry.id] || entry.ts > combined[entry.id].ts) {
+            combined[entry.id] = entry;
+          }
+        });
+        var mergedRecent = Object.values(combined).sort(function(a,b){ return b.ts - a.ts; }).slice(0, 50);
+        lsSet('recent2', mergedRecent);
+      }
+
+      // Merge play times (add them together)
+      if (data.playTimes && typeof data.playTimes === 'object') {
+        var localTimes = lsGet('playTimes', {});
+        var mergedTimes = Object.assign({}, data.playTimes);
+        Object.keys(localTimes).forEach(function(k) {
+          mergedTimes[k] = (mergedTimes[k] || 0) + localTimes[k];
+        });
+        lsSet('playTimes', mergedTimes);
+      }
+
+      // Use whichever streak is higher
+      if (data.streak && typeof data.streak === 'object') {
+        var localStreak = lsGet('challengeStreak', {count:0, lastDay:''});
+        if ((data.streak.count || 0) > (localStreak.count || 0)) {
+          lsSet('challengeStreak', data.streak);
+        }
+      }
+
+      if(cb) cb();
     });
   }
 
-  // Push a specific key to Firebase (called by the page scripts on changes)
-  function pushGameDataKey(key, value) {
-    var session = me(); if(!session||!session.uid) return;
-    var payload = {}; payload[key] = value;
-    fbUpdate('/userData/'+session.uid, payload);
+  // Called on login/register — push local data up THEN pull cloud data down
+  function syncLocalToAccount(uid) {
+    // First push what we have locally
+    pushAllToCloud(uid);
+    // Then pull cloud data and merge
+    pullFromCloud(uid, function() {
+      // Push the merged result back so cloud is up to date
+      pushAllToCloud(uid);
+    });
   }
 
-  // Hook into the page's existing localStorage writes so data auto-saves to account
+  // Hook into localStorage.setItem so every change auto-saves to Firebase
   function hookPageEvents() {
-    var session = me(); if(!session) return;
-    // Watch for localStorage changes made by the game site scripts
+    var session = me(); if(!session || !session.uid) return;
+    var uid = session.uid;
     var origSetItem = localStorage.setItem.bind(localStorage);
+    var debounceTimers = {};
+
     localStorage.setItem = function(k, v) {
       origSetItem(k, v);
-      if (k === 'favs') { try { pushGameDataKey('favs', JSON.parse(v)); } catch(e){} }
-      else if (k === 'ratings') { try { pushGameDataKey('ratings', JSON.parse(v)); } catch(e){} }
-      else if (k === 'achievements') { try { pushGameDataKey('achievements', JSON.parse(v)); } catch(e){} }
-      else if (k === 'recent2') { try { pushGameDataKey('recentGames', JSON.parse(v).slice(0,30)); } catch(e){} }
-      else if (k === 'playTimes') { try { pushGameDataKey('playTimes', JSON.parse(v)); } catch(e){} }
-      else if (k === 'challengeStreak') { try { pushGameDataKey('streak', JSON.parse(v)); } catch(e){} }
+      // Only sync game-related keys
+      var syncKeys = {
+        'favs':             'favs',
+        'ratings':          'ratings',
+        'achievements':     'achievements',
+        'recent2':          'recentGames',
+        'playTimes':        'playTimes',
+        'challengeStreak':  'streak'
+      };
+      if (!syncKeys[k]) return;
+      // Debounce — wait 2s after last change before sending to avoid hammering Firebase
+      if (debounceTimers[k]) clearTimeout(debounceTimers[k]);
+      debounceTimers[k] = setTimeout(function() {
+        try {
+          var parsed = JSON.parse(v);
+          var payload = {};
+          var cloudKey = syncKeys[k];
+          // Trim recent games list
+          if (k === 'recent2' && Array.isArray(parsed)) parsed = parsed.slice(0, 50);
+          payload[cloudKey] = parsed;
+          payload.savedAt = Date.now();
+          fbUpdate('/userData/'+uid, payload);
+        } catch(e) {}
+      }, 2000);
     };
+
+    // Also save on page unload (when closing tab / navigating away)
+    window.addEventListener('beforeunload', function() {
+      pushAllToCloud(uid);
+    });
+
+    // Also save on visibility change (switching tabs)
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'hidden') {
+        pushAllToCloud(uid);
+      }
+    });
+
+    // Periodic sync every 60 seconds while page is open
+    setInterval(function() {
+      pushAllToCloud(uid);
+    }, 60000);
   }
 
   // ══════════════════════════════════════════════
@@ -896,7 +996,6 @@
   function init() {
     cleanNavbar();
     injectButton();
-    // If already logged in, hook localStorage so data auto-syncs
     if (loggedIn()) {
       hookPageEvents();
       syncLocalToAccount(me().uid);
