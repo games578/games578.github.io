@@ -275,7 +275,7 @@ const games = [
   {
     id: "minecraft",
     title: "Minecraft",
-    src: "https://d23tskfudfp1j.cloudfront.net/games/2026/more/duckcraft/index.html",
+    src: "https://eaglercraft1-8.github.io/",
     img: "https://thumbs.dreamstime.com/b/minecraft-logo-online-game-dirt-block-illustrations-concept-design-isolated-186775550.jpg",
     tags: ["new", "popular", "survival", "multiplayer", "adventure", "3d", "best"]
   },
