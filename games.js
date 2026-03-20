@@ -417,35 +417,35 @@ const games = [
     title: "Baldi's Basics",
     src: "https://dubdoo.com/games/baldisbasics.html",
     img: "game%20logos/baldis-basics.png",
-    tags: ["new", "popular", "fun"]
+    tags: ["popular", "fun"]
   },
   {
     id: "papas-pizzeria",
     title: "Papa's Pizzeria",
     src: "https://papaspizzeria.io/papas-pizzeria.embed",
     img: "game%20logos/papas-pizzeria.png",
-    tags: ["new", "popular", "fun"]
+    tags: ["popular", "fun"]
   },
   {
     id: "retro-bowl",
     title: "Retro Bowl",
     src: "https://retrobowlofficial.com/game/9a5a5ef4-bd76-48fa-bf07-5ccbdc09b1f6/index.html?game_id=806e2242-df99-4dcd-b6ac-2c20175159a8&game_version_id=9a5a5ef4-bd76-48fa-bf07-5ccbdc09b1f6&referrer=https%3A%2F%2Fwww.bing.com%2F",
     img: "game%20logos/retro-bowl.png",
-    tags: ["new", "popular", "fun", "best"]
+    tags: ["popular", "fun", "best"]
   },
   {
     id: "monkey-mart",
     title: "Monkey Mart",
     src: "https://voidnetgames.github.io/monkeymartgame/file/",
     img: "game%20logos/monkey-mart.png",
-    tags: ["new", "popular", "simulators", "fun"]
+    tags: ["popular", "simulators", "fun"]
   },
   {
     id: "crossy-road",
     title: "Crossy Road",
     src: "https://dubdoo.com/games/crossyroad.html",
     img: "game%20logos/crossy-road.png",
-    tags: ["new", "popular", "fun"]
+    tags: ["popular", "fun"]
   },
   {
     id: "wordle",
@@ -571,35 +571,35 @@ const games = [
     title: "Adventure Capitalist",
     src: "https://dubdoo.com/games/adventurecapitalist.html",
     img: "game%20logos/adventurre-capatilist.png",
-    tags: ["new", "popular", "simulators", "fun"]
+    tags: ["popular", "simulators", "fun"]
   },
   {
     id: "happy-wheels",
     title: "Happy Wheels",
     src: "https://dubdoo.com/games/happywheels.html",
     img: "game%20logos/happy-wheels.png",
-    tags: ["new", "popular", "fun"]
+    tags: ["popular", "fun"]
   },
   {
     id: "wheelie-life",
     title: "Wheelie Life",
     src: "https://scratch.mit.edu/projects/1231016758/embed",
     img: "game%20logos/wheelie-life.png",
-    tags: ["new", "popular", "fun"]
+    tags: ["popular", "fun"]
   },
   {
     id: "tiny-fishing",
     title: "Tiny Fishing",
     src: "https://dubdoo.com/games/tinyfishing.html",
     img: "game%20logos/tiny-fishing.png",
-    tags: ["new", "popular", "fun"]
+    tags: ["popular", "fun"]
   },
   {
     id: "melon-sandbox",
     title: "Melon Sandbox",
     src: "https://melonplayground.io/game/melon-playground/",
     img: "game%20logos/melon-sandbox.png",
-    tags: ["new", "popular", "fun", "best"]
+    tags: ["popular", "fun", "best"]
   },
   {
     id: "snow-rider-3d",
@@ -655,7 +655,7 @@ const games = [
     title: "Crazy Cattle 3D",
     src: "https://dubdoo.com/games/crazycattle3d.html",
     img: "game%20logos/crazy-cattle-3d.png",
-    tags: ["new", "popular", "fun"]
+    tags: ["popular", "fun"]
   },
   {
     id: "terraria",
@@ -676,7 +676,7 @@ const games = [
     title: "Soundbuttons",
     src: "https://dubdoo.com/games/soundboard.html",
     img: "game%20logos/soundbuttons.png",
-    tags: ["new", "popular", "fun"]
+    tags: ["popular", "fun"]
   },
   {
     id: "smashy-road",
@@ -690,27 +690,27 @@ const games = [
     title: "Papa's Hotdoggeria",
     src: "https://dnrweqffuwjtx.cloudfront.net/games/2024/flash/papas-hot-doggeria/index.html",
     img: "game%20logos/papas-hotdoggeria.png",
-    tags: ["new", "popular", "fun"]
+    tags: ["popular", "fun"]
   },
   {
     id: "papas-freezeria",
     title: "Papa's Freezeria",
     src: "https://dnrweqffuwjtx.cloudfront.net/games/2024/flash/papas-freezeria/index.html",
     img: "game%20logos/papas-freezeria.png",
-    tags: ["new", "popular", "fun"]
+    tags: ["popular", "fun"]
   },
   {
     id: "papas-pastaria",
     title: "Papa's Pastaria",
     src: "https://dnrweqffuwjtx.cloudfront.net/games/2024/flash/papas-pastaria/index.html",
     img: "game%20logos/papas-pastaria.png",
-    tags: ["new", "popular", "fun"]
+    tags: ["popular", "fun"]
   },
   {
     id: "papas-donuteria",
     title: "Papa's Donuteria",
     src: "https://dnrweqffuwjtx.cloudfront.net/games/2024/flash/papas-donuteria/index.html",
     img: "game%20logos/papas-donuteria.png",
-    tags: ["new", "popular", "fun"]
+    tags: ["popular", "fun"]
   },
 ];
