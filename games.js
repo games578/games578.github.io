@@ -96,7 +96,7 @@ const games = [
     title: "Five Nights at Epstein's",
     src: "https://harshulmoon.github.io/fnae.html",
     img: "game%20logos/five-nights-at-epsteins.png",
-    tags: ["popular", "fun"]
+    tags: ["popular", "fun", "new"]
   },
   {
     id: "geometry-dash-subzero",
@@ -278,7 +278,7 @@ const games = [
     title: "Among Us",
     src: "https://dubdoo.com/games/amongus-html.html",
     img: "game%20logos/among-us.png",
-    tags: ["popular", "multiplayer", "survival", "best"]
+    tags: ["popular", "multiplayer", "survival", "best", "new"]
   },
   {
     id: "little-alchemy-2",
@@ -306,14 +306,14 @@ const games = [
     title: "UltraKill",
     src: "https://dubdoo.com/games/ultrakill.html",
     img: "game%20logos/ultrakill.png",
-    tags: ["popular", "survival", "fun", "best"]
+    tags: ["popular", "survival", "fun", "best", "new"]
   },
   {
     id: "rocket-league",
     title: "Rocket League",
     src: "https://rocketgoal.io/",
     img: "game%20logos/rocket-league.png",
-    tags: ["popular", "fun", "best"]
+    tags: ["popular", "fun", "best", "new"]
   },
   {
     id: "crazy-cattle-3d",
@@ -334,7 +334,7 @@ const games = [
     title: "Survivor.io",
     src: "https://dubdoo.com/games/survivorio.html",
     img: "game%20logos/survivor-io.png",
-    tags: ["popular", "survival", "fun"]
+    tags: ["popular", "survival", "fun", "new"]
   },
   {
     id: "soundbuttons",
@@ -504,7 +504,7 @@ const games = [
     title: "Red Ball 4",
     src: "https://class811.github.io/g177/red-ball-4/",
     img: "game%20logos/red-ball-4.png",
-    tags: ["popular", "adventure", "fun"]
+    tags: ["popular", "adventure", "fun", "new"]
   },
   {
     id: "ragdoll-drop",
@@ -567,7 +567,7 @@ const games = [
     title: "Backrooms",
     src: "https://backroomsgame.io/game/backrooms/",
     img: "game%20logos/backrooms.png",
-    tags: ["adventure", "survival", "popular"]
+    tags: ["adventure", "survival", "popular", "new"]
   },
 
   // ===== FROM PREVIOUS JS ARRAY (not in zip) =====
@@ -583,7 +583,7 @@ const games = [
     title: "Swat",
     src: "https://mc0825.github.io/g97/class-792/",
     img: "https://jamestore214.github.io/img/class-792.png",
-    tags: ["new", "survival", "3d"]
+    tags: [  "survival", "3d"]
   },
   {
     id: "lol",
@@ -597,7 +597,7 @@ const games = [
     title: "Snow Rider",
     src: "https://mc0825.github.io/g26/class-537/",
     img: "https://jamestore214.github.io/img/class-537.png",
-    tags: ["new", "racing", "fun"]
+    tags: [ "racing", "fun"]
   },
   {
     id: "shotz",
@@ -723,7 +723,7 @@ const games = [
     title: "Parking Fury 3D",
     src: "https://mc0825.github.io/g3/class-725/",
     img: "https://mc0825.github.io/img/class-725.png",
-    tags: ["racing", "cars", "3d", "simulators"]
+    tags: ["racing", "cars", "3d", "simulators", "new"]
   },
   {
     id: "monster-tracks",
@@ -821,7 +821,7 @@ const games = [
     title: "DeadHead Parkour",
     src: "https://jamestore214.github.io/g97/class-412/",
     img: "https://mc0825.github.io/img/class-412.png",
-    tags: ["popular", "adventure", "new"]
+    tags: ["popular", "adventure", ]
   },
   {
     id: "paperio",
@@ -842,7 +842,7 @@ const games = [
     title: "Time Shooter 3",
     src: "https://lesson1225.github.io/lesson85/lesson-2232/",
     img: "https://lesson1225.github.io/img/lesson-2232.png",
-    tags: ["3d", "survival", "new", "popular"]
+    tags: ["3d", "survival", "popular"]
   },
   {
     id: "pubg",
@@ -870,13 +870,13 @@ const games = [
     title: "Crazy Car",
     src: "https://unblocked-games.s3.amazonaws.com/games/2023/mjs/idle-mining-empire/index.html",
     img: "https://unblocked-games.s3.amazonaws.com/media/posts/372/responsive/idle-mining-empire-512-xs.jpg",
-    tags: ["adventure", "survival", "new", "popular"]
+    tags: ["adventure", "survival", "popular"]
   },
   {
     id: "wafed",
     title: "Backflip Challenge",
     src: "https://d23tskfudfp1j.cloudfront.net/games/2026/unity/backflip-challenge/index.html",
     img: "https://unblocked-games.s3.amazonaws.com/media/posts/743/responsive/backflip-challenge-game-sm.webp",
-    tags: ["adventure", "survival", "new", "popular"]
+    tags: ["adventure", "survival",  "popular"]
   },
 ];
